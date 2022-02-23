@@ -1,11 +1,13 @@
 const router = require('express').Router();
-const apiRouter = require('./api');
+const sessionRouter = require('./session.js');
+const usersRouter = require('./users.js');
 
-router.post('/test', function (req, res) {
+router.use('/session', sessionRouter);
+
+router.use('/users', usersRouter);
+
+router.post('/test', (req, res) => {
     res.json({ requestBody: req.body });
 });
 
-
-
-router.use('/api', apiRouter);
 module.exports = router;
