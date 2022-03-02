@@ -8,14 +8,13 @@
 
 .splash__image > img {
   display: flex;
-  position: absolute;;
+  position: absolute;
   left: 0;
   right: 0;
-  width: 101vw;
+  width: 100vw;
   height: 100vh;
-  background-size: cover;
   background-position: center;
-
+  object-position: center;
 }
 
 body {
@@ -30,27 +29,55 @@ body {
   align-items: center;
   justify-content: center;
   align-items: center;
-  margin-top: 50%;
+  margin-top: 70%;
   margin-left: 100%;
   flex-direction: column;
   text-align: center;
-
 }
 
 .splash__text {
-    color: white;;
-    display: flex;
-    font-size:calc(50px);
-    font-weight: bolder;
+  color: white;
+  display: flex;
+  font-size: calc(50px);
+  font-weight: bolder;
 }
 
 .splash__quotes {
-    color: white;;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    bottom: 50px;
-    font-size:calc(15px);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  bottom: 50px;
+  font-size: calc(15px);
+}
 
+.splash__explore {
+  display: flex;
+  position: relative;
+  bottom: 30px;
+  background-color: transparent;
+  /* border-width: 0; */
+  border-radius: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  color: white;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+
+.splash__explore:hover {
+  outline: none;
+  cursor: pointer;
+  transform: scale(1.015);
+  transition-duration: 300ms;
+  background-color: white;
+  color: black;
+}
+
+.spash__viewAll {
+  text-decoration: none;
 }

@@ -26,16 +26,24 @@ function Navigation({ isLoaded }) {
 
     return (
         <nav className='home__navBar'>
-            <NavLink className='home__mainPage' exact to="/">
-                <img
-                    className='home__logo'
-                    src='../../travlr.png'
-                    alt='' />
-            </NavLink>
+            <div className="home__rightButtons">
+                <NavLink className='home__mainPage' exact to="/">
+                    <img
+                        className='home__logo'
+                        src='../../travlr.png'
+                        alt='' />
+                </NavLink>
 
+                {sessionUser ?
+                    <NavLink to='/view-all'>
+                        <button className='home__explore'>Explore</button>
+                    </NavLink> : null
+            }
+            
+            </div>
             <div className="home__options">
             </div>
-            
+
             <div className="home__searchbar">
                 <input
                     className='home__search'
