@@ -1,0 +1,56 @@
+.splash__page {
+  display: flex;
+  position: absolute;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.splash__image > img {
+  display: flex;
+  position: absolute;;
+  left: 0;
+  right: 0;
+  width: 101vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.splash__messages {
+  display: flex;
+  position: fixed;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50%;
+  margin-left: 100%;
+  flex-direction: column;
+  text-align: center;
+
+}
+
+.splash__text {
+    color: white;;
+    display: flex;
+    font-size:calc(50px);
+    font-weight: bolder;
+}
+
+.splash__quotes {
+    color: white;;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom: 50px;
+    font-size:calc(15px);
+
+}

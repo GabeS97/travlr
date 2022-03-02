@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/GabeS97/auth_me#readme",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.3.0"
+    "@fortawesome/fontawesome-svg-core": "^1.3.0",
+    "react-spring": "^9.4.3"
   }
 }
