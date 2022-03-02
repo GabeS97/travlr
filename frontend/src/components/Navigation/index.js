@@ -32,6 +32,10 @@ function Navigation({ isLoaded }) {
                     src='../../travlr.png'
                     alt='' />
             </NavLink>
+
+            <div className="home__options">
+            </div>
+            
             <div className="home__searchbar">
                 <input
                     className='home__search'
