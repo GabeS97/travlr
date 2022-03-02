@@ -5,3 +5,6 @@ const { check } = require('express-validator');
 const { restoreUser } = require('../../utils/auth');
 
 const router = express.Router();
+
+
+module.exports = router

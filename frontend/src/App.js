@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Splash from "./components/Splash";
+import Dashboard from "./components/Dashboard";
+import Footer from "./components/Footer";
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -19,22 +21,23 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/">
-            <Splash />
+            {user ? <Redirect to='/dashboard' /> : <Splash />}
           </Route>
           <Route path="/dashboard">
-            {/* Dashboard */}
-          </Route>
-          <Route path='/dashboard/phots'>
-            {/* Photo  */}
+            <Dashboard />
           </Route>
           <Route path='/dashboard/album'>
             {/* Album */}
+          </Route>
+          <Route path='/dashboard/photos'>
+            {/* Photo  */}
           </Route>
           <Route path='/dashboard/photo/:photoId'>
             {/* PhotoDetail */}
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }
