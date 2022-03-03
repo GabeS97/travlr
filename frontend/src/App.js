@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import Splash from "./components/Splash";
 import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer";
+import Album from "./components/Album";
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -25,12 +26,6 @@ function App() {
           </Route>
           <Route path="/dashboard">
             <Dashboard />
-          </Route>
-          <Route path='/dashboard/album'>
-            {/* Album */}
-          </Route>
-          <Route path='/dashboard/photos'>
-            {/* Photo  */}
           </Route>
           <Route path='/dashboard/photo/:photoId'>
             {/* PhotoDetail */}

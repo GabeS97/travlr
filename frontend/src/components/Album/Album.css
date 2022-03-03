@@ -1,6 +1,6 @@
-body {
+/* body {
   background-color: lightcoral;
-}
+} */
 
 .album__page {
   display: flex;
@@ -20,15 +20,4 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   align-self: center;
   justify-content: center;
-}
-
-.album__add {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: solid black;
-  height: 150px;
-  width: 150px;
-  object-fit: cover;
-  /* background: url('https://banner2.cleanpng.com/20180315/xpq/kisspng-computer-icons-scalable-vector-graphics-symbol-cli-plus-sign-5aaad88d2b6c70.9190357715211459971779.jpg'); */
 }

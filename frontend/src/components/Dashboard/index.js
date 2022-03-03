@@ -1,25 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Route, Switch } from 'react-router-dom'
+import Album from '../Album'
+import Photo from '../Photo'
 import './Dashboard.css'
 
 const Dashboard = () => {
     const user = useSelector(state => state.session.user)
-    console.log('this is the user console.log', user)
+    const [showAlbum, setShowAlbum] = useState(false)
+    const [showPhoto, setShowPhoto] = useState(false)
+    // console.log('showAlbum: ', showAlbum, 'show photo: ', showPhoto)
     return (
         <div className="dashboard__page">
             <div className="dashboard__profile">
                 <div className="dashboard__avatar">
-                    <h2 className='dashboard__displayName'>{user.username}</h2>
+                    {user && (
+                        <h2 className='dashboard__displayName'>{user.username}</h2>
+                    )}
                 </div>
             </div>
-            <div className="dashboard__actions">
-                <NavLink to='/dashboard/albums'>
-                    <button>Albums</button>
+            <nav className="dashboard__actions">
+                <NavLink className='dashboard__albums' to='/dashboard/albums'>Album
                 </NavLink>
-                <NavLink to='/dashboard/photos'>
-                    <button>Photos</button>
+                <NavLink className='dashboard__photos' to='/dashboard/photos'>Photo
                 </NavLink>
+            </nav>
+
+            <div className="dashboard__body">
+                <Switch>
+                    <Route path='/dashboard/albums'>
+                        {/* <Album /> */}
+                    </Route>
+                    <Route path='/dashboard/photos'>
+                        <Photo />
+                    </Route>
+                </Switch>
             </div>
         </div>
     )
