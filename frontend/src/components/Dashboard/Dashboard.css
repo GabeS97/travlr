@@ -52,19 +52,43 @@
   border-bottom: 1px solid hsla(0, 0%, 54%, 0.3);
 }
 
-button {
-  background-color: transparent;
-  border-width: 0;
+
+.dashboard__photos,
+.dashboard__albums {
+  text-decoration: none;
+  color: black;
+  font-size: large;
   font-weight: bold;
-  font-size: medium;
 }
 
-button:hover, button:focus {
+.dashboard__photos:hover,
+.dashboard__photos:focus {
   cursor: pointer;
   text-decoration: underline blue;
-  text-underline-offset: calc(10px);
+  text-underline-offset: calc(5px);
 }
 
-button > i {
-    color: white;
+.dashboard__albums:hover,
+.dashboard__albums:focus {
+  cursor: pointer;
+  text-decoration: underline blue;
+  text-underline-offset: calc(5px);
+}
+
+.dashboard__body {
+  align-items: center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  top: 40vh;
+  max-width: 100%;
+  position: relative;
+  z-index: 2;
+  left: 0;
+  right: 0;
+}
+
+body {
+  background-color: rgb(255, 245, 245);
 }
