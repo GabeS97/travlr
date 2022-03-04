@@ -36,8 +36,8 @@ function SignupForm() {
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
             <div className="inputSignIn">
-                <label>
-                    {/* Email */}
+                <label className='signin__email'>
+                    Email
                     <input className="emailSignIn"
                         placeholder="Please enter your email"
                         type="text"
@@ -47,7 +47,7 @@ function SignupForm() {
                     />
                 </label>
                 <label>
-                    {/* Username */}
+                    Username
                     <input className="usernameSignIn"
                         placeholder="Please enter your username"
                         type="text"
@@ -57,7 +57,7 @@ function SignupForm() {
                     />
                 </label>
                 <label>
-                    {/* Password */}
+                    Password
                     <input className="passwordSignIn"
                         placeholder="Please enter your password"
                         type="password"
@@ -67,7 +67,7 @@ function SignupForm() {
                     />
                 </label>
                 <label>
-                    {/* Confirm Password */}
+                    Confirm Password
                     <input className="confirmSignIn"
                         placeholder="Please confirm your password"
                         type="password"
@@ -76,8 +76,8 @@ function SignupForm() {
                         required
                     />
                 </label>
+                <button type="submit" className="submitSignup">Sign Up</button>
             </div>
-            <button type="submit" className="submitSignup">Sign Up</button>
         </form>
     );
 }

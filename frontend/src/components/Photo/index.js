@@ -5,6 +5,7 @@ import { Modal } from '../../context/Modal';
 import { loadPhotos } from '../../store/photos';
 import CreatePhoto from './CreatePhotoModal/CreatePhoto';
 import './Photo.css'
+
 const Photo = () => {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState()
@@ -13,7 +14,6 @@ const Photo = () => {
     const photo = Object.values(photos)
 
     const choice = photo.filter(pic => pic.userId === user.id)
-    console.log(choice)
     useEffect(() => {
         dispatch(loadPhotos())
     }, [dispatch])
@@ -23,7 +23,7 @@ const Photo = () => {
             <div className="photo__title">
                 <p>Your photostream is your public-facing portfolio. Set your photos to public using the Camera Roll to populate your photostream.</p>
                 <button className='photo__upload'
-                onClick={() => setShowModal(true)}
+                    onClick={() => setShowModal(true)}
                 >Go to Camera Roll
                 </button>
                 {showModal && (

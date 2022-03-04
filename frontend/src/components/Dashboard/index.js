@@ -7,9 +7,7 @@ import './Dashboard.css'
 
 const Dashboard = () => {
     const user = useSelector(state => state.session.user)
-    const [showAlbum, setShowAlbum] = useState(false)
-    const [showPhoto, setShowPhoto] = useState(false)
-    // console.log('showAlbum: ', showAlbum, 'show photo: ', showPhoto)
+    
     return (
         <div className="dashboard__page">
             <div className="dashboard__profile">
@@ -29,7 +27,7 @@ const Dashboard = () => {
             <div className="dashboard__body">
                 <Switch>
                     <Route path='/dashboard/albums'>
-                        {/* <Album /> */}
+                        <Album />
                     </Route>
                     <Route path='/dashboard/photos'>
                         <Photo />

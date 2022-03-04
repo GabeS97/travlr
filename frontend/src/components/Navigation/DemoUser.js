@@ -1,6 +1,8 @@
 import React from 'react'
 import * as actionSesh from '../../store/session'
 import { useDispatch } from 'react-redux'
+import './DemoUser.css'
+
 const DemoUser = () => {
     const dispatch = useDispatch()
 

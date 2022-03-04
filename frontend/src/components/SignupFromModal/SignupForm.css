@@ -4,9 +4,46 @@
 
 .modal__signup {
   background-color: white;
-  color: black;
+  color: black;;
   font-weight: bold;
   border-radius: 5px;
   height: 50%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
   width: 35%;
+}
+
+.signinTitle {
+  /* display: flex; */
+  /* position: absolute; */
+  text-align: center;
+  font-weight: bolder;
+  bottom: 20vh;
+  justify-content: center;
+  font-size: 150%;
+  margin-left: 5%;
+}
+
+.inputSignIn {
+  margin-top: 30%;
+  display: flex;
+  /* position: absolute; */
+  justify-content: center;
+  flex-direction: column;
+  /* bottom: 25vh; */
+  /* width: 100%; */
+  /* text-align: center; */
+  row-gap: 10px;
+  align-items: center;
+
+}
+
+.submitSignup {
+  display: flex;
+  justify-content: center;
+}
+
+.submitSignup:hover {
+  cursor: pointer;
 }

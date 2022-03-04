@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import * as sessionActions from '../../store/session';
 import './ProfileButton.css'
 function ProfileButton({ user }) {
@@ -42,6 +43,9 @@ function ProfileButton({ user }) {
                     <li>{user.email}</li>
                     <li>
                         <button onClick={logout}>Log Out</button>
+                        {!user && (
+                            <Redirect to='/' />
+                        )}
                     </li>
                 </ul>
             )}
