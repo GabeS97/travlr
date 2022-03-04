@@ -21,7 +21,7 @@ function LoginForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='modal__loginForm' onSubmit={handleSubmit}>
             <header className="model__loginTitle">Log In</header>
             <ul>
                 {errors.map((error, idx) => (
@@ -29,28 +29,32 @@ function LoginForm() {
                 ))}
             </ul>
             <div className="modal__loginInputs">
-                <label>
+                <label className="modal__user">
                     Username or Email
                     <input className="modal__loginUser"
                         type="text"
                         value={credential}
+                        placeholder='Username and Email'
                         onChange={(e) => setCredential(e.target.value)}
                         required
                     />
                 </label>
-                <label>
+                <label className="modal__password">
                     Password
                     <input
                         className="modal__loginPassword"
                         type="password"
                         value={password}
+                        placeholder='Password'
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
                 </label>
             </div>
-            <button className='modal__loginSubmit' type="submit">Log In</button>
-            <DemoUser />
+            <div className="modal__buttons">
+                <button className='modal__loginSubmit' type="submit">Log In</button>
+                <DemoUser className='modal__demo' />
+            </div>
         </form>
     );
 }

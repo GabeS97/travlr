@@ -6,7 +6,6 @@ import Navigation from "./components/Navigation";
 import Splash from "./components/Splash";
 import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer";
-import Album from "./components/Album";
 
 function App() {
   const user = useSelector(state => state.session.user)

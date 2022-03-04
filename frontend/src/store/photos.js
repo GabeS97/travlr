@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_PHOTOS = 'photos/LOAD_PHOTOS';
 const ADD_PHOTOS = 'photos/ADD_PHOTOS'
+
 const load = (photos) => {
     return {
         type: LOAD_PHOTOS,
@@ -15,8 +16,9 @@ const add = (photos) => {
         photos
     }
 }
+
 export const loadPhotos = () => async dispatch => {
-    const res = await fetch('/api/photos');
+    const res = await csrfFetch('/api/photos');
     if (res.ok) {
         const photos = await res.json()
         dispatch(load(photos))
@@ -25,7 +27,8 @@ export const loadPhotos = () => async dispatch => {
 }
 
 export const addPhotos = (payload) => async dispatch => {
-    const res = await fetch('/api/photos', {
+
+    const res = await csrfFetch('/api/photos', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -33,6 +36,7 @@ export const addPhotos = (payload) => async dispatch => {
 
     if (res.ok) {
         const photos = await res.json()
+
         dispatch(addPhotos(photos))
         return photos
     }
@@ -57,6 +61,7 @@ const photoReducer = (state = initialState, action) => {
             newState = {
                 ...state, [action.photos.id]: action.photos
             }
+            console.log('6. lets be sure and check the reducer', newState)
             return newState
         }
         default:
