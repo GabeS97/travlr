@@ -1,1 +1,1 @@
-# Travlr a Flickr Clone 
+# Travlr, a Flickr Clone 
