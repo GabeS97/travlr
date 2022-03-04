@@ -12,10 +12,12 @@ router.get('/', asyncHandler(async (req, res) => {
 }))
 
 router.post('/', asyncHandler(async (req, res) => {
-    const { userId, title } = req.body;
+    const { userId, title, imageUrl, description } = req.body;
     console.log('3. we always have to check the backend routes, this is the req.body', req.body)
-    const albums = await Album.create({ userId, title })
+    const albums = await Album.create({ userId, title, imageUrl, description })
 
     return res.json(albums)
 }))
+
+
 module.exports = router

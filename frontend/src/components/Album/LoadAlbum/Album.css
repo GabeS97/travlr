@@ -1,7 +1,3 @@
-/* body {
-  background-color: lightcoral;
-} */
-
 .album__page {
   align-items: center;
   display: flex;
@@ -11,6 +7,7 @@
   min-height: 67vh;
   position: relative;
   z-index: 2;
+
 }
 
 .album__upload {
@@ -46,7 +43,7 @@
 .album__info {
   align-self: center;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 0.5fr;
+  grid-template-columns: 1fr 1fr 1fr;
   margin-top: 35px;
   padding-bottom: 100px;
   column-gap: 5em;
@@ -80,16 +77,19 @@
   width: 16em;
   height: 14em;
   position: relative;
+  z-index: 2;
   border: solid black;
 }
 
 .album__edits {
   display: flex;
-  align-items: flex-end;
+  justify-content: flex-end;
   position: relative;
-  right: 2em;
-  justify-content: center;
+  bottom: 14em;
+  right: 1em;
   column-gap: 2em;
+  color: white;
+  z-index: 3;
 }
 
 .album__edit:hover {
@@ -97,23 +97,49 @@
   /* cursor: pointer; */
   transform: scale(1.015);
   transition-duration: 300ms;
-
 }
 
 /* .fa-pen-to-square {
   display: flex;
 } */
 
-.fa-pen-to-square:hover {
+.fa-magnifying-glass:hover {
   cursor: pointer;
-  color: lightgrey;
+  color: black;
+  transform: scale(1.1);
+  transition-duration: 300ms;
+}
+/* .fa-pen-to-square:hover {
+  cursor: pointer;
+  color: black;
   transform: scale(1.015);
   transition-duration: 300ms;
 }
 
 .fa-trash:hover {
   cursor: pointer;
-  color: lightgrey;
+  color: black;
   transform: scale(1.015);
   transition-duration: 300ms;
+} */
+
+.album__image {
+  display: flex;
+  align-self: center;
+  cursor: pointer;
+  display: flex;
+  height: 15rem;
+  object-fit: cover;
+  padding: 5px;
+  width: 19em;
 }
+
+.album__cardContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .album__image:hover {
+  transform: scale(1.05);
+  transition-duration: 300ms;
+} */

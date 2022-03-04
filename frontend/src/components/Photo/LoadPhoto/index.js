@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { Modal } from '../../context/Modal';
-import { loadPhotos } from '../../store/photos';
-import CreatePhoto from './CreatePhotoModal/CreatePhoto';
+import { Modal } from '../../../context/Modal';
+import { loadPhotos } from '../../../store/photos';
+import CreatePhoto from '../CreatePhotoModal/CreatePhoto';
 import './Photo.css'
 
 const Photo = () => {
