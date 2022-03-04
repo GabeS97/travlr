@@ -18,7 +18,6 @@ const CreateAlbum = () => {
             userId: user?.id
         }
 
-        console.log('1. this is the payload for what we as sending inot our thunk', payload)
         const album = await dispatch(addAlbum(payload))
     }
     return (

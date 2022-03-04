@@ -27,7 +27,7 @@ export const loadAlbum = () => async dispatch => {
 }
 
 export const addAlbum = (payload) => async dispatch => {
-    console.log('2. this is the paylaod of the thunk passed in form components', payload)
+
     const res = await csrfFetch('/api/albums', {
         method: 'POST',
         header: { 'Content-Type': 'application/json' },
@@ -36,7 +36,6 @@ export const addAlbum = (payload) => async dispatch => {
 
     if (res.ok) {
         const albums = await res.json()
-        console.log('4. let check the res that was sent from backend routes, this is res.json for album', albums)
         dispatch(add(albums));
         return albums
     }
