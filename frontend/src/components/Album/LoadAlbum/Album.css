@@ -141,3 +141,7 @@
   transform: scale(1.05);
   transition-duration: 300ms;
 } */
+
+.edit__buttonLink {
+  color: white;
+}

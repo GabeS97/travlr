@@ -7,16 +7,17 @@ import { editAlbum } from '../../../store/albums';
 
 const EditAlbum = ({ album }) => {
     const { id, userId, title, description, imageUrl } = album;
+    const { albumId } = useParams();
+
     const albums = useSelector(state => state.albums)
     const albumVal = Object.values(albums)
-
-    const choice = albumVal.find(val => val.id === id)
-
+    const choice = albumVal.find(val => val.id === +albumId)
+    console.log('0.5. check if the chocei is at least the correct value', choice)
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user);
     const [titles, setTitle] = useState(title ? choice.title : '')
-    const [descriptions, setDescription] = useState(description ? choice.description : '')
-    const [imageLink, setImageUrl] = useState(imageUrl ? choice.imageUrl : '')
+    const [descriptions, setDescription] = useState(choice.description ? description : '')
+    const [imageLink, setImageUrl] = useState(choice.imageUrl ? imageUrl : '')
 
 
     const albumEdit = async (e) => {
@@ -26,7 +27,7 @@ const EditAlbum = ({ album }) => {
             title: titles,
             description: descriptions,
             userId: userId,
-            albumId: +id,
+            albumId: +albumId,
             imageUrl: imageLink
         }
 

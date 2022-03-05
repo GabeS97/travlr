@@ -82,6 +82,7 @@ export const deleteAlbum = (payload) => async dispatch => {
 
     if (res.ok) {
         const albums = await res.json()
+        console.log('this is the albums for the delte button on the album store, ', albums)
         dispatch(remove(albums))
         return albums
     }
