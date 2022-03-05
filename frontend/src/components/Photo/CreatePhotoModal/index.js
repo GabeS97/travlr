@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { addPhotos } from '../../../store/photos'
 
 const CreatePhoto = () => {
@@ -9,8 +10,8 @@ const CreatePhoto = () => {
     const user = useSelector(state => state.session.user)
     const [content, setContent] = useState('')
     const [imageUrl, setImageUrl] = useState('')
+    const history = useHistory()
 
-    
     const postPhoto = async (e) => {
         e.preventDefault()
 

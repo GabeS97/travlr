@@ -58,7 +58,6 @@ export const addAlbum = (payload) => async dispatch => {
 }
 
 export const editAlbum = (payload) => async dispatch => {
-    console.log('2. this is the payload of the thunk of edit: ', payload)
     const res = await csrfFetch(`/api/albums/${payload.albumId}`, {
         method: 'PUT',
         header: { 'Content-Type': 'application/json' },
@@ -67,22 +66,20 @@ export const editAlbum = (payload) => async dispatch => {
 
     if (res.ok) {
         const albums = await res.json();
-        console.log('4. this is the saved album response from the thunk ')
-
         dispatch(edit(albums))
         return albums
     }
 }
 
 export const deleteAlbum = (payload) => async dispatch => {
+    console.log('2. this is the payload of the thunk of delete: ' , payload)
     const res = await csrfFetch(`/api/albums/${payload}`, {
         method: 'DELETE',
         body: JSON.stringify(payload)
     })
-
     if (res.ok) {
         const albums = await res.json()
-        console.log('this is the albums for the delte button on the album store, ', albums)
+        console.log('4. this is the saved album response from the thunk ', albums)
         dispatch(remove(albums))
         return albums
     }

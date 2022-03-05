@@ -4,12 +4,11 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { editAlbum } from '../../../store/albums';
-
+import { deleteAlbum, editAlbum } from '../../../store/albums';
+import './EditAlbum.css'
 const EditAlbum = ({ album }) => {
     const { id, userId, title, description, imageUrl } = album;
     const { albumId } = useParams();
-
     const albums = useSelector(state => state.albums)
     const albumVal = Object.values(albums)
     const choice = albumVal.find(val => val.id === +albumId)
@@ -19,7 +18,6 @@ const EditAlbum = ({ album }) => {
     const [titles, setTitle] = useState(title ? choice.title : '')
     const [descriptions, setDescription] = useState(choice.description ? description : '')
     const [imageLink, setImageUrl] = useState(choice.imageUrl ? imageUrl : '')
-
 
     const albumEdit = async (e) => {
         e.preventDefault()
@@ -76,7 +74,20 @@ const EditAlbum = ({ album }) => {
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </label>
-                <button type='submit'>Edit Album!</button>
+                <div className="edit__buttons">
+                    <button
+                        className='edit__buttonEdit' type='submit'>
+                        {/* Edit Album! */}
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button
+                        className='edit__buttonDelete'
+                        onClick={(e) => dispatch(deleteAlbum(choice.id))}
+                    >
+                        {/* Delete */}
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
             </form>
         </div>
     )

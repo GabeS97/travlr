@@ -1,0 +1,45 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-weight: bolder;
+  flex-direction: column;
+  font-size: larger;
+  top: -5em;
+}
+
+.edit__form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+}
+
+.edit__buttons {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: flex-end;
+  column-gap: 0.25em;
+  margin-top: 2em;
+}
+
+.edit__buttonEdit,
+.edit__buttonDelete {
+  background-color: transparent;
+  border: none;
+  display: flex;
+}
+
+.edit__buttonEdit:hover,
+.edit__buttonDelete:hover {
+  cursor: pointer;
+}
+
+.fa-pen-to-square:hover {
+  color: white;
+}
+
+.fa-trash:hover {
+  color: white;
+}

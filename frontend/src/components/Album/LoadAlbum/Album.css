@@ -7,7 +7,6 @@
   min-height: 67vh;
   position: relative;
   z-index: 2;
-
 }
 
 .album__upload {
@@ -86,7 +85,7 @@
   justify-content: flex-end;
   position: relative;
   bottom: 14em;
-  right: 1em;;
+  right: 1em;
   color: white;
   z-index: 3;
 }
@@ -97,29 +96,29 @@
   transform: scale(1.015);
   transition-duration: 300ms;
 }
-
-.fa-pen-to-square {
+/*
+.fa-magnifying-glass{
   display: flex;
-}
+} */
 
 .edit__page {
   display: flex;
   flex-direction: column;
   row-gap: 0.5em;
 }
-.fa-pen-to-square:hover {
+.fa-magnifying-glass:hover {
   cursor: pointer;
   color: black;
   transform: scale(1.015);
   transition-duration: 300ms;
 }
-
+/*
 .fa-trash:hover {
   cursor: pointer;
   color: black;
   transform: scale(1.015);
   transition-duration: 300ms;
-}
+} */
 
 .album__image {
   display: flex;

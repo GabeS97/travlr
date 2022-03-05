@@ -51,7 +51,7 @@ const Album = () => {
                             <div className="album__edits">
                                 <div className='edit__page'>
                                     <NavLink className='edit__buttonLink' to={`/dashboard/albums/${ele.id}`}>
-                                        <i className="fa-solid fa-pen-to-square"
+                                        <i class="fa-solid fa-magnifying-glass"
                                             onClick={(e => setAlbumModal(true))}
                                         ></i>
                                     </NavLink>
@@ -62,9 +62,9 @@ const Album = () => {
                                             </Modal>
                                         </Route>
                                     )}
-                                    <i className="fa-solid fa-trash"
+                                    {/* <i className="fa-solid fa-trash"
                                         onClick={() => dispatch(deleteAlbum(ele.id))}
-                                    ></i>
+                                    ></i> */}
                                 </div>
                             </div>
                         </div>
