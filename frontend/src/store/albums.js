@@ -2,6 +2,8 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_ALBUMS = 'albums/LOAD_ALBUMS'
 const ADD_ALBUMS = 'albums/ADD_ALBUMS'
+const EDIT_ALBUMS = 'albums/EDIT_ALBUMS'
+const DELETE_ALBUMS = 'albums/DELETE_ALBUMS'
 
 const load = (albums) => {
     return {
@@ -17,6 +19,21 @@ const add = (albums) => {
     }
 };
 
+const edit = (albums) => {
+    return {
+        type: EDIT_ALBUMS,
+        albums
+    }
+};
+
+const remove = (albums) => {
+    return {
+        type: DELETE_ALBUMS.
+            albums
+    }
+};
+
+
 export const loadAlbum = () => async dispatch => {
     const res = await csrfFetch('/api//albums');
     if (res.ok) {
@@ -27,7 +44,6 @@ export const loadAlbum = () => async dispatch => {
 }
 
 export const addAlbum = (payload) => async dispatch => {
-
     const res = await csrfFetch('/api/albums', {
         method: 'POST',
         header: { 'Content-Type': 'application/json' },
@@ -37,6 +53,36 @@ export const addAlbum = (payload) => async dispatch => {
     if (res.ok) {
         const albums = await res.json()
         dispatch(add(albums));
+        return albums
+    }
+}
+
+export const editAlbum = (payload) => async dispatch => {
+    console.log('2. this is the payload of the thunk of edit: ', payload)
+    const res = await csrfFetch(`/api/albums/${payload.albumId}`, {
+        method: 'PUT',
+        header: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+
+    if (res.ok) {
+        const albums = await res.json();
+        console.log('4. this is the saved album response from the thunk ')
+
+        dispatch(edit(albums))
+        return albums
+    }
+}
+
+export const deleteAlbum = (payload) => async dispatch => {
+    const res = await csrfFetch(`/api/albums/${payload}`, {
+        method: 'DELETE',
+        body: JSON.stringify(payload)
+    })
+
+    if (res.ok) {
+        const albums = await res.json()
+        dispatch(remove(albums))
         return albums
     }
 }
@@ -59,7 +105,16 @@ const albumReducer = (state = initialState, action) => {
         case ADD_ALBUMS: {
             newState = { ...state }
             newState = { ...state, [action.albums.id]: action.albums }
-            console.log('5. let check that the reducer state has been updated', newState)
+            return newState
+        }
+        case EDIT_ALBUMS: {
+            newState = { ...state }
+            newState = { ...state, [action.albums.id]: action.albums }
+            return newState
+        }
+        case DELETE_ALBUMS: {
+            newState = { ...state }
+            delete newState[action.albums.id]
             return newState
         }
         default:
