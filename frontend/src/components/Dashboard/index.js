@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink, Route, Switch } from 'react-router-dom'
+import EditAlbum from '../Album/EditAlbum'
 import Album from '../Album/LoadAlbum'
 import Photo from '../Photo/LoadPhoto'
 import './Dashboard.css'

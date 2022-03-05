@@ -2,8 +2,9 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Switch } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { Route } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Modal } from '../../../context/Modal'
 import { deleteAlbum, loadAlbum } from '../../../store/albums'
 import CreateAlbum from '../CreateAlbum'
@@ -17,8 +18,6 @@ const Album = () => {
     const [albumModal, setAlbumModal] = useState(false)
     const albums = useSelector(state => state.albums)
     const album = Object.values(albums);
-    // const albumCard = album.map(ele => console.log('this is the album card ', ele))
-
 
     const user = useSelector(state => state.session.user)
     const choice = album.filter(ele => ele.userId === user.id)
@@ -26,6 +25,8 @@ const Album = () => {
     useEffect(() => {
         dispatch(loadAlbum())
     }, [dispatch])
+
+
 
     return (
         <div className='album__page'>
@@ -49,16 +50,20 @@ const Album = () => {
                             <img className='album__image' src={ele.imageUrl} alt='' />
                             <div className="album__edits">
                                 <div className='edit__page'>
-                                    <i className="fa-solid fa-pen-to-square"
-                                        onClick={(e => setAlbumModal(true))}
-                                    ></i>
+                                    <NavLink className='edit__buttonLink' to={`/dashboard/albums/${ele.id}`}>
+                                        <i className="fa-solid fa-pen-to-square"
+                                            onClick={(e => setAlbumModal(true))}
+                                        ></i>
+                                    </NavLink>
                                     {albumModal && (
-                                        <Modal onClose={() => setAlbumModal(false)}>
-                                            <EditAlbum album={ele} />
-                                        </Modal>
+                                        <Route path='/dashboard/albums/:albumId'>
+                                            <Modal classname='album__editModal' onClose={() => setAlbumModal(false)}>
+                                                <EditAlbum album={ele} />
+                                            </Modal>
+                                        </Route>
                                     )}
                                     <i className="fa-solid fa-trash"
-                                    onClick={() => dispatch(deleteAlbum())}
+                                        onClick={() => dispatch(deleteAlbum(ele.id))}
                                     ></i>
                                 </div>
                             </div>
@@ -67,6 +72,7 @@ const Album = () => {
 
                 </div>
             </div>
+
         </div >
     )
 }

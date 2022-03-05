@@ -10,6 +10,7 @@ const CreatePhoto = () => {
     const [content, setContent] = useState('')
     const [imageUrl, setImageUrl] = useState('')
 
+    
     const postPhoto = async (e) => {
         e.preventDefault()
 
