@@ -31,7 +31,7 @@ router.put('/:albumId', asyncHandler(async (req, res) => {
 }))
 
 router.delete('/:albumId', asyncHandler(async (req, res) => {
-    const albumId = await Album.findByPk(req.params.id)
+    const albumId = await Album.findByPk(req.params.albumId)
     albumId.destroy()
     return res.json(albumId)
 }))

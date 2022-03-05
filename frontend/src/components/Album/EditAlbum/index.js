@@ -10,7 +10,7 @@ const EditAlbum = ({ album }) => {
     const albums = useSelector(state => state.albums)
     const albumVal = Object.values(albums)
 
-    const choice = albumVal.find(val => val.id === id)
+    const choice = albumVal.filter(val => val.id === id)
 
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user);

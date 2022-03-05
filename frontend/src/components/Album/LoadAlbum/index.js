@@ -17,6 +17,8 @@ const Album = () => {
     const [albumModal, setAlbumModal] = useState(false)
     const albums = useSelector(state => state.albums)
     const album = Object.values(albums);
+    // const albumCard = album.map(ele => console.log('this is the album card ', ele))
+
 
     const user = useSelector(state => state.session.user)
     const choice = album.filter(ele => ele.userId === user.id)
