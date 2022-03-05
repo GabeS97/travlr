@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { editAlbum } from '../../../store/albums';
 
 const EditAlbum = ({ album }) => {
@@ -12,7 +13,7 @@ const EditAlbum = ({ album }) => {
     const albums = useSelector(state => state.albums)
     const albumVal = Object.values(albums)
     const choice = albumVal.find(val => val.id === +albumId)
-    console.log('0.5. check if the chocei is at least the correct value', choice)
+    const history = useHistory();
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user);
     const [titles, setTitle] = useState(title ? choice.title : '')
@@ -31,9 +32,9 @@ const EditAlbum = ({ album }) => {
             imageUrl: imageLink
         }
 
-        console.log('1. this is the paylaod from the the edit component: ', payload)
         const albums = await dispatch(editAlbum(payload))
 
+        history.push('/dashboard/albums')
     }
 
     return (
