@@ -21,7 +21,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/">
-            {user ? <Redirect to='/dashboard' /> : <Splash />}
+            {user ? <Dashboard /> : <Splash />}
           </Route>
           <Route path="/dashboard">
             <Dashboard />
