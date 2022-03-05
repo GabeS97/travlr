@@ -29,6 +29,7 @@ function App() {
           <Route path='/dashboard/photo/:photoId'>
             {/* PhotoDetail */}
           </Route>
+          <Route>Page Not Found</Route>
         </Switch>
       )}
       <Footer />
