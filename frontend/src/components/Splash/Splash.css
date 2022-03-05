@@ -25,12 +25,11 @@ body {
 .splash__messages {
   display: flex;
   position: fixed;
-  z-index: 10;
+  z-index: 3;
+  /* justify-content: center; */
   align-items: center;
-  justify-content: center;
-  align-items: center;
-  margin-top: 70%;
-  margin-left: 100%;
+  margin-top: 100vh;
+  margin-left: 100vw;
   flex-direction: column;
   text-align: center;
 }
