@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { addAlbum } from '../../../store/albums'
 import './CreateAlbum.css'
 const CreateAlbum = () => {
@@ -9,11 +10,13 @@ const CreateAlbum = () => {
     const [description, setDescription] = useState('')
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
+
     const postAlbum = async (e) => {
         e.preventDefault()
 
         const payload = {
             title,
+            description,
             imageUrl,
             userId: user?.id
         }

@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import Splash from "./components/Splash";
 import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer";
+import EditAlbum from "./components/Album/EditAlbum";
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -21,7 +22,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/">
-            {user ? <Redirect to='/dashboard' /> : <Splash />}
+            {user ? <Dashboard /> : <Splash />}
           </Route>
           <Route path="/dashboard">
             <Dashboard />
@@ -29,6 +30,7 @@ function App() {
           <Route path='/dashboard/photo/:photoId'>
             {/* PhotoDetail */}
           </Route>
+          <Route>Page Not Found</Route>
         </Switch>
       )}
       <Footer />

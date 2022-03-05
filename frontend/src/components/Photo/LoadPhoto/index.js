@@ -3,7 +3,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { Modal } from '../../../context/Modal';
 import { loadPhotos } from '../../../store/photos';
-import CreatePhoto from '../CreatePhotoModal/CreatePhoto';
+import CreatePhoto from '../CreatePhotoModal';
+
 import './Photo.css'
 
 const Photo = () => {

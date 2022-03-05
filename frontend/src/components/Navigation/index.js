@@ -1,9 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Switch, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFromModal';
+import Explore from '../Explore';
 
 import './Navigation.css';
 
@@ -25,36 +26,38 @@ function Navigation({ isLoaded }) {
     }
 
     return (
-        <nav className='home__navBar'>
-            <div className="home__rightButtons">
-                <NavLink className='home__mainPage' exact to="/">
-                    <img
-                        className='home__logo'
-                        src='../../travlr.png'
-                        alt='' />
-                </NavLink>
+        <>
+            <nav className='home__navBar'>
+                <div className="home__rightButtons">
+                    <NavLink className='home__mainPage' exact to="/">
+                        <img
+                            className='home__logo'
+                            src='../../travlr.png'
+                            alt='' />
+                    </NavLink>
 
-                {sessionUser ?
-                    <NavLink to='/view-all'>
-                        <button className='home__explore'>Explore</button>
-                    </NavLink> : null
-            }
-            
-            </div>
-            <div className="home__options">
-            </div>
+                    {sessionUser ?
+                        <NavLink to='/view-all'>
+                            <button className='home__explore'>Explore</button>
+                        </NavLink> : null
+                    }
 
-            <div className="home__searchbar">
-                <input
-                    className='home__search'
-                    placeholder='Search for photss, currently not working'
-                >
-                </input>
-            </div>
-            <div className="home__buttons">
-                {isLoaded && sessionLinks}
-            </div>
-        </nav>
+                </div>
+                <div className="home__options">
+                </div>
+
+                <div className="home__searchbar">
+                    <input
+                        className='home__search'
+                        placeholder='Search for photss, currently not working'
+                    >
+                    </input>
+                </div>
+                <div className="home__buttons">
+                    {isLoaded && sessionLinks}
+                </div>
+            </nav>
+        </>
     );
 }
 

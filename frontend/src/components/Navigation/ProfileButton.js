@@ -27,10 +27,11 @@ function ProfileButton({ user }) {
         return () => document.removeEventListener("click", closeMenu);
     }, [showMenu]);
 
-    const logout = async (e) => {
+    const logout = (e) => {
         e.preventDefault();
-        await dispatch(sessionActions.logout())
-            .then(() => history.push('/'));
+        dispatch(sessionActions.logout())
+
+        history.push('/')
     };
 
     return (
@@ -67,9 +68,7 @@ function ProfileButton({ user }) {
                                 <>{user.email}</>
                                 <>
                                     <button className='dropdown__button' onClick={logout}>Log Out</button>
-                                    {!user && (
-                                        <Redirect to='/' />
-                                    )}
+                                    {/* {!user && <Redirect to='/' />} */}
                                 </>
                             </ul>
                         </div>

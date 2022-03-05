@@ -86,8 +86,7 @@
   justify-content: flex-end;
   position: relative;
   bottom: 14em;
-  right: 1em;
-  column-gap: 2em;
+  right: 1em;;
   color: white;
   z-index: 3;
 }
@@ -99,17 +98,16 @@
   transition-duration: 300ms;
 }
 
-/* .fa-pen-to-square {
+.fa-pen-to-square {
   display: flex;
-} */
-
-.fa-magnifying-glass:hover {
-  cursor: pointer;
-  color: black;
-  transform: scale(1.1);
-  transition-duration: 300ms;
 }
-/* .fa-pen-to-square:hover {
+
+.edit__page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+}
+.fa-pen-to-square:hover {
   cursor: pointer;
   color: black;
   transform: scale(1.015);
@@ -121,7 +119,7 @@
   color: black;
   transform: scale(1.015);
   transition-duration: 300ms;
-} */
+}
 
 .album__image {
   display: flex;
