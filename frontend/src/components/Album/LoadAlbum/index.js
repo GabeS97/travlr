@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Switch } from 'react-router-dom'
 import { NavLink, Link, Route, useParams } from 'react-router-dom'
 import { Modal } from '../../../context/Modal'
 import { deleteAlbum, loadAlbum } from '../../../store/albums'
@@ -15,6 +16,7 @@ const Album = () => {
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
     const [albumModal, setAlbumModal] = useState(false)
+    // const [imageModal, setImageModal] = useState(false)
     const albums = useSelector(state => state.albums)
     const album = Object.values(albums);
 
@@ -48,24 +50,23 @@ const Album = () => {
                         <div div key={ele.id} className='album__cardContainer' >
 
                             <div className="image_cardRedirect">
-                                <Link to={`/albums/${ele.id}`}>
+                                <NavLink to={`/albums/${ele.id}`}>
                                     <img className='album__image' src={ele.imageUrl} alt='' />
-                                </Link>
+                                </NavLink>
 
-                                <Route path='albums/:albumId'>
-                                    <AlbumDetail />
-                                </Route>
+
                             </div>
 
                             <div className="album__edits">
                                 <div className='edit__page'>
+
                                     <NavLink className='edit__buttonLink' to={`/dashboard/albums/${ele.id}`}>
                                         <i class="fa-solid fa-magnifying-glass"
                                             onClick={(e => setAlbumModal(true))}
                                         ></i>
                                     </NavLink>
                                     {albumModal && (
-                                        <Route path='/dashboard/albums/:albumId'>
+                                        <Route exact path='/dashboard/albums/:albumId'>
                                             <Modal classname='album__editModal' onClose={() => setAlbumModal(false)}>
                                                 <EditAlbum album={ele} />
                                             </Modal>
@@ -73,10 +74,13 @@ const Album = () => {
                                     )}
                                 </div>
                             </div>
+                            {/* <Route path='albums/:albumId'>
+                                <AlbumDetail albums={ele} />
+                            </Route> */}
                         </div>
                     ))}
-                </div>
             </div>
+        </div>
 
         </div >
     )

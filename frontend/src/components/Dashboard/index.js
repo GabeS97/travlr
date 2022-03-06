@@ -21,10 +21,8 @@ const Dashboard = () => {
                 </div>
             </div>
             <nav className="dashboard__actions">
-                <NavLink className='dashboard__albums' to='/dashboard/albums'>Album
-                </NavLink>
-                <NavLink className='dashboard__photos' to='/dashboard/photos'>Photo
-                </NavLink>
+                <NavLink className='dashboard__albums' to='/dashboard/albums'>Album</NavLink>
+                <NavLink className='dashboard__photos' to='/dashboard/photos'>Photo</NavLink>
             </nav>
 
             <div className="dashboard__body">

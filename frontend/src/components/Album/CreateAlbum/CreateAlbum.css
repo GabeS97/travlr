@@ -1,0 +1,47 @@
+.album__createHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-weight: bolder;
+  flex-direction: column;
+  font-size: larger;
+  /* top: -5em; */
+}
+
+.album__form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+  align-items: center;
+}
+
+.edit__createButton {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 0.25em;
+  margin: auto;
+  bottom: 9em;
+  right: 9.3em;
+  position: absolute;
+  bottom: 15px;
+}
+
+.edit__createButton:hover {
+    cursor: pointer;
+
+}
+
+.edit__errorsPost {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1em;
+    justify-content: center;
+    text-align: center;
+    color: red;
+    position: relative;
+    right: 1em;
+}
