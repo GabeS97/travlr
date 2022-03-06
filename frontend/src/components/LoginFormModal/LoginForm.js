@@ -2,22 +2,24 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import DemoUser from "../Navigation/DemoUser";
+import { useHistory } from "react-router-dom";
 
 function LoginForm() {
     const dispatch = useDispatch();
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
-
+    const history = useHistory()
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
+        history.push('/dasboard')
         return dispatch(sessionActions.login({ credential, password })).catch(
             async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
             }
-        );
+            );
     };
 
     return (

@@ -21,9 +21,7 @@ router.post('/', asyncHandler(async (req, res) => {
 
 router.put('/:albumId', asyncHandler(async (req, res) => {
     const { userId, title, imageUrl, description } = req.body;
-    console.log('2.5. this is the req.body of the PUT route: ', req.body)
     const { albumId } = req.params
-    console.log('3. this is the albumId for the PUT route: ', albumId, 'and this is the req.params for the albumId', req.params.albumId)
 
     const album = await Album.findOne({ where: { id: albumId } })
     // const album = await Album.findOne()
@@ -31,11 +29,15 @@ router.put('/:albumId', asyncHandler(async (req, res) => {
     return res.json(album)
 }))
 
-router.delete('/:id', asyncHandler(async (req, res) => {
-    console.log('this is the req.params for the delete route in the backend', req.body)
-    const albumId = await Album.findByPk(req.body)
-    albumId.destroy()
-    return res.json(albumId)
+router.delete('/:albumId', asyncHandler(async (req, res) => {
+    const { albumId } = req.params
+    console.log('2.5. this is the req.body of the delete route: ', albumId)
+
+    const album = await Album.findByPk(albumId)
+    console.log('3. this is the albumId for the delete route: ', albumId, 'and this is the req.params for the albumId', req.params.albumId)
+
+    album.destroy()
+    return res.json(album)
 }))
 
 

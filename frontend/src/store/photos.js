@@ -27,7 +27,7 @@ export const loadPhotos = () => async dispatch => {
 }
 
 export const addPhotos = (payload) => async dispatch => {
-
+    console.log('2. payload of the createPhoto component, console.log of payload from the thunk', payload)
     const res = await csrfFetch('/api/photos', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
