@@ -60,7 +60,7 @@ const EditAlbum = ({ album }) => {
 
     return (
         <div className="edit__page">
-            <header className='edit__header'>Edit Your Album</header>
+            <header className='edit__createHeader'>Edit Your Album</header>
             <ul className='edit__errors'>
                 {errors.map(err => (
                     <li key={err}>{err}</li>
