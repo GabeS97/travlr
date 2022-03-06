@@ -2,11 +2,10 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
-import { Route } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
+import { NavLink, Link, Route, useParams } from 'react-router-dom'
 import { Modal } from '../../../context/Modal'
 import { deleteAlbum, loadAlbum } from '../../../store/albums'
+import AlbumDetail from '../AlbumDetail'
 import CreateAlbum from '../CreateAlbum'
 import EditAlbum from '../EditAlbum'
 import './Album.css'
@@ -21,7 +20,7 @@ const Album = () => {
 
     const user = useSelector(state => state.session.user)
     const choice = album.filter(ele => ele.userId === user.id)
-
+    console.log(useParams())
     useEffect(() => {
         dispatch(loadAlbum())
     }, [dispatch])
@@ -47,7 +46,17 @@ const Album = () => {
                 <div className="album__info">
                     {choice.map(ele => (
                         <div div key={ele.id} className='album__cardContainer' >
-                            <img className='album__image' src={ele.imageUrl} alt='' />
+
+                            <div className="image_cardRedirect">
+                                <Link to={`/albums/${ele.id}`}>
+                                    <img className='album__image' src={ele.imageUrl} alt='' />
+                                </Link>
+
+                                <Route path='albums/:albumId'>
+                                    <AlbumDetail />
+                                </Route>
+                            </div>
+
                             <div className="album__edits">
                                 <div className='edit__page'>
                                     <NavLink className='edit__buttonLink' to={`/dashboard/albums/${ele.id}`}>
@@ -62,14 +71,10 @@ const Album = () => {
                                             </Modal>
                                         </Route>
                                     )}
-                                    {/* <i className="fa-solid fa-trash"
-                                        onClick={() => dispatch(deleteAlbum(ele.id))}
-                                    ></i> */}
                                 </div>
                             </div>
                         </div>
                     ))}
-
                 </div>
             </div>
 

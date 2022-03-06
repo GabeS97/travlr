@@ -21,6 +21,7 @@ const CreatePhoto = () => {
             userId: user?.id,
             // albumId:
         }
+        console.log('1. first photo post payload on fcreatPhtoo component', payload)
         let photoPost = await dispatch(addPhotos(payload))
         // if (photoPost) {
 
