@@ -1,8 +1,8 @@
-.edit_createHeader {
+.edit__createHeader {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* position: relative; */
+  position: relative;
   font-weight: bolder;
   flex-direction: column;
   font-size: larger;
@@ -43,4 +43,16 @@
 
 .fa-trash:hover {
   color: white;
+}
+
+.edit__errorsUpdate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1em;
+  justify-content: center;
+  text-align: center;
+  color: red;
+  position: relative;
+  /* right: 1em; */
 }

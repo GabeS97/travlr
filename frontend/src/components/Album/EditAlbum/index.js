@@ -61,11 +61,11 @@ const EditAlbum = ({ album }) => {
     return (
         <div className="edit__page">
             <header className='edit__createHeader'>Edit Your Album</header>
-            <ul className='edit__errors'>
+            <div className='edit__errorsUpdate'>
                 {errors.map(err => (
-                    <li key={err}>{err}</li>
+                    <div key={err}>{err}</div>
                 ))}
-            </ul>
+            </div>
             <form
                 className='edit__form'
                 onSubmit={albumEdit}

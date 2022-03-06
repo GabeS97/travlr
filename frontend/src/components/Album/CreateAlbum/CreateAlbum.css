@@ -34,7 +34,7 @@
 
 }
 
-.edit__errors {
+.edit__errorsPost {
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -38,7 +38,7 @@ const CreateAlbum = () => {
     return (
         <form className='album__postForm' onSubmit={postAlbum}>
             <header className='album__createHeader'>Upload New Memories</header>
-            <ul className='edit__errors'>
+            <ul className='edit__errorsPost'>
                 {errors.map(err => (
                     <div key={err}>{err}</div>
                 ))}
