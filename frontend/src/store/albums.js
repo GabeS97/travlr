@@ -72,19 +72,17 @@ export const editAlbum = (payload) => async dispatch => {
 }
 
 export const deleteAlbum = (payload) => async dispatch => {
-    console.log('2. this is the payload of the thunk of delete: ' , payload)
     const res = await csrfFetch(`/api/albums/${payload}`, {
         method: 'DELETE',
-        body: JSON.stringify(payload)
+        body: JSON.stringify({ payload })
     })
+    console.log('res for the delete' , res)
     if (res.ok) {
         const albums = await res.json()
-        console.log('4. this is the saved album response from the thunk ', albums)
         dispatch(remove(albums))
         return albums
     }
 }
-
 
 const initialState = {};
 

@@ -1,18 +1,19 @@
-header {
+.edit__header {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  /* position: relative; */
   font-weight: bolder;
   flex-direction: column;
   font-size: larger;
-  top: -5em;
+  /* top: -5em; */
 }
 
 .edit__form {
   display: flex;
   flex-direction: column;
   row-gap: 0.5em;
+  align-items: center;
 }
 
 .edit__buttons {
