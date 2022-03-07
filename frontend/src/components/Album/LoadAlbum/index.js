@@ -50,9 +50,9 @@ const Album = () => {
                         <div div key={ele.id} className='album__cardContainer' >
 
                             <div className="image_cardRedirect">
-                                <NavLink to={`/albums/${ele.id}`}>
+                                <Link to={`/albums/${ele.id}`}>
                                     <img className='album__image' src={ele.imageUrl} alt='' />
-                                </NavLink>
+                                </Link>
 
 
                             </div>
@@ -74,9 +74,6 @@ const Album = () => {
                                     )}
                                 </div>
                             </div>
-                            {/* <Route path='albums/:albumId'>
-                                <AlbumDetail albums={ele} />
-                            </Route> */}
                         </div>
                     ))}
             </div>

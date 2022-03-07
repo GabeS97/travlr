@@ -6,7 +6,6 @@ import Navigation from "./components/Navigation";
 import Splash from "./components/Splash";
 import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer";
-import EditAlbum from "./components/Album/EditAlbum";
 import AlbumDetail from "./components/Album/AlbumDetail";
 
 function App() {
@@ -27,6 +26,9 @@ function App() {
           </Route>
           <Route path="/dashboard">
             <Dashboard />
+          </Route>
+          <Route path='/albums/:albumId'>
+            <AlbumDetail />
           </Route>
           <Route>Page Not Found</Route>
         </Switch>

@@ -5,6 +5,7 @@ body {
 .dropdown__header {
   background-color: none;
   /* background-color: #f3f3f3; */
+  position: relative;
   display: flex;
   align-items: baseline;
   padding: 0.5rem;
@@ -38,10 +39,8 @@ body {
 .dropdown__menu {
   display: flex;
   position: absolute;
-  /* right: 10px; */
+  z-index: 5;
   margin: 0.75rem;
-  display: flex;
-  /* right: 50%; */
   left: -5em;
   top: calc(100% + 0.25rem);
   background-color: rgb(252, 252, 252, 0.7);
@@ -51,10 +50,12 @@ body {
   /* opacity: 0; */
   pointer-events: none;
   text-align: center;
+
   /* text-align: center; */
   /* transform: translateY(-10px ); */
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
+
 
 .dropdown__button > .dropdown__link + .dropdown__menu {
   /* opacity: 1; */

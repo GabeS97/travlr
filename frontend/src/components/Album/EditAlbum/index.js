@@ -61,11 +61,11 @@ const EditAlbum = ({ album }) => {
     return (
         <div className="edit__page">
             <header className='edit__createHeader'>Edit Your Album</header>
-            <div className='edit__errorsUpdate'>
+            <ul className='edit__errorsUpdate'>
                 {errors.map(err => (
                     <div key={err}>{err}</div>
                 ))}
-            </div>
+            </ul>
             <form
                 className='edit__form'
                 onSubmit={albumEdit}
@@ -98,7 +98,7 @@ const EditAlbum = ({ album }) => {
                     <input
                         className='album__description'
                         type='text'
-                        placeholder='Entter Description'
+                        placeholder='Entler Description'
                         value={descriptions}
                         onChange={(e) => setDescription(e.target.value)}
                     />
