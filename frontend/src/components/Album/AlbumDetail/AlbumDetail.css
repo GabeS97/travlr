@@ -1,0 +1,62 @@
+.albumDetail__header {
+  background-color: rgb(238, 234, 234);
+  display: flex;
+  justify-content: center;
+;
+}
+
+.albumDetail__infoPage {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  column-gap: 2em;
+  align-items: center;;
+}
+
+.albumDetail__infoPage > img {
+    display: flex;
+    padding: 2em;
+    max-width: 100%;
+    height: auto;
+
+}
+
+.albumDetail__text {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* border: solid white; */
+    width: 25em;
+}
+
+.albumDetail__title, .albumDetail__description{
+    border-bottom: solid black;
+    display: flex;
+    text-align: center;
+}
+
+.albumDetail__title {
+    font-size: 3em;
+}
+
+.albumDetail__description {
+    font-size: 1.5em;
+    overflow-wrap: break-word;
+}
+.albumDetail__imageCard {
+    height: 20em;
+    display: flex;
+    justify-content: center;
+
+}
+
+.albumDetail__page {
+    display: flex;
+    justify-content: center;;
+    background-color: rgb(238, 234, 234);
+    height: 25em;
+    border-bottom: solid lightgrey;
+
+}

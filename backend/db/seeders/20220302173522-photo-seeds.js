@@ -27,7 +27,7 @@ module.exports = {
       },
       {
         userId: 1,
-        albumId: 3,
+        albumId: 1,
         imageUrl: 'https://images.unsplash.com/photo-1506125840744-167167210587?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzB8fHRyYXZlbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
         content: null,
         createdAt: new Date(),

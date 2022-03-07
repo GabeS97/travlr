@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { deleteAlbum, editAlbum } from '../../../store/albums';
 import './EditAlbum.css'
-const EditAlbum = ({ album }) => {
+const EditAlbum = ({ album, setAlbumModal }) => {
     const { id, userId, title, description, imageUrl } = album;
     const { albumId } = useParams();
     const albums = useSelector(state => state.albums)
@@ -14,23 +14,25 @@ const EditAlbum = ({ album }) => {
     const choice = albumVal.find(val => val.id === +albumId)
     const history = useHistory();
     const dispatch = useDispatch()
-    const user = useSelector(state => state.session.user);
     const [titles, setTitle] = useState(title ? choice.title : '')
     const [descriptions, setDescription] = useState(choice.description ? description : '')
     const [imageLink, setImageUrl] = useState(choice.imageUrl ? imageUrl : '')
     const [errors, setErrors] = useState([])
+    const user = useSelector(state => state.session.user);
 
-    useEffect(() => {
-        const errorValidation = [];
+    // useEffect(() => {
+    //     const errorValidation = [];
 
-        if (!titles) errorValidation.push('Please Enter a new title.')
-        if (!descriptions) errorValidation.push('Please Enter a new description.')
-        if (!imageLink) errorValidation.push('Please Enter a new image.')
-        if (titles.length < 3 || titles.length > 25) errorValidation.push('Title has to be between 3 and 25 characters.')
-        if (descriptions.length < 3 || descriptions.length > 25) errorValidation.push('Description has to be between 3 and 25 characters.')
+    //     if (!titles) errorValidation.push('Please Enter a new title.')
+    //     if (!descriptions) errorValidation.push('Please Enter a new description.')
+    //     if (!imageLink) errorValidation.push('Please Enter a new image.')
+    //     if (titles.length < 3 || titles.length > 25) errorValidation.push('Title has to be between 3 and 25 characters.')
+    //     if (descriptions.length < 3 || descriptions.length > 25) errorValidation.push('Description has to be between 3 and 25 characters.')
 
-        setErrors(errorValidation)
-    }, [titles, descriptions, imageLink])
+
+    //     setErrors(errorValidation)
+    // }, [titles, descriptions, imageLink])
+
 
     const albumEdit = async (e) => {
         e.preventDefault()
@@ -44,9 +46,10 @@ const EditAlbum = ({ album }) => {
         }
 
         const albums = await dispatch(editAlbum(payload))
-
         history.push('/dashboard/albums')
+
     }
+
 
     // useEffect(() => {
     const handleDelete = (e) => {
@@ -61,11 +64,11 @@ const EditAlbum = ({ album }) => {
     return (
         <div className="edit__page">
             <header className='edit__createHeader'>Edit Your Album</header>
-            <ul className='edit__errorsUpdate'>
+            {/* <ul className='edit__errorsUpdate'>
                 {errors.map(err => (
                     <div key={err}>{err}</div>
                 ))}
-            </ul>
+            </ul> */}
             <form
                 className='edit__form'
                 onSubmit={albumEdit}
@@ -79,6 +82,7 @@ const EditAlbum = ({ album }) => {
                         placeholder='Fill In Title'
                         value={titles}
                         onChange={(e) => setTitle(e.target.value)}
+                        required
                     />
                 </label>
 
@@ -90,6 +94,8 @@ const EditAlbum = ({ album }) => {
                         placeholder='Enter Image Link'
                         value={imageLink}
                         onChange={(e) => setImageUrl(e.target.value)}
+                        // required
+
                     />
                 </label>
 
@@ -101,6 +107,8 @@ const EditAlbum = ({ album }) => {
                         placeholder='Entler Description'
                         value={descriptions}
                         onChange={(e) => setDescription(e.target.value)}
+                        required
+
                     />
                 </label>
                 <div className="edit__buttons">
@@ -108,14 +116,14 @@ const EditAlbum = ({ album }) => {
                         className='edit__buttonEdit'
                         type='submit'
                         disabled={errors.length > 0}
-                        >
-                        <i class="fa-solid fa-pen-to-square"></i>
+                    >
+                        <i className="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button
                         className='edit__buttonDelete'
                         // onClick={(e) => dispatch(deleteAlbum(choice.id))}
                         onClick={handleDelete}                    >
-                        <i class="fa-solid fa-trash"></i>
+                        <i className="fa-solid fa-trash"></i>
                     </button>
                 </div>
             </form>
