@@ -4,11 +4,10 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import { editPhotos } from '../../../store/photos'
+import { deletePhoto, editPhotos } from '../../../store/photos'
 import './EditPhoto.css'
 
 const EditPhoto = ({ photos }) => {
-    console.log(photos, '<<<<<<<<<<<<<<<,')
     const { userId, albumId, imageUrl, content } = photos
     const history = useHistory();
     const dispatch = useDispatch()
@@ -30,9 +29,15 @@ const EditPhoto = ({ photos }) => {
             albumId: albumId
 
         }
-        console.log('1................', payload)
-
         const photo = await dispatch(editPhotos(payload))
+        history.push('/dashboard/photos')
+
+    }
+
+    const photoDelete = (e) => {
+        e.preventDefault()
+
+        dispatch(deletePhoto(photoId))
         history.push('/dashboard/photos')
 
     }
@@ -84,8 +89,7 @@ const EditPhoto = ({ photos }) => {
                     </button>
                     <button
                         className='photo__buttonDelete'
-                    // onClick={(e) => dispatch(deleteAlbum(choice.id))}
-                    // onClick={handleDelete}
+                        onClick={photoDelete}
                     >
                         <i className="fa-solid fa-trash"></i>
                     </button>

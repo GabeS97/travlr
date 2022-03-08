@@ -25,12 +25,18 @@ router.post('/', asyncHandler(async (req, res) => {
 }))
 
 router.put('/:photoId', asyncHandler(async (req, res) => {
-    console.log('3...............', req.body)
     const { content, imageUrl, userId, albumId } = req.body
     const { photoId } = req.params
 
     const photo = await Photo.findOne({ where: { id: photoId } })
     photo.update({ content, imageUrl, albumId, userId })
+    return res.json(photo)
+}))
+
+router.delete('/:photoId', asyncHandler(async (req, res) => {
+    const { photoId } = req.params;
+
+    const photo = await Photo.findByPk(photoId)
     return res.json(photo)
 }))
 module.exports = router
