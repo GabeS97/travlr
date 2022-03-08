@@ -30,7 +30,7 @@ function App() {
           <Route path='/albums/:albumId'>
             <AlbumDetail />
           </Route>
-          <Route>Page Not Found</Route>
+          {/* <Route>Page Not Found</Route> */}
         </Switch>
       )}
       <Footer />
