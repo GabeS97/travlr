@@ -7,6 +7,7 @@ import { Route } from 'react-router-dom';
 import { Modal } from '../../../context/Modal';
 import { loadPhotos } from '../../../store/photos';
 import CreatePhoto from '../CreatePhoto';
+import EditPhoto from '../EditPhoto';
 
 import './Photo.css'
 
@@ -54,13 +55,13 @@ const Photo = () => {
                                 <div className='edit__page'>
                                     <NavLink className='edit__buttonLink' to={`/dashboard/photos/${pic.id}`}>
                                         <i className="fa-solid fa-magnifying-glass"
-                                            onClick={(e => setPhotoModal(true))}
+                                            onClick={(e) => setPhotoModal(true)}
                                         ></i>
                                     </NavLink>
                                     {photoModal && (
                                         <Route path='/dashboard/photos/:photoId'>
                                             <Modal classname='photo__editModal' onClose={() => setPhotoModal(false)}>
-                                                {/* <EditPhoto photo={pic} /> */}
+                                                <EditPhoto photo={pic} />
                                             </Modal>
                                         </Route>
                                     )}
