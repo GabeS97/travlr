@@ -3,13 +3,22 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import { loadAlbums } from '../../../store/albums'
 import { addPhotos } from '../../../store/photos'
 
 const CreatePhoto = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
+    const albums = useSelector(state => state.albums)
+    const images = useSelector(state => state.photos)
+
+    const album = Object.values(albums)
+    const image = Object.values(images)
+
     const [content, setContent] = useState('')
     const [imageUrl, setImageUrl] = useState('')
+    // const [listAlbum, setListAlbum] = useState(album[0])
+
     const history = useHistory()
 
     const postPhoto = async (e) => {
@@ -19,14 +28,15 @@ const CreatePhoto = () => {
             content,
             imageUrl,
             userId: user?.id,
-            // albumId:
+            // albumId: listAlbum
         }
         let photoPost = await dispatch(addPhotos(payload))
-        // if (photoPost) {
 
-        // }
     }
 
+    useEffect(() => {
+        dispatch(loadAlbums())
+    }, [dispatch])
 
     return (
         <form className='photo__postForm' onSubmit={postPhoto}>
@@ -50,7 +60,7 @@ const CreatePhoto = () => {
                             placeholder='Enter Image Link'
                             value={imageUrl}
                             onChange={(e) => setImageUrl(e.target.value)}
-                            />
+                        />
                     </label>
                 </label>
             </div>

@@ -35,8 +35,7 @@ export const addPhotos = (payload) => async dispatch => {
 
     if (res.ok) {
         const photos = await res.json()
-
-        dispatch(addPhotos(photos))
+        dispatch(add(photos))
         return photos
     }
 }
