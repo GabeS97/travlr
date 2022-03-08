@@ -36,7 +36,7 @@ const CreateAlbum = () => {
         const album = await dispatch(addAlbum(payload))
     }
 
-    
+
     return (
         <form className='album__postForm' onSubmit={postAlbum}>
             <header className='album__createHeader'>Upload New Memories</header>

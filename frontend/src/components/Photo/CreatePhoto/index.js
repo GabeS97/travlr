@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { loadAlbums } from '../../../store/albums'
 import { addPhotos } from '../../../store/photos'
-
+import './CreatePhotoModal.css'
 const CreatePhoto = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
@@ -40,7 +40,7 @@ const CreatePhoto = () => {
 
     return (
         <form className='photo__postForm' onSubmit={postPhoto}>
-            <header className='photo__create'>Post A New Pic</header>
+            <header className='photo__createHeader'>Post A New Pic</header>
             <div className='photo__form'>
                 <label htmlFor='content'>
                     {/* Enter Description */}
@@ -51,20 +51,22 @@ const CreatePhoto = () => {
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
                     />
+                </label>
 
-                    <label htmlFor='image'>
-                        {/* Enter Image Link */}
-                        <input
-                            className='photo__image'
-                            type='url'
-                            placeholder='Enter Image Link'
-                            value={imageUrl}
-                            onChange={(e) => setImageUrl(e.target.value)}
-                        />
-                    </label>
+                <label htmlFor='image'>
+                    {/* Enter Image Link */}
+                    <input
+                        className='photo__image'
+                        type='url'
+                        placeholder='Enter Image Link'
+                        value={imageUrl}
+                        onChange={(e) => setImageUrl(e.target.value)}
+                    />
                 </label>
             </div>
-            <button type='submit'>Post Image!</button>
+            <button
+                className='photo__createButton'
+                type='submit'>Post Image!</button>
         </form>
     )
 }

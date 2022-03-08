@@ -1,0 +1,10 @@
+.photo__createHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-weight: bolder;
+    flex-direction: column;
+    font-size: larger;
+    /* top: -5em; */
+}
