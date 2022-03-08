@@ -24,7 +24,7 @@ const edit = (photo) => {
         photo
     }
 }
-
+    
 export const loadPhotos = () => async dispatch => {
     const res = await csrfFetch('/api/photos');
     if (res.ok) {
@@ -50,15 +50,15 @@ export const addPhotos = (payload) => async dispatch => {
 
 export const editPhotos = (payload) => async dispatch => {
     console.log('2.............', payload)
-    const res = await csrfFetch(`api/photos/${payload.photoId}`, {
+    const res = await csrfFetch(`/api/photos/${payload.photoId}`, {
         method: 'PUT',
-        header: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     })
 
     if (res.ok) {
         const photo = await res.json()
-        console.log('4...............', photo)
+        console.log('3.5 ...............', photo)
         dispatch(edit(photo))
         return photo
     }

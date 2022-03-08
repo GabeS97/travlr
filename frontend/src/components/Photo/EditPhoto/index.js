@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { editPhotos } from '../../../store/photos'
 import './EditPhoto.css'
@@ -9,6 +10,7 @@ import './EditPhoto.css'
 const EditPhoto = ({ photos }) => {
     console.log(photos, '<<<<<<<<<<<<<<<,')
     const { userId, albumId, imageUrl, content } = photos
+    const history = useHistory();
     const dispatch = useDispatch()
     const { photoId } = useParams();
     const [imageLink, setImageUrl] = useState(imageUrl ? imageUrl : '')
@@ -16,12 +18,13 @@ const EditPhoto = ({ photos }) => {
 
     const photo = useSelector(state => state.photos)
     const user = useSelector(state => state.session.user)
+
     const photoEdit = async (e) => {
         e.preventDefault()
 
         const payload = {
-            contents,
-            imageLink,
+            content: contents,
+            imageUrl: imageLink,
             photoId: +photoId,
             userId: userId,
             albumId: albumId
@@ -30,6 +33,8 @@ const EditPhoto = ({ photos }) => {
         console.log('1................', payload)
 
         const photo = await dispatch(editPhotos(payload))
+        history.push('/dashboard/photos')
+
     }
     return (
         <div className="photo__pageForm">
