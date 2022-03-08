@@ -1,8 +1,13 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { editPhotos } from '../../../store/photos'
 import './EditPhoto.css'
 const EditPhoto = () => {
+    const dispatch = useDispatch()
+    const { photoId } = useParams();
     const [imageLink, setImageUrl] = useState('')
     const [contents, setContent] = useState('')
 
@@ -11,8 +16,13 @@ const EditPhoto = () => {
 
         const payload = {
             contents,
-            imageLink
+            imageLink,
+            photoId: +photoId,
+            
         }
+        console.log('1................', payload)
+
+        const photo = await dispatch(editPhotos(payload))
     }
     return (
         <div className="photo__page">
@@ -56,7 +66,7 @@ const EditPhoto = () => {
                     <button
                         className='photo__buttonphoto'
                         type='submit'
-                        // disabled={errors.length > 0}
+                    // disabled={errors.length > 0}
                     >
                         <i className="fa-solid fa-pen-to-square"></i>
                     </button>

@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_PHOTOS = 'photos/LOAD_PHOTOS';
 const ADD_PHOTOS = 'photos/ADD_PHOTOS'
+const EDIT_PHOTO = 'photots/EDIT_PHOTO'
 
 const load = (photos) => {
     return {
@@ -14,6 +15,13 @@ const add = (photos) => {
     return {
         type: ADD_PHOTOS,
         photos
+    }
+}
+
+const edit = (photo) => {
+    return {
+        type: EDIT_PHOTO,
+        photo
     }
 }
 
@@ -40,6 +48,23 @@ export const addPhotos = (payload) => async dispatch => {
     }
 }
 
+export const editPhotos = (payload) => async dispatch => {
+    console.log('2.............', payload)
+    const res = await csrfFetch(`api/photos/${payload.photoId}`, {
+        method: 'PUT',
+        header: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+
+    if (res.ok) {
+        const photo = await res.json()
+        console.log('4...............', photo)
+        dispatch(edit(photo))
+        return photo
+    }
+
+}
+
 const initialState = {};
 
 const photoReducer = (state = initialState, action) => {
@@ -58,6 +83,13 @@ const photoReducer = (state = initialState, action) => {
             newState = { ...state }
             newState = {
                 ...state, [action.photos.id]: action.photos
+            }
+            return newState
+        }
+        case EDIT_PHOTO: {
+            newState = { ...state }
+            newState = {
+                ...state, [action.photo.id]: action.photo
             }
             return newState
         }
