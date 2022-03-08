@@ -32,9 +32,9 @@ function SignupForm() {
     return (
         <form onSubmit={handleSubmit}>
             <header className="signinTitle">Sign In</header>
-            <ul>
+            <div className="signin__errors">
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
+            </div>
             <div className="inputSignIn">
                 <label className='signin__email'>
                     Email
@@ -43,7 +43,7 @@ function SignupForm() {
                         type="text"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        required
+                    // required
                     />
                 </label>
                 <label>
@@ -53,7 +53,7 @@ function SignupForm() {
                         type="text"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                        required
+                    // required
                     />
                 </label>
                 <label>
@@ -63,7 +63,7 @@ function SignupForm() {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        required
+                    // required
                     />
                 </label>
                 <label>
@@ -73,10 +73,10 @@ function SignupForm() {
                         type="password"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        required
+                    // required
                     />
                 </label>
-                <button type="submit" className="submitSignup">Sign Up</button>
+                <button type="submit" className="submitSignup" disabled={errors.length > 0}>Sign Up</button>
             </div>
         </form>
     );

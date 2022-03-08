@@ -27,7 +27,6 @@ export const loadPhotos = () => async dispatch => {
 }
 
 export const addPhotos = (payload) => async dispatch => {
-    console.log('2. payload of the createPhoto component, console.log of payload from the thunk', payload)
     const res = await csrfFetch('/api/photos', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -36,8 +35,7 @@ export const addPhotos = (payload) => async dispatch => {
 
     if (res.ok) {
         const photos = await res.json()
-
-        dispatch(addPhotos(photos))
+        dispatch(add(photos))
         return photos
     }
 }
@@ -61,7 +59,6 @@ const photoReducer = (state = initialState, action) => {
             newState = {
                 ...state, [action.photos.id]: action.photos
             }
-            console.log('6. lets be sure and check the reducer', newState)
             return newState
         }
         default:

@@ -14,7 +14,6 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.post('/', asyncHandler(async (req, res) => {
     const { content, imageUrl, albumId, userId } = req.body;
-    console.log('3. createPhoto backend route, to see if the req.body is being console.log', req.body)
     const photosPosted = await Photo.create({
         content,
         imageUrl,

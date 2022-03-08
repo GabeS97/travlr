@@ -1,47 +1,46 @@
-.modal__loginForm {
+.login__loginForm {
   display: flex;
-  top: 50px;
   flex-direction: column;
+  row-gap: 0.5em;
   align-items: center;
 }
 
-.model__loginTitle {
+.login__loginTitle {
   display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   font-weight: bolder;
-  bottom: 20vh;
-  font-size: 150%;
-  margin-left: 5%;
+  flex-direction: column;
+  font-size: larger;
 }
 
-.modal__loginInputs {
-  margin-top: 30%;
+.login__loginInputs {
+  /* margin-top: 30%; */
   display: flex;
-  position: absolute;
+  /* position: absolute; */
   flex-direction: column;
   bottom: 25vh;
   text-align: center;
   row-gap: 10px;
   align-items: center;
-
 }
 
-.modal__loginUser {
+.login__loginUser {
   display: flex;
   margin-bottom: 15;
   outline: none;
   border: 1px solid lightgray;
 }
 
-.modal__loginPassword {
+.login__loginPassword {
   display: flex;
   margin-bottom: 15;
   outline: none;
   border: 1px solid lightgray;
-
 }
 
-.modal__loginSubmit {
+.login__loginSubmit {
   cursor: pointer;
   display: flex;
   outline: none;
@@ -49,7 +48,7 @@
   align-items: center;
 }
 
-.modal__demo {
+.login__demo {
   cursor: pointer;
   display: flex;
   outline: none;
@@ -57,15 +56,26 @@
   align-items: center;
 }
 
-.modal__buttons {
+.login__buttons {
   display: flex;
-  position: relative;
-  top: 20vh;
-  align-items: center;
-  column-gap: 10px;
-
+  justify-content: center;
+  flex-direction: row;
+  align-items: flex-end;
+  column-gap: 0.25em;
+  margin-top: 2em;
 }
 
 ::placeholder {
-  text-align: center
+  text-align: center;
+}
+
+.login__errors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1em;
+  justify-content: center;
+  text-align: center;
+  color: red;
+  position: relative;
 }

@@ -5,6 +5,8 @@ const ADD_ALBUMS = 'albums/ADD_ALBUMS'
 const EDIT_ALBUMS = 'albums/EDIT_ALBUMS'
 const DELETE_ALBUMS = 'albums/DELETE_ALBUMS'
 
+const LOAD_ALBUM = 'albums/LOAD_ALBUM'
+
 const load = (albums) => {
     return {
         type: LOAD_ALBUMS,
@@ -28,13 +30,20 @@ const edit = (albums) => {
 
 const remove = (albums) => {
     return {
-        type: DELETE_ALBUMS.
-            albums
+        type: DELETE_ALBUMS,
+        albums
     }
 };
 
+const loadOne = (album) => {
+    return {
+        type: LOAD_ALBUM,
+        album
+    }
+}
 
-export const loadAlbum = () => async dispatch => {
+
+export const loadAlbums = () => async dispatch => {
     const res = await csrfFetch('/api//albums');
     if (res.ok) {
         const albums = await res.json();
@@ -76,7 +85,7 @@ export const deleteAlbum = (payload) => async dispatch => {
         method: 'DELETE',
         body: JSON.stringify({ payload })
     })
-    console.log('res for the delete' , res)
+
     if (res.ok) {
         const albums = await res.json()
         dispatch(remove(albums))
@@ -84,6 +93,15 @@ export const deleteAlbum = (payload) => async dispatch => {
     }
 }
 
+export const loadOneAlbum = (albumId) => async dispatch => {
+    const res = await csrfFetch(`/api/albums/${albumId}`)
+
+    if (res.ok) {
+        const album = await res.json()
+        dispatch(loadOne(album))
+        return album
+    }
+}
 const initialState = {};
 
 const albumReducer = (state = initialState, action) => {
@@ -111,6 +129,14 @@ const albumReducer = (state = initialState, action) => {
         case DELETE_ALBUMS: {
             newState = { ...state }
             delete newState[action.albums.id]
+            return newState
+        }
+        case LOAD_ALBUM: {
+            newState = { ...state }
+            newState = {
+                state,
+                [action.album.id]: action.album
+            }
             return newState
         }
         default:
