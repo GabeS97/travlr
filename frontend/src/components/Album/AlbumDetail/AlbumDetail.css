@@ -1,8 +1,9 @@
 .albumDetail__header {
   background-color: rgb(238, 234, 234);
-  display: flex;
+  display: flex;;
   justify-content: center;
-;
+  border-right: solid lightblue;
+  border-left: solid lightblue;
 }
 
 .albumDetail__infoPage {
@@ -10,7 +11,8 @@
   display: flex;
   justify-content: center;
   column-gap: 2em;
-  align-items: center;;
+  align-items: center;
+  padding: 2em;
 }
 
 .albumDetail__infoPage > img {
@@ -59,4 +61,31 @@
     height: 25em;
     border-bottom: solid lightgrey;
 
+}
+
+.albumDetail__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1em;
+    align-items: flex-start;
+
+}
+
+.albumDetail__buttons > button {
+    background-color: transparent;
+    display: flex;
+    position: relative;
+    right: 1em;
+    margin-top: 2em;
+    border: none;
+    font-size: larger;
+
+}
+
+.albumDetail__buttons > button:hover {
+    cursor: pointer;
+    color: white;
+    transform: scale(1.015);
+    transition-duration: 300ms;
 }

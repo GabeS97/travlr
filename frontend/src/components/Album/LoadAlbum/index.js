@@ -21,12 +21,17 @@ const Album = () => {
 
     const user = useSelector(state => state.session.user)
     const choice = album.filter(ele => ele.userId === user.id)
-    console.log(user)
+    console.log(album, 'how is there 10 albums ')
 
     useEffect(() => {
         dispatch(loadAlbums())
     }, [dispatch])
 
+    const hideForm = () => {
+        if (album.length + 1) {
+            setShowModal(false)
+        }
+    }
 
 
     return (
@@ -39,7 +44,7 @@ const Album = () => {
                 </button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <CreateAlbum />
+                        <CreateAlbum hideForm={hideForm} />
                     </Modal>
                 )}
             </div>
@@ -64,7 +69,7 @@ const Album = () => {
                                     {albumModal && (
                                         <Route path='/dashboard/albums/:albumId'>
                                             <Modal classname='album__editModal' onClose={() => setAlbumModal(false)}>
-                                                <EditAlbum album={ele} hideForm={setAlbumModal}/>
+                                                <EditAlbum album={ele} />
                                             </Modal>
                                         </Route>
                                     )}
