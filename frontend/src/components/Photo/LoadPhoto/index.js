@@ -61,7 +61,7 @@ const Photo = () => {
                                     {photoModal && (
                                         <Route path='/dashboard/photos/:photoId'>
                                             <Modal classname='photo__editModal' onClose={() => setPhotoModal(false)}>
-                                                <EditPhoto photo={pic} />
+                                                <EditPhoto photos={pic} />
                                             </Modal>
                                         </Route>
                                     )}

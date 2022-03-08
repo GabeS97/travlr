@@ -1,16 +1,21 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { editPhotos } from '../../../store/photos'
 import './EditPhoto.css'
-const EditPhoto = () => {
+
+const EditPhoto = ({ photos }) => {
+    console.log(photos, '<<<<<<<<<<<<<<<,')
+    const { userId, albumId, imageUrl, content } = photos
     const dispatch = useDispatch()
     const { photoId } = useParams();
-    const [imageLink, setImageUrl] = useState('')
-    const [contents, setContent] = useState('')
+    const [imageLink, setImageUrl] = useState(imageUrl ? imageUrl : '')
+    const [contents, setContent] = useState(content ? content : '')
 
+    const photo = useSelector(state => state.photos)
+    const user = useSelector(state => state.session.user)
     const photoEdit = async (e) => {
         e.preventDefault()
 
@@ -18,14 +23,16 @@ const EditPhoto = () => {
             contents,
             imageLink,
             photoId: +photoId,
-            
+            userId: userId,
+            albumId: albumId
+
         }
         console.log('1................', payload)
 
         const photo = await dispatch(editPhotos(payload))
     }
     return (
-        <div className="photo__page">
+        <div className="photo__pageForm">
             <header className='photo__createHeader'>Edit Your Photo</header>
             {/* <ul className='photo__errorsUpdate'>
             {errors.map(err => (

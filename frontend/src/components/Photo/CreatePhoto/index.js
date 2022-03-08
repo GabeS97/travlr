@@ -17,6 +17,7 @@ const CreatePhoto = () => {
 
     const [content, setContent] = useState('')
     const [imageUrl, setImageUrl] = useState('')
+    
     // const [listAlbum, setListAlbum] = useState(album[0])
 
     const history = useHistory()
@@ -56,7 +57,7 @@ const CreatePhoto = () => {
                 <label htmlFor='image'>
                     {/* Enter Image Link */}
                     <input
-                        className='photo__image'
+                        className='photo__createImage'
                         type='url'
                         placeholder='Enter Image Link'
                         value={imageUrl}

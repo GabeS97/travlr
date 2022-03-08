@@ -1,4 +1,4 @@
-.photo__page {
+/* .photo__page {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   min-height: 67vh;
   position: relative;
   z-index: 2;
-}
+} */
 
 .photo__upload {
   background-color: #128fdc;
@@ -124,6 +124,7 @@
   transform: scale(1.015);
   transition-duration: 300ms;
 } */
+
 
 .photo__image {
   display: flex;

@@ -40,11 +40,11 @@ const CreateAlbum = () => {
     return (
         <form className='album__postForm' onSubmit={postAlbum}>
             <header className='album__createHeader'>Upload New Memories</header>
-            <ul className='edit__errorsPost'>
+            {/* <ul className='edit__errorsPost'>
                 {errors.map(err => (
                     <div key={err}>{err}</div>
                 ))}
-            </ul>
+            </ul> */}
             <div className='album__form'>
                 <label htmlFor='title'>
                     {/* Enter Description */}
@@ -53,6 +53,7 @@ const CreateAlbum = () => {
                         type='text'
                         placeholder='Fill In Title'
                         value={title}
+                        required
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </label>
@@ -64,6 +65,7 @@ const CreateAlbum = () => {
                         type='url'
                         placeholder='Enter Image Link'
                         value={imageUrl}
+                        required
                         onChange={(e) => setImageUrl(e.target.value)}
                     />
                 </label>
@@ -75,6 +77,7 @@ const CreateAlbum = () => {
                         type='text'
                         placeholder='Entter Description'
                         value={description}
+                        required
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </label>
