@@ -23,4 +23,14 @@ router.post('/', asyncHandler(async (req, res) => {
 
     return res.json(photosPosted)
 }))
+
+router.put('/:photoId', asyncHandler(async (req, res) => {
+    const { content, image } = req.body
+    console.log('3...............', req.body)
+    const { photoId } = req.params
+
+    const photo = await Photo.findOne({ where: { id: photoId } })
+    photo.update({ content, image })
+    return res.json(photo)
+}))
 module.exports = router

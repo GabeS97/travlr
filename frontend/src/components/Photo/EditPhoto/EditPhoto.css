@@ -1,0 +1,61 @@
+.photo__createHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 5em;
+    font-weight: bolder;
+    flex-direction: column;
+    font-size: larger;
+    /* top: -5em; */
+  }
+
+  .photo__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5em;
+    align-items: center;
+    margin-top: 7em;
+    justify-content: center;
+  }
+
+  .photo__buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: flex-end;
+    column-gap: 0.25em;
+    margin-top: 2em;
+  }
+
+  .photo__buttonphoto,
+  .photo__buttonDelete {
+    background-color: transparent;
+    border: none;
+    display: flex;
+  }
+
+  .photo__buttonphoto:hover,
+  .photo__buttonDelete:hover {
+    cursor: pointer;
+  }
+
+  .fa-pen-to-square:hover {
+    color: white;
+  }
+
+  .fa-trash:hover {
+    color: white;
+  }
+
+  .photo__errorsUpdate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1em;
+    justify-content: center;
+    text-align: center;
+    color: red;
+    position: relative;
+    /* right: 1em; */
+  }
