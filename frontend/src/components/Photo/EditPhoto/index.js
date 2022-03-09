@@ -18,6 +18,9 @@ const EditPhoto = ({ photos }) => {
     const photo = useSelector(state => state.photos)
     const user = useSelector(state => state.session.user)
 
+    const pics = Object.values(photo)
+    const choice = pics.find(pic => pic.id === +photoId)
+    console.log(choice, '<<<<<<<<<<<<<<<<<<<<<')
     const photoEdit = async (e) => {
         e.preventDefault()
 
@@ -34,13 +37,12 @@ const EditPhoto = ({ photos }) => {
 
     }
 
-    const photoDelete = (e) => {
-        e.preventDefault()
+    // const photoDelete = (e) => {
+    //     e.preventDefault()
 
-        dispatch(deletePhoto(photoId))
-        history.push('/dashboard/photos')
+    //     dispatch(deletePhoto(photoId))
 
-    }
+    // }
     return (
         <div className="photo__pageForm">
             <header className='photo__createHeader'>Edit Your Photo</header>
@@ -88,8 +90,17 @@ const EditPhoto = ({ photos }) => {
                         <i className="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button
+                        type='submit'
                         className='photo__buttonDelete'
-                        onClick={photoDelete}
+                        onClick={() => {
+                            const confirm = window.confirm(
+                                'Are you sure you want to delete this photo?'
+                            )
+                            if (confirm === true) {
+                                dispatch(deletePhoto(choice.id))
+                                history.push('/dashboard/photos')
+                            }
+                        }}
                     >
                         <i className="fa-solid fa-trash"></i>
                     </button>

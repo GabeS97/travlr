@@ -8,7 +8,6 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { Modal } from '../../../context/Modal'
 import { deleteAlbum, loadOneAlbum } from '../../../store/albums'
 import AlbumPhoto from '../../Photo/AlbumPhoto'
-import EditAlbum from '../EditAlbum'
 import './AlbumDetail.css'
 
 const AlbumDetail = () => {
@@ -18,6 +17,7 @@ const AlbumDetail = () => {
     const album = useSelector(state => state.albums);
     const singles = Object.values(album)
     const user = useSelector(state => state.session.user)
+    const [showModal, setShowModal] = useState(false)
     const single = singles.find(single => single.id === albumId)
     const personAlbum = singles.filter(info => info.userId === user.id)
     // console.log(single, '<<<<<<<<<<<<<<')
@@ -38,39 +38,40 @@ const AlbumDetail = () => {
 
     // }
 
-        return (
-            <>
-                <div className="albumDetail__page">
-                    <div className="albumDetail__header">
-                        {singles.map(single => (
-                            <div key={single.id} className="albumDetail__infoPage">
-                                <div className="albumDetail__imageCard">
-                                    <img className='albumDetail__image' src={single.imageUrl} alt='' />
-                                </div>
-
-                                <div className="albumDetail__infoCard">
-                                    <h2 className='albumDetail__title'>{single.title}</h2>
-                                    <p className='albumDetail__description'>{single.description}</p>
-                                </div>
+    return (
+        <>
+            <div className="albumDetail__page">
+                <div className="albumDetail__header">
+                    {singles.map(single => (
+                        <div key={single.id} className="albumDetail__infoPage">
+                            {console.log(single, '<<<<<<<<<<<<<<<<<<<,')}
+                            <div className="albumDetail__imageCard">
+                                <img className='albumDetail__image' src={single.imageUrl} alt='' />
                             </div>
-                        ))}
-                        <div className="albumDetail__buttons">
-                            <button >Edit</button>
-                            <button onClick={() => {
-                                const confirm = window.confirm(
-                                    'Deleting this album, will delete all the photos stored within this album. Are you sure you wish to continue?'
-                                )
-                                if (confirm === true) {
-                                    dispatch(deleteAlbum(albumId))
-                                    history.push('/dashboard/albums')
-                                }
-                            }}>Delete</button>
+
+                            <div className="albumDetail__infoCard">
+                                <h2 className='albumDetail__title'>{single.title}</h2>
+                                <p className='albumDetail__description'>{single.description}</p>
+                            </div>
                         </div>
+                    ))}
+                    <div className="albumDetail__buttons">
+                        <button >Edit</button>
+                        <button onClick={() => {
+                            const confirm = window.confirm(
+                                'Deleting this album, will delete all the photos stored within this album. Are you sure you wish to continue?'
+                            )
+                            if (confirm === true) {
+                                dispatch(deleteAlbum(albumId))
+                                history.push('/dashboard/albums')
+                            }
+                        }}>Delete</button>
                     </div>
                 </div>
-                <AlbumPhoto albumId={albumId} user={user} />
-            </>
-        )
-    }
+            </div>
+            <AlbumPhoto albumId={albumId} user={user} />
+        </>
+    )
+}
 
-    export default AlbumDetail
+export default AlbumDetail

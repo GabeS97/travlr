@@ -39,4 +39,10 @@ router.delete('/:photoId', asyncHandler(async (req, res) => {
     const photo = await Photo.findByPk(photoId)
     return res.json(photo)
 }))
+
+router.get('/:photoId', asyncHandler(async (req, res) => {
+    const { photoId } = req.params
+    const photo = await Photo.findByPk(photoId)
+    return res.json(photo)
+}))
 module.exports = router

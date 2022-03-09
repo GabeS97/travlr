@@ -8,6 +8,7 @@ import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer";
 import AlbumDetail from "./components/Album/AlbumDetail";
 import Explore from "./components/Explore";
+import PhotoDetail from "./components/Photo/PhotoDetail";
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path='/albums/:albumId'>
             <AlbumDetail />
+          </Route>
+          <Route path='/photos/:photoId'>
+            <PhotoDetail />
           </Route>
           <Route path='/view-all'>
             <Explore />

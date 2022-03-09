@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { loadPhotos } from '../../../store/photos'
 import './AlbumPhoto.css'
 
@@ -20,7 +21,9 @@ const AlbumPhoto = ({ albumId, user }) => {
         <div className='albumPhoto__page'>
             <div className="albumPhoto__container">
                 {choiceImage.map(photo => (
-                    <img className='albumPhoto__photos' key={photo.id} src={photo.imageUrl} alt='' />
+                    <Link to={`/photos/${photo.id}`}>
+                        <img className='albumPhoto__photos' key={photo.id} src={photo.imageUrl} alt='' />
+                    </Link>
                 ))}
             </div>
         </div>
