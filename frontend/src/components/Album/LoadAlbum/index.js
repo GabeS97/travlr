@@ -32,7 +32,6 @@ const Album = () => {
         }
     }
 
- 
 
 
     return (

@@ -4,9 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { deletePhoto, loadOnePhoto } from '../../../store/photos';
-
-
 import './PhotoDetail.css'
+
 const PhotoDetail = () => {
     const { photoId } = useParams();
     const history = useHistory()
@@ -19,6 +18,13 @@ const PhotoDetail = () => {
         dispatch(loadOnePhoto(photoId))
     }, [dispatch])
 
+
+    // const handleDelete = async (e) => {
+    //     e.preventDefault()
+
+    //     const photoDelete = await dispatch(deletePhoto(photoId))
+    //     history.push('/dashboard/photos')
+    // }
 
     return (
         <>

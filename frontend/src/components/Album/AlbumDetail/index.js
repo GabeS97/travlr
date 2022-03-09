@@ -20,7 +20,6 @@ const AlbumDetail = () => {
     const [showModal, setShowModal] = useState(false)
     const single = singles.find(single => single.id === albumId)
     const personAlbum = singles.filter(info => info.userId === user.id)
-    // console.log(single, '<<<<<<<<<<<<<<')
 
     // const [toggle, setToggle] = useState(false)
     // const [text, setText] = useState()
