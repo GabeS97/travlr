@@ -44,7 +44,6 @@ const AlbumDetail = () => {
                 <div className="albumDetail__header">
                     {singles.map(single => (
                         <div key={single.id} className="albumDetail__infoPage">
-                            {console.log(single, '<<<<<<<<<<<<<<<<<<<,')}
                             <div className="albumDetail__imageCard">
                                 <img className='albumDetail__image' src={single.imageUrl} alt='' />
                             </div>

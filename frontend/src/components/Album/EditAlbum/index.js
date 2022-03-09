@@ -91,7 +91,7 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                         placeholder='Enter Image Link'
                         value={imageLink}
                         onChange={(e) => setImageUrl(e.target.value)}
-                        // required
+                        required
 
                     />
                 </label>
@@ -127,7 +127,8 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                                 dispatch(deleteAlbum(choice.id))
                                 history.push('/dashboard/albums')
                             }
-                        }}                    >
+                        }}
+                    >
                         <i className="fa-solid fa-trash"></i>
                     </button>
                 </div>

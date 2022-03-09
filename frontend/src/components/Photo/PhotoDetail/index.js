@@ -38,8 +38,7 @@ const PhotoDetail = () => {
                     ))}
                     <div className="photoDetail__buttons">
                         <button >Edit</button>
-                        <button
-                        onClick={() => {
+                        <button onClick={() => {
                             const confirm = window.confirm(
                                 'Are you sure you want to delete this photo?'
                             )
@@ -47,9 +46,7 @@ const PhotoDetail = () => {
                                 dispatch(deletePhoto(photoId))
                                 history.push('/dashboard/photos')
                             }
-                        }}
-                        >
-                            Delete</button>
+                        }}>Delete</button>
                     </div>
                 </div>
             </div>

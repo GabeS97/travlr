@@ -26,6 +26,18 @@ const Photo = () => {
         dispatch(loadPhotos())
     }, [dispatch])
 
+    const hideForm = () => {
+        if (photo.length + 1) {
+            setShowModal(false)
+        }
+    }
+
+    const closeForm = () => {
+        if (photo.length - 1) {
+            setShowModal(false)
+        }
+    }
+
     return (
         <div className="dashboard__contents">
             <div className="photo__title">
@@ -36,7 +48,7 @@ const Photo = () => {
                 </button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <CreatePhoto />
+                        <CreatePhoto hideForm={hideForm}/>
                     </Modal>
                 )}
             </div>
@@ -61,7 +73,7 @@ const Photo = () => {
                                     {photoModal && (
                                         <Route path='/dashboard/photos/:photoId'>
                                             <Modal classname='photo__editModal' onClose={() => setPhotoModal(false)}>
-                                                <EditPhoto photos={pic} />
+                                                <EditPhoto photos={pic} closeForm={closeForm}/>
                                             </Modal>
                                         </Route>
                                     )}
