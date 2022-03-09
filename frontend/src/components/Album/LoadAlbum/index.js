@@ -21,7 +21,7 @@ const Album = () => {
 
     const user = useSelector(state => state.session.user)
     const choice = album.filter(ele => ele.userId === user.id)
-    console.log(album, 'how is there 10 albums ')
+
 
     useEffect(() => {
         dispatch(loadAlbums())
