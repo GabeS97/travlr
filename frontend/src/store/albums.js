@@ -81,6 +81,7 @@ export const editAlbum = (payload) => async dispatch => {
 }
 
 export const deleteAlbum = (payload) => async dispatch => {
+
     const res = await csrfFetch(`/api/albums/${payload}`, {
         method: 'DELETE',
         body: JSON.stringify({ payload })

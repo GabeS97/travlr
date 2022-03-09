@@ -15,6 +15,7 @@ const PhotoDetail = () => {
     const photo = Object.values(photos)
 
 
+
     useEffect(() => {
         dispatch(loadOnePhoto(photoId))
     }, [dispatch])

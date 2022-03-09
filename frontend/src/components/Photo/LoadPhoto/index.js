@@ -26,6 +26,12 @@ const Photo = () => {
         dispatch(loadPhotos())
     }, [dispatch])
 
+    const hideForm = () => {
+        if (photo.length + 1) {
+            setShowModal(false)
+        }
+    }
+
     return (
         <div className="dashboard__contents">
             <div className="photo__title">
@@ -36,7 +42,7 @@ const Photo = () => {
                 </button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <CreatePhoto />
+                        <CreatePhoto hideForm={hideForm}/>
                     </Modal>
                 )}
             </div>
