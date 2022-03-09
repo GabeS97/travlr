@@ -32,6 +32,7 @@ const PhotoDetail = () => {
             history.push('/dashboard/photos')
         }
     }
+
     return (
         <>
             <div className="photoDetail__page">
@@ -50,7 +51,8 @@ const PhotoDetail = () => {
                     ))}
                     <div className="photoDetail__buttons">
                         <button >Edit</button>
-                        <button onClick={handleDelete}
+                        <button
+                            onClick={handleDelete}
                         // onClick={(e) => {
                         //     const confirm = window.confirm(
                         //         'Are you sure you want to delete this photo?'
@@ -61,8 +63,7 @@ const PhotoDetail = () => {
                         //         history.push('/dashboard/photos')
                         //     }
                         // }}
-                        >
-                            Delete</button>
+                        > Delete</button>
                     </div>
                 </div>
             </div>
