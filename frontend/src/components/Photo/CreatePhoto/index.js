@@ -33,10 +33,7 @@ const CreatePhoto = ({ hideForm }) => {
         }
         let photoPost = await dispatch(addPhotos(payload))
         hideForm()
-    }
-
-
-
+      
     useEffect(() => {
         dispatch(loadAlbums())
     }, [dispatch])

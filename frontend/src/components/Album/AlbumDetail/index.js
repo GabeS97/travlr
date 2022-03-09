@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { Modal } from '../../../context/Modal'
-import { deleteAlbum, loadOneAlbum } from '../../../store/albums'
+import { deleteAlbum, loadAlbums, loadOneAlbum } from '../../../store/albums'
 import AlbumPhoto from '../../Photo/AlbumPhoto'
 import './AlbumDetail.css'
 
@@ -27,15 +27,17 @@ const AlbumDetail = () => {
         dispatch(loadOneAlbum(albumId))
     }, [dispatch])
 
-    // const onDelete = async (e) => {
-    //     e.preventDefault()
+    const onDelete = async (e) => {
+        const confirm = window.confirm(
+            'Deleting this album, will delete all the photos stored within this album. Are you sure you wish to continue?'
+        )
+        if (confirm === true) {
+            await dispatch(loadAlbums())
+                .then(dispatch(deleteAlbum(albumId)))
+            history.push('/dashboard/albums')
+        }
+    }
 
-    //     if (confirm('Deleting this album, will delete all the photos stored within this album ')) {
-    //         dispatch(deleteAlbum(albumId))
-    //         history.push('/dashboard/albums')
-    //     }
-
-    // }
 
     return (
         <>
@@ -55,7 +57,8 @@ const AlbumDetail = () => {
                     ))}
                     <div className="albumDetail__buttons">
                         <button >Edit</button>
-                        <button onClick={() => {
+                        <button onClick={onDelete}>Delete</button>
+                        {/* <button onClick={() => {
                             const confirm = window.confirm(
                                 'Deleting this album, will delete all the photos stored within this album. Are you sure you wish to continue?'
                             )
@@ -63,7 +66,7 @@ const AlbumDetail = () => {
                                 dispatch(deleteAlbum(albumId))
                                 history.push('/dashboard/albums')
                             }
-                        }}>Delete</button>
+                        }}>Delete</button> */}
                     </div>
                 </div>
             </div>

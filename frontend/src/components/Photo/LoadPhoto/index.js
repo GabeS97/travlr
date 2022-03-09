@@ -31,7 +31,6 @@ const Photo = () => {
             setShowModal(false)
         }
     }
-
     const closeForm = () => {
         if (photo.length - 1) {
             setShowModal(false)
