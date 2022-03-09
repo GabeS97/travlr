@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 // import { useSelector } from "react-redux";
@@ -20,15 +21,23 @@ function SignupForm() {
         e.preventDefault();
         if (password === confirmPassword) {
             setErrors([]);
-            return dispatch(sessionActions.signup({ email, username, password }))
-                .catch(async (res) => {
-                    const data = await res.json();
-                    if (data && data.errors) setErrors(data.errors);
-                });
+            return  dispatch(sessionActions.signup({ email, username, password }))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            });
         }
         return setErrors(['Confirm Password field must be the same as the Password field']);
     };
 
+    // useEffect(() => {
+    //     const validationErrors = [];
+    //     if (!email) validationErrors.push('Please provide a valid email.')
+    //     if (username.length < 4) validationErrors.push("Please provide a username with at least 4 characters.")
+    //     if (username.length < 6) validationErrors.push('Password must be 6 characters or more.')
+
+    //     setErrors(validationErrors)
+    // }, [username, email])
     return (
         <form onSubmit={handleSubmit}>
             <header className="signinTitle">Sign In</header>
@@ -43,7 +52,7 @@ function SignupForm() {
                         type="text"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                    // required
+                    required
                     />
                 </label>
                 <label>
@@ -53,7 +62,7 @@ function SignupForm() {
                         type="text"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                    // required
+                    required
                     />
                 </label>
                 <label>
@@ -63,7 +72,7 @@ function SignupForm() {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                    // required
+                    required
                     />
                 </label>
                 <label>
@@ -73,7 +82,7 @@ function SignupForm() {
                         type="password"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                    // required
+                    required
                     />
                 </label>
                 <button type="submit" className="submitSignup" disabled={errors.length > 0}>Sign Up</button>

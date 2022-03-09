@@ -19,46 +19,58 @@ const AlbumDetail = () => {
     const singles = Object.values(album)
     const user = useSelector(state => state.session.user)
     const single = singles.find(single => single.id === albumId)
-    console.log(single, '<<<<<<<<<<<<')
-
     const personAlbum = singles.filter(info => info.userId === user.id)
+    // console.log(single, '<<<<<<<<<<<<<<')
+
+    // const [toggle, setToggle] = useState(false)
+    // const [text, setText] = useState()
     useEffect(() => {
         dispatch(loadOneAlbum(albumId))
     }, [dispatch])
 
-    const onDelete = async (e) => {
-        e.preventDefault()
+    // const onDelete = async (e) => {
+    //     e.preventDefault()
 
-        dispatch(deleteAlbum(albumId))
-        history.push('/dashboard/albums')
-    }
+    //     if (confirm('Deleting this album, will delete all the photos stored within this album ')) {
+    //         dispatch(deleteAlbum(albumId))
+    //         history.push('/dashboard/albums')
+    //     }
 
+    // }
 
-    return (
-        <>
-            <div className="albumDetail__page">
-                <div className="albumDetail__header">
-                    {singles.map(single => (
-                        <div key={single.id} className="albumDetail__infoPage">
-                            <div className="albumDetail__imageCard">
-                                <img className='albumDetail__image' src={single.imageUrl} alt='' />
+        return (
+            <>
+                <div className="albumDetail__page">
+                    <div className="albumDetail__header">
+                        {singles.map(single => (
+                            <div key={single.id} className="albumDetail__infoPage">
+                                <div className="albumDetail__imageCard">
+                                    <img className='albumDetail__image' src={single.imageUrl} alt='' />
+                                </div>
+
+                                <div className="albumDetail__infoCard">
+                                    <h2 className='albumDetail__title'>{single.title}</h2>
+                                    <p className='albumDetail__description'>{single.description}</p>
+                                </div>
                             </div>
-
-                            <div className="albumDetail__infoCard">
-                                <h2 className='albumDetail__title'>{single.title}</h2>
-                                <p className='albumDetail__description'>{single.description}</p>
-                            </div>
+                        ))}
+                        <div className="albumDetail__buttons">
+                            <button >Edit</button>
+                            <button onClick={() => {
+                                const confirm = window.confirm(
+                                    'Deleting this album, will delete all the photos stored within this album. Are you sure you wish to continue?'
+                                )
+                                if (confirm === true) {
+                                    dispatch(deleteAlbum(albumId))
+                                    history.push('/dashboard/albums')
+                                }
+                            }}>Delete</button>
                         </div>
-                    ))}
-                    <div className="albumDetail__buttons">
-                        <button >Edit</button>
-                        <button onClick={onDelete}>Delete</button>
                     </div>
                 </div>
-            </div>
-            <AlbumPhoto albumId={albumId} user={user} />
-        </>
-    )
-}
+                <AlbumPhoto albumId={albumId} user={user} />
+            </>
+        )
+    }
 
-export default AlbumDetail
+    export default AlbumDetail

@@ -11,8 +11,6 @@ const AlbumPhoto = ({ albumId, user }) => {
     const pics = Object.values(albumPic)
 
     const choiceImage = pics.filter(pic => pic.albumId === +albumId)
-
-    console.log(choiceImage)
     useEffect(() => {
         dispatch(loadPhotos())
     }, [dispatch])

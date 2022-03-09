@@ -2,7 +2,29 @@ import React from 'react'
 
 const Explore = () => {
     return (
-        <div>Explore</div>
+        <div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+            <div>
+                <h1>Hey</h1>
+            </div>
+            <div>
+                <h1>Hey</h1>
+            </div>
+        </div>
     )
 }
 
