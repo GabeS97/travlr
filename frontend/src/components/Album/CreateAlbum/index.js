@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { addAlbum } from '../../../store/albums'
 import './CreateAlbum.css'
-const CreateAlbum = () => {
+const CreateAlbum = ({ hideForm }) => {
     const [title, setTitle] = useState('')
     const [imageUrl, setImageUrl] = useState('')
     const [description, setDescription] = useState('')
@@ -34,17 +34,18 @@ const CreateAlbum = () => {
         }
 
         const album = await dispatch(addAlbum(payload))
+        hideForm()
     }
 
 
-    return (
-        <form className='album__postForm' onSubmit={postAlbum}>
+        return (
+            <form className='album__postForm' onSubmit={postAlbum}>
             <header className='album__createHeader'>Upload New Memories</header>
             {/* <ul className='edit__errorsPost'>
                 {errors.map(err => (
                     <div key={err}>{err}</div>
-                ))}
-            </ul> */}
+                    ))}
+                </ul> */}
             <div className='album__form'>
                 <label htmlFor='title'>
                     {/* Enter Description */}
@@ -55,7 +56,7 @@ const CreateAlbum = () => {
                         value={title}
                         required
                         onChange={(e) => setTitle(e.target.value)}
-                    />
+                        />
                 </label>
 
                 <label htmlFor='image'>
@@ -67,7 +68,7 @@ const CreateAlbum = () => {
                         value={imageUrl}
                         required
                         onChange={(e) => setImageUrl(e.target.value)}
-                    />
+                        />
                 </label>
 
                 <label htmlFor='description'>
@@ -79,14 +80,14 @@ const CreateAlbum = () => {
                         value={description}
                         required
                         onChange={(e) => setDescription(e.target.value)}
-                    />
+                        />
                 </label>
             </div>
             <button
                 className='edit__createButton'
                 type='submit'
                 disabled={errors.length > 0}
-            >Post Album!</button>
+                >Post Album!</button>
         </form>
     )
 }

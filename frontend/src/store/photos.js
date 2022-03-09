@@ -1,9 +1,10 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD_PHOTOS = 'photos/LOAD_PHOTOS';
-const ADD_PHOTOS = 'photos/ADD_PHOTOS'
-const EDIT_PHOTO = 'photots/EDIT_PHOTO'
-
+const ADD_PHOTOS = 'photos/ADD_PHOTOS';
+const EDIT_PHOTO = 'photots/EDIT_PHOTO';
+const DELETE_PHOTO = 'photos/DELETE_PHOTO';
+const LOAD_PHOTO = 'photos/LOAD_PHOTO'
 const load = (photos) => {
     return {
         type: LOAD_PHOTOS,
@@ -25,6 +26,19 @@ const edit = (photo) => {
     }
 }
 
+const remove = (photo) => {
+    return {
+        type: DELETE_PHOTO,
+        photo
+    }
+}
+
+const loadOne = (photo) => {
+    return {
+        type: LOAD_PHOTO,
+        photo
+    }
+}
 export const loadPhotos = () => async dispatch => {
     const res = await csrfFetch('/api/photos');
     if (res.ok) {
@@ -49,22 +63,43 @@ export const addPhotos = (payload) => async dispatch => {
 }
 
 export const editPhotos = (payload) => async dispatch => {
-    console.log('2.............', payload)
-    const res = await csrfFetch(`api/photos/${payload.photoId}`, {
+    const res = await csrfFetch(`/api/photos/${payload.photoId}`, {
         method: 'PUT',
-        header: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     })
 
     if (res.ok) {
         const photo = await res.json()
-        console.log('4...............', photo)
         dispatch(edit(photo))
         return photo
     }
 
 }
 
+export const deletePhoto = (payload) => async dispatch => {
+    const res = await csrfFetch(`/api/photos/${payload}`, {
+        method: 'DELETE',
+        body: JSON.stringify({ payload })
+    })
+
+    if (res.ok) {
+        const photo = await res.json()
+        dispatch(remove(photo))
+        return photo
+    }
+}
+
+export const loadOnePhoto = (photoId) => async dispatch => {
+
+    const res = await csrfFetch(`/api/photos/${photoId}`)
+
+    if (res.ok) {
+        const photo = await res.json()
+        dispatch(loadOne(photo))
+        return photo
+    }
+}
 const initialState = {};
 
 const photoReducer = (state = initialState, action) => {
@@ -91,6 +126,16 @@ const photoReducer = (state = initialState, action) => {
             newState = {
                 ...state, [action.photo.id]: action.photo
             }
+            return newState
+        }
+        case DELETE_PHOTO: {
+            newState = { ...state }
+            delete newState[action.photo.id]
+            return newState
+        }
+        case LOAD_PHOTO: {
+            newState = { ...state }
+            newState = { state, [action.photo.id]: action.photo }
             return newState
         }
         default:

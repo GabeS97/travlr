@@ -2,13 +2,14 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import { editPhotos } from '../../../store/photos'
+import { deletePhoto, editPhotos } from '../../../store/photos'
 import './EditPhoto.css'
 
 const EditPhoto = ({ photos }) => {
-    console.log(photos, '<<<<<<<<<<<<<<<,')
     const { userId, albumId, imageUrl, content } = photos
+    const history = useHistory();
     const dispatch = useDispatch()
     const { photoId } = useParams();
     const [imageLink, setImageUrl] = useState(imageUrl ? imageUrl : '')
@@ -16,21 +17,32 @@ const EditPhoto = ({ photos }) => {
 
     const photo = useSelector(state => state.photos)
     const user = useSelector(state => state.session.user)
+
+    const pics = Object.values(photo)
+    const choice = pics.find(pic => pic.id === +photoId)
+    console.log(choice, '<<<<<<<<<<<<<<<<<<<<<')
     const photoEdit = async (e) => {
         e.preventDefault()
 
         const payload = {
-            contents,
-            imageLink,
+            content: contents,
+            imageUrl: imageLink,
             photoId: +photoId,
             userId: userId,
             albumId: albumId
 
         }
-        console.log('1................', payload)
-
         const photo = await dispatch(editPhotos(payload))
+        history.push('/dashboard/photos')
+
     }
+
+    // const photoDelete = (e) => {
+    //     e.preventDefault()
+
+    //     dispatch(deletePhoto(photoId))
+
+    // }
     return (
         <div className="photo__pageForm">
             <header className='photo__createHeader'>Edit Your Photo</header>
@@ -78,9 +90,17 @@ const EditPhoto = ({ photos }) => {
                         <i className="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button
+                        type='submit'
                         className='photo__buttonDelete'
-                    // onClick={(e) => dispatch(deleteAlbum(choice.id))}
-                    // onClick={handleDelete}
+                        onClick={() => {
+                            const confirm = window.confirm(
+                                'Are you sure you want to delete this photo?'
+                            )
+                            if (confirm === true) {
+                                dispatch(deletePhoto(choice.id))
+                                history.push('/dashboard/photos')
+                            }
+                        }}
                     >
                         <i className="fa-solid fa-trash"></i>
                     </button>

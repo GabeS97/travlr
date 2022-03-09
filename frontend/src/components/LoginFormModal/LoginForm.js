@@ -3,6 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import DemoUser from "../Navigation/DemoUser";
 import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
 
 function LoginForm() {
     const dispatch = useDispatch();
@@ -10,10 +11,10 @@ function LoginForm() {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
     const history = useHistory()
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        history.push('/dasboard')
         return dispatch(sessionActions.login({ credential, password })).catch(
             async (res) => {
                 const data = await res.json();
@@ -21,6 +22,13 @@ function LoginForm() {
             }
         );
     };
+
+    // useEffect(() => {
+    //     const validationError = [];
+
+
+    // })
+
 
     return (
         <form className='login__loginForm' onSubmit={handleSubmit}>
@@ -38,7 +46,7 @@ function LoginForm() {
                         value={credential}
                         placeholder='Username and Email'
                         onChange={(e) => setCredential(e.target.value)}
-                    // required
+                    required
                     />
                 </label>
                 <label className="login__password">
@@ -49,7 +57,7 @@ function LoginForm() {
                         value={password}
                         placeholder='Password'
                         onChange={(e) => setPassword(e.target.value)}
-                    // required
+                    required
                     />
                 </label>
             </div>

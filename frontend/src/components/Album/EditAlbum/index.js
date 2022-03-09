@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { deleteAlbum, editAlbum } from '../../../store/albums';
 import './EditAlbum.css'
+
 const EditAlbum = ({ album, setAlbumModal }) => {
     const { id, userId, title, description, imageUrl } = album;
     const { albumId } = useParams();
@@ -50,17 +51,13 @@ const EditAlbum = ({ album, setAlbumModal }) => {
 
     }
 
+    // const handleDelete = (e) => {
+    //     e.preventDefault()
 
-    // useEffect(() => {
-    const handleDelete = (e) => {
-        e.preventDefault()
+    //     dispatch(deleteAlbum(choice.id))
 
-        dispatch(deleteAlbum(choice.id))
-
-        history.push('/dashboard/albums')
-    }
-    // }, [dispatch])
-
+    //     history.push('/dashboard/albums')
+    // }
     return (
         <div className="edit__page">
             <header className='edit__createHeader'>Edit Your Album</header>
@@ -122,7 +119,15 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                     <button
                         className='edit__buttonDelete'
                         // onClick={(e) => dispatch(deleteAlbum(choice.id))}
-                        onClick={handleDelete}                    >
+                        onClick={() => {
+                            const confrim = window.confirm(
+                                'Deleting this album, will delete all the photos stored within this album. Are you sure you wish to continue?'
+                            )
+                            if (confrim === true) {
+                                dispatch(deleteAlbum(choice.id))
+                                history.push('/dashboard/albums')
+                            }
+                        }}                    >
                         <i className="fa-solid fa-trash"></i>
                     </button>
                 </div>
