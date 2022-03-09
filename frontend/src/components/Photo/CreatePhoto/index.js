@@ -33,8 +33,7 @@ const CreatePhoto = ({ hideForm }) => {
         }
         let photoPost = await dispatch(addPhotos(payload))
         hideForm()
-
-    }
+      
     useEffect(() => {
         dispatch(loadAlbums())
     }, [dispatch])
@@ -51,6 +50,7 @@ const CreatePhoto = ({ hideForm }) => {
                         placeholder='Fill In Description'
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
+                        required
                     />
                 </label>
 
@@ -62,6 +62,7 @@ const CreatePhoto = ({ hideForm }) => {
                         placeholder='Enter Image Link'
                         value={imageUrl}
                         onChange={(e) => setImageUrl(e.target.value)}
+                        required
                     />
                 </label>
             </div>

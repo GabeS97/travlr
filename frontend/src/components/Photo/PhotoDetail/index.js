@@ -3,10 +3,11 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+
 import { deletePhoto, loadOnePhoto, loadPhotos } from '../../../store/photos';
-
-
+import { deletePhoto, loadOnePhoto } from '../../../store/photos';
 import './PhotoDetail.css'
+
 const PhotoDetail = () => {
     const { photoId } = useParams();
     const history = useHistory()
@@ -21,6 +22,7 @@ const PhotoDetail = () => {
     }, [dispatch])
 
 
+
     const handleDelete = async (e) => {
         // e.preventDefault()
         const confirm = window.confirm(
@@ -32,6 +34,14 @@ const PhotoDetail = () => {
             history.push('/dashboard/photos')
         }
     }
+    // const handleDelete = async (e) => {
+    //     e.preventDefault()
+
+    //     const photoDelete = await dispatch(deletePhoto(photoId))
+    //     history.push('/dashboard/photos')
+    // }
+
+
     return (
         <>
             <div className="photoDetail__page">
@@ -50,6 +60,7 @@ const PhotoDetail = () => {
                     ))}
                     <div className="photoDetail__buttons">
                         <button >Edit</button>
+
                         <button onClick={handleDelete}
                         // onClick={(e) => {
                         //     const confirm = window.confirm(
@@ -63,6 +74,17 @@ const PhotoDetail = () => {
                         // }}
                         >
                             Delete</button>
+
+                        <button onClick={() => {
+                            const confirm = window.confirm(
+                                'Are you sure you want to delete this photo?'
+                            )
+                            if (confirm === true) {
+                                dispatch(deletePhoto(photoId))
+                                history.push('/dashboard/photos')
+                            }
+                        }}>Delete</button>
+
                     </div>
                 </div>
             </div>
