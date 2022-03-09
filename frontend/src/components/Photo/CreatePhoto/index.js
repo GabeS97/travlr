@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { loadAlbums } from '../../../store/albums'
 import { addPhotos } from '../../../store/photos'
 import './CreatePhotoModal.css'
+
 const CreatePhoto = ({ hideForm }) => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
@@ -33,7 +34,7 @@ const CreatePhoto = ({ hideForm }) => {
         }
         let photoPost = await dispatch(addPhotos(payload))
         hideForm()
-      
+    }
     useEffect(() => {
         dispatch(loadAlbums())
     }, [dispatch])
