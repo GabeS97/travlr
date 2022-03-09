@@ -85,3 +85,15 @@
   transform: scale(1.015);
   transition-duration: 300ms;
 }
+
+.photoDetail__infoPage > input {
+  background-color: transparent;
+  border: 0;
+  padding: 8px;
+  border: black solid;
+}
+
+.photoDetail__infoPage:hover > input {
+  background-color: #d3d3d3;
+  cursor: pointer;
+}

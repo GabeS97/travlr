@@ -22,6 +22,7 @@ const Album = () => {
     const user = useSelector(state => state.session.user)
     const choice = album.filter(ele => ele.userId === user.id)
 
+
     useEffect(() => {
         dispatch(loadAlbums())
     }, [dispatch])
