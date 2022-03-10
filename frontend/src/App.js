@@ -14,7 +14,6 @@ function App() {
   const user = useSelector(state => state.session.user)
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [value, setValue] = useState('tester');
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -35,7 +34,7 @@ function App() {
             <AlbumDetail />
           </Route>
           <Route path='/photos/:photoId'>
-            <PhotoDetail value={value} setValue={setValue} />
+            <PhotoDetail />
           </Route>
           <Route path='/view-all'>
             <Explore />

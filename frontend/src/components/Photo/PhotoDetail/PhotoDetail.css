@@ -63,7 +63,9 @@
 
 .photoDetail__buttons {
   display: flex;
-  justify-content: center;
+  position: absolute;
+  margin-left: 20em;
+  margin-top: 5em;
   align-items: center;
   column-gap: 1em;
   align-items: flex-start;
@@ -90,10 +92,15 @@
   background-color: transparent;
   border: 0;
   padding: 8px;
-  border: black solid;
+  /* border: black solid; */
 }
 
 .photoDetail__infoPage:hover > input {
-  background-color: #d3d3d3;
+  /* background-color: #d3d3d3; */
   cursor: pointer;
+}
+
+.photoDetail__title {
+  display: flex;
+  text-align: center;;
 }

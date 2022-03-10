@@ -65,6 +65,7 @@ export const addPhotos = (payload) => async dispatch => {
 }
 
 export const editPhotos = (payload) => async dispatch => {
+    console.log('2. payload from the single pic for the PhotoDetail', payload)
     const res = await csrfFetch(`/api/photos/${payload.photoId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -73,6 +74,7 @@ export const editPhotos = (payload) => async dispatch => {
 
     if (res.ok) {
         const photo = await res.json()
+        console.log('4. this is the res.json() of photos for our singlePhoto', photo)
         dispatch(edit(photo))
         return photo
     }
