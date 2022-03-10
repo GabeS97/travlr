@@ -36,11 +36,11 @@ function SignupForm({ hideForm }) {
     };
 
 
-    const hideForms = () => {
-        if (showLoginForm) {
-            hideForm()
-        }
-    }
+    // const hideForms = () => {
+    //     if (showLoginForm) {
+    //         hideForm()
+    //     }
+    // }
     // useEffect(() => {
     //     const validationErrors = [];
     //     if (!email) validationErrors.push('Please provide a valid email.')

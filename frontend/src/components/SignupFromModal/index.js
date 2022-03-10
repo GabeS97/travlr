@@ -8,9 +8,6 @@ function SignupFormModal() {
         setShowModal(false)
     }
 
-    const hideForm = () => {
-        setShowModal(false)
-    }
     return (
         <>
             <button className='modal__signup' onClick={() => setShowModal(true)}>Sign Up</button>
