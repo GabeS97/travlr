@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { Modal } from '../../../context/Modal'
 import { deleteAlbum, loadAlbums, loadOneAlbum } from '../../../store/albums'
 import AlbumPhoto from '../../Photo/AlbumPhoto'
+import EditOneAlbum from '../EditOneAlbum'
 import './AlbumDetail.css'
 
 const AlbumDetail = () => {
@@ -20,7 +21,6 @@ const AlbumDetail = () => {
     const [showModal, setShowModal] = useState(false)
     const single = singles.find(single => single.id === albumId)
     const personAlbum = singles.filter(info => info.userId === user.id)
-    // console.log(single, '<<<<<<<<<<<<<<')
 
     // const [toggle, setToggle] = useState(false)
     // const [text, setText] = useState()
@@ -28,17 +28,20 @@ const AlbumDetail = () => {
         dispatch(loadOneAlbum(albumId))
     }, [dispatch])
 
-    // const onDelete = async (e) => {
-    //     const confirm = window.confirm(
-    //         'Deleting this album, will delete all the photos stored within this album. Are you sure you wish to continue?'
-    //     )
-    //     if (confirm === true) {
-    //         await dispatch(loadAlbums())
-    //             .then(dispatch(deleteAlbum(albumId)))
-    //         history.push('/dashboard/albums')
-    //     }
-    // }
+    const onDelete = async (e) => {
+        const confirm = window.confirm(
+            'Deleting this album, will delete all the photos stored within this album. Are you sure you wish to continue?'
+        )
+        if (confirm === true) {
+            await dispatch(loadAlbums())
+                .then(dispatch(deleteAlbum(albumId)))
+            history.push('/dashboard/albums')
+        }
+    }
 
+    const hideForm = () => {
+            setShowModal(false)
+    }
 
     return (
         <>
@@ -57,9 +60,19 @@ const AlbumDetail = () => {
                         </div>
                     ))}
                     <div className="albumDetail__buttons">
-                        <button >Edit</button>
-                        {/* <button onClick={onDelete}>Delete</button> */}
-                        <button onClick={() => {
+                        <button
+                            onClick={() => setShowModal(true)}
+                        >Edit
+                        </button>
+                        {showModal && (
+                            <Modal onClose={() => setShowModal(false)}>
+                                <EditOneAlbum album={singles} hideForm={hideForm}/>
+                            </Modal>
+                        )}
+
+
+                        <button onClick={onDelete}>Delete</button>
+                        {/* <button onClick={() => {
                             const confirm = window.confirm(
                                 'Deleting this album, will delete all the photos stored within this album. Are you sure you wish to continue?'
                             )
@@ -67,7 +80,7 @@ const AlbumDetail = () => {
                                 dispatch(deleteAlbum(albumId))
                                 history.push('/dashboard/albums')
                             }
-                        }}>Delete</button>
+                        }}>Delete</button> */}
                     </div>
                 </div>
             </div>

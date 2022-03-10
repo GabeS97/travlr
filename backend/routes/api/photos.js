@@ -26,6 +26,7 @@ router.post('/', asyncHandler(async (req, res) => {
 
 router.put('/:photoId', asyncHandler(async (req, res) => {
     const { content, imageUrl, userId, albumId } = req.body
+    console.log(req.body)
     const { photoId } = req.params
 
     const photo = await Photo.findOne({ where: { id: photoId } })

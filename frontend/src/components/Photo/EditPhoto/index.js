@@ -20,7 +20,7 @@ const EditPhoto = ({ photos }) => {
 
     const pics = Object.values(photo)
     const choice = pics.find(pic => pic.id === +photoId)
-    console.log(choice, '<<<<<<<<<<<<<<<<<<<<<')
+
     const photoEdit = async (e) => {
         e.preventDefault()
 
