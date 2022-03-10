@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { Modal } from '../../../context/Modal';
+import { loadAlbums } from '../../../store/albums';
 import { loadPhotos } from '../../../store/photos';
 import CreatePhoto from '../CreatePhoto';
 import EditPhoto from '../EditPhoto';
@@ -18,14 +19,22 @@ const Photo = () => {
     const user = useSelector(state => state.session.user)
     const photos = useSelector(state => state.photos)
     const photo = Object.values(photos)
-
+    const albums = useSelector(state => state.albums)
+    const album = Object.values(albums)
     const choice = photo.filter(pic => pic.userId === user.id)
+    // const filteredPhoto = photo.filter(choice => choice.userId === user.id)
+    const filteredAlbum = album.filter(choice => choice.userId === user.id)
+    // console.log('this is my filtered album ', filteredAlbum)
+
 
 
     useEffect(() => {
         dispatch(loadPhotos())
     }, [dispatch])
 
+    useEffect(() => {
+        dispatch(loadAlbums())
+    }, [dispatch])
     const hideForm = () => {
         if (photo.length + 1) {
             setShowModal(false)
@@ -42,7 +51,7 @@ const Photo = () => {
                 </button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <CreatePhoto hideForm={hideForm}/>
+                        <CreatePhoto hideForm={hideForm} filteredAlbum={filteredAlbum} />
                     </Modal>
                 )}
             </div>

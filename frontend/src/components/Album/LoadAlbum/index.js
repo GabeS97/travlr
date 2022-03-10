@@ -18,7 +18,6 @@ const Album = () => {
     // const [imageModal, setImageModal] = useState(false)
     const albums = useSelector(state => state.albums)
     const album = Object.values(albums);
-
     const user = useSelector(state => state.session.user)
     const choice = album.filter(ele => ele.userId === user.id)
 
@@ -44,7 +43,7 @@ const Album = () => {
                 </button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <CreateAlbum hideForm={hideForm} />
+                        <CreateAlbum hideForm={hideForm}  />
                     </Modal>
                 )}
             </div>
