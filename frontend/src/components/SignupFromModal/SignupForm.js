@@ -93,7 +93,7 @@ function SignupForm({ hideForm }) {
                     />
                 </label>
                 <button type="submit" className="submitSignup" disabled={errors.length > 0}>Sign Up</button>
-                <button
+                {/* <button
                     onClick={switchForm}
                 >Already Have An Account?</button>
 
@@ -101,7 +101,7 @@ function SignupForm({ hideForm }) {
                     <Modal onClose={() => setShowModal(false)}>
                         <LoginForm />
                     </Modal>
-                )}
+                )} */}
             </div>
         </form>
     );
