@@ -77,7 +77,7 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                         className='album__title'
                         type='text'
                         placeholder='Fill In Title'
-                        value={titles}
+                        // value={titles}
                         onChange={(e) => setTitle(e.target.value)}
                         required
                     />
@@ -89,7 +89,7 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                         className='album__enterImage'
                         type='url'
                         placeholder='Enter Image Link'
-                        value={imageLink}
+                        // value={imageLink}
                         onChange={(e) => setImageUrl(e.target.value)}
                         required
 
@@ -102,7 +102,7 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                         className='album__description'
                         type='text'
                         placeholder='Entler Description'
-                        value={descriptions}
+                        // value={descriptions}
                         onChange={(e) => setDescription(e.target.value)}
                         required
 

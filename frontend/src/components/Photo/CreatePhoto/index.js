@@ -7,23 +7,23 @@ import { loadAlbums } from '../../../store/albums'
 import { addPhotos } from '../../../store/photos'
 import './CreatePhotoModal.css'
 
-const CreatePhoto = ({ hideForm }) => {
+const CreatePhoto = ({ hideForm, filteredAlbum }) => {
+
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
     const albums = useSelector(state => state.albums)
     const images = useSelector(state => state.photos)
-
     const album = Object.values(albums)
-    const filteredAlbum = album.filter(select => select.userId === user.id)
-    console.log(user.id)
-    console.log(filteredAlbum)
     const image = Object.values(images)
     const [content, setContent] = useState('')
     const [imageUrl, setImageUrl] = useState('')
+    const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0])
 
-    // const [listAlbum, setListAlbum] = useState(album[0])
+
     const history = useHistory()
-
+    const { albumId } = albumChoice
+    console.log(albumId, '///////////////////////////////')
+    // console.log(filteredAlbum, '<<<<<<<<<<<<<<<: this is prop ', filteredAlbum)
     const postPhoto = async (e) => {
         e.preventDefault()
 
@@ -31,8 +31,9 @@ const CreatePhoto = ({ hideForm }) => {
             content,
             imageUrl,
             userId: user?.id,
-            // albumId: listAlbum
+            albumId: albumChoice?.id
         }
+        console.log(payload, '<<<<<<<<<<<<<<<<<<<')
         let photoPost = await dispatch(addPhotos(payload))
         hideForm()
     }
@@ -69,10 +70,16 @@ const CreatePhoto = ({ hideForm }) => {
                 </label>
 
                 <label htmlFor='selectAlbum'>
-                    <select className='photo__albumDropDown'>
-                        <option value='' className='photo__albumSelect' disabled selected>Select An Album</option>
+                    <select
+                        value={albumChoice}
+                        onChange={(e) => setAlbumChoice(e.target.value)}
+                        className='photo__albumDropDown'>
+                        <option
+                            className='photo__albumSelect'
+                            disabled selected>Select An Album</option>
                         {filteredAlbum.map(choice => (
                             <option key={choice.id} className='photo__albumDropDown'>{choice.title}</option>
+
                         ))}
                     </select>
                 </label>
