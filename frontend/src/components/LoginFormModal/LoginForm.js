@@ -23,15 +23,13 @@ function LoginForm() {
         );
     };
 
-    // useEffect(() => {
-    //     const validationError = [];
 
-
-    // })
 
 
     return (
-        <form className='login__loginForm' onSubmit={handleSubmit}>
+        <form className='login__loginForm'
+        onSubmit={handleSubmit}
+        >
             <header className="login__loginTitle">Log In</header>
             <ul className="login__errors">
                 {errors.map((error, idx) => (
