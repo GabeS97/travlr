@@ -10,7 +10,9 @@ import './Dashboard.css'
 const Dashboard = () => {
     const user = useSelector(state => state.session.user)
 
+    // console.log('this is the album state: ', album, 'this is the photo state: ', photo)
     return (
+
         <div className="dashboard__page">
             <div className="dashboard__profile">
                 <div className="dashboard__avatar">
@@ -20,10 +22,18 @@ const Dashboard = () => {
                     )}
                 </div>
             </div>
+
             <nav className="dashboard__actions">
-                <NavLink className='dashboard__albums' to='/dashboard/albums'>Album</NavLink>
-                <NavLink className='dashboard__photos' to='/dashboard/photos'>Photo</NavLink>
+                    <NavLink
+                    // onClick={() => setAlbum(true)}
+                    className='dashboard__albums'
+                    to='/dashboard/albums'>Album</NavLink>
+                <NavLink
+                // onClick={() => setPhoto(true)}
+                className='dashboard__photos'
+                to='/dashboard/photos'>Photo</NavLink>
             </nav>
+
 
             <div className="dashboard__body">
                 <Switch>
