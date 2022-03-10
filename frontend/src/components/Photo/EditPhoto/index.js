@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 import { deletePhoto, editPhotos } from '../../../store/photos'
 import './EditPhoto.css'
 
-const EditPhoto = ({ photos }) => {
+const EditPhoto = ({ photos, closeForm }) => {
     const { userId, albumId, imageUrl, content } = photos
     const history = useHistory();
     const dispatch = useDispatch()
@@ -34,15 +34,8 @@ const EditPhoto = ({ photos }) => {
         }
         const photo = await dispatch(editPhotos(payload))
         history.push('/dashboard/photos')
-
     }
 
-    // const photoDelete = (e) => {
-    //     e.preventDefault()
-
-    //     dispatch(deletePhoto(photoId))
-
-    // }
     return (
         <div className="photo__pageForm">
             <header className='photo__createHeader'>Edit Your Photo</header>
@@ -90,8 +83,9 @@ const EditPhoto = ({ photos }) => {
                         <i className="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button
-                        type='submit'
+                        type='button'
                         className='photo__buttonDelete'
+
                         onClick={() => {
                             const confirm = window.confirm(
                                 'Are you sure you want to delete this photo?'
@@ -100,8 +94,10 @@ const EditPhoto = ({ photos }) => {
                                 dispatch(deletePhoto(choice.id))
                                 history.push('/dashboard/photos')
                             }
+                            closeForm()
                         }}
                     >
+
                         <i className="fa-solid fa-trash"></i>
                     </button>
                 </div>
