@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { loadAlbums } from '../../../store/albums'
 import { addPhotos } from '../../../store/photos'
 import './CreatePhotoModal.css'
+
 const CreatePhoto = ({ hideForm }) => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
@@ -34,7 +35,6 @@ const CreatePhoto = ({ hideForm }) => {
         }
         let photoPost = await dispatch(addPhotos(payload))
         hideForm()
-
     }
     useEffect(() => {
         dispatch(loadAlbums())
@@ -52,6 +52,7 @@ const CreatePhoto = ({ hideForm }) => {
                         placeholder='Fill In Description'
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
+                        required
                     />
                 </label>
 
@@ -63,6 +64,7 @@ const CreatePhoto = ({ hideForm }) => {
                         placeholder='Enter Image Link'
                         value={imageUrl}
                         onChange={(e) => setImageUrl(e.target.value)}
+                        required
                     />
                 </label>
 
