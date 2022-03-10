@@ -69,7 +69,7 @@ const EditOnePhoto = ({ photos, hideForm }) => {
                         placeholder='Enter Image Link'
                         value={imageLink}
                         onChange={(e) => setImageUrl(e.target.value)}
-                    // required
+                    required
 
                     />
                 </label>

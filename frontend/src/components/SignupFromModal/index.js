@@ -4,6 +4,9 @@ import SignupForm from './SignupForm';
 
 function SignupFormModal() {
     const [showModal, setShowModal] = useState(false);
+    const hideForm = () => {
+        setShowModal(false)
+    }
 
     const hideForm = () => {
         setShowModal(false)

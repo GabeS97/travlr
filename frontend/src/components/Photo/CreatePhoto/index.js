@@ -14,13 +14,14 @@ const CreatePhoto = ({ hideForm }) => {
     const images = useSelector(state => state.photos)
 
     const album = Object.values(albums)
+    const filteredAlbum = album.filter(select => select.userId === user.id)
+    console.log(user.id)
+    console.log(filteredAlbum)
     const image = Object.values(images)
-
     const [content, setContent] = useState('')
     const [imageUrl, setImageUrl] = useState('')
 
     // const [listAlbum, setListAlbum] = useState(album[0])
-
     const history = useHistory()
 
     const postPhoto = async (e) => {
@@ -65,6 +66,15 @@ const CreatePhoto = ({ hideForm }) => {
                         onChange={(e) => setImageUrl(e.target.value)}
                         required
                     />
+                </label>
+
+                <label htmlFor='selectAlbum'>
+                    <select className='photo__albumDropDown'>
+                        <option value='' className='photo__albumSelect' disabled selected>Select An Album</option>
+                        {filteredAlbum.map(choice => (
+                            <option key={choice.id} className='photo__albumDropDown'>{choice.title}</option>
+                        ))}
+                    </select>
                 </label>
             </div>
             <button

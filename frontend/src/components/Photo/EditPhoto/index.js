@@ -55,7 +55,7 @@ const EditPhoto = ({ photos, closeForm }) => {
                         className='photo__content'
                         type='text'
                         placeholder='Fill In Content'
-                        value={contents}
+                        // value={contents}
                         onChange={(e) => setContent(e.target.value)}
                         required
                     />
@@ -67,9 +67,9 @@ const EditPhoto = ({ photos, closeForm }) => {
                         className='photo__enterImage'
                         type='url'
                         placeholder='Enter Image Link'
-                        value={imageLink}
+                        // value={imageLink}
                         onChange={(e) => setImageUrl(e.target.value)}
-                    // required
+                    required
 
                     />
                 </label>

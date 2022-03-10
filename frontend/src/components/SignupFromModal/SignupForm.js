@@ -17,6 +17,8 @@ function SignupForm({ hideForm }) {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
+
+    const [showLoginForm, setShowLoginForm] = useState(false)
     const [showModal, setShowModal] = useState(false)
     // if (sessionUser) return <Redirect to="/" />;
 
@@ -33,10 +35,12 @@ function SignupForm({ hideForm }) {
         return setErrors(['Confirm Password field must be the same as the Password field']);
     };
 
-    const switchForm = () => {
-        hideForm() && setShowModal(true)
-    }
 
+    const hideForms = () => {
+        if (showLoginForm) {
+            hideForm()
+        }
+    }
     // useEffect(() => {
     //     const validationErrors = [];
     //     if (!email) validationErrors.push('Please provide a valid email.')
@@ -93,6 +97,11 @@ function SignupForm({ hideForm }) {
                     />
                 </label>
                 <button type="submit" className="submitSignup" disabled={errors.length > 0}>Sign Up</button>
+
+                <button
+                onClick={() => setShowLoginForm(true) }
+                >Already Have an Account?</button>
+                {showLoginForm  && <Modal onClose={() => setShowLoginForm(false)}><LoginForm /></Modal>}
                 {/* <button
                     onClick={switchForm}
                 >Already Have An Account?</button>
@@ -102,6 +111,7 @@ function SignupForm({ hideForm }) {
                         <LoginForm />
                     </Modal>
                 )} */}
+
             </div>
         </form>
     );

@@ -86,7 +86,7 @@ const CreateAlbum = ({ hideForm }) => {
             <button
                 className='edit__createButton'
                 type='submit'
-                disabled={errors.length > 0}
+                // disabled={errors.length > 0}
                 >Post Album!</button>
         </form>
     )
