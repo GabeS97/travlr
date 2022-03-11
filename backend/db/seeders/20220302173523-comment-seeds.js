@@ -18,7 +18,14 @@ module.exports = {
       },
       {
         userId: 2,
-        imageId: 2,
+        imageId: 1,
+        comment: "That looks amazing, I can't wait to go",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 3,
+        imageId: 1,
         comment: "That looks amazing, I can't wait to go",
         createdAt: new Date(),
         updatedAt: new Date()
@@ -31,8 +38,43 @@ module.exports = {
         updatedAt: new Date()
       },
       {
+        userId: 2,
+        imageId: 2,
+        comment: "Such a beautiful place, I can't wait to go back ",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 3,
+        imageId: 2,
+        comment: "Such a beautiful place, I can't wait to go back ",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 1,
+        imageId: 4,
+        comment: "That looks amazing, I can't wait to go",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 2,
+        imageId: 4,
+        comment: "That looks amazing, I can't wait to go",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
         userId: 3,
         imageId: 4,
+        comment: "That looks amazing, I can't wait to go",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 1,
+        imageId: 3,
         comment: "That looks amazing, I can't wait to go",
         createdAt: new Date(),
         updatedAt: new Date()
