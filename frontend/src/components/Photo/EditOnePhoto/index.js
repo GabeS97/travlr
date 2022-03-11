@@ -6,14 +6,14 @@ import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { deletePhoto, editPhotos } from '../../../store/photos'
 
-const EditOnePhoto = ({ photos, hideForm }) => {
+const EditOnePhoto = ({ photos, hideForm, filteredAlbum }) => {
     const { userId, albumId, imageUrl, content } = photos
     const history = useHistory();
     const dispatch = useDispatch()
     const { photoId } = useParams();
     const [imageLink, setImageUrl] = useState(imageUrl ? imageUrl : '')
     const [contents, setContent] = useState(content ? content : '')
-
+    const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0]?.id)
     const photo = useSelector(state => state.photos)
     const user = useSelector(state => state.session.user)
 
@@ -28,7 +28,7 @@ const EditOnePhoto = ({ photos, hideForm }) => {
             imageUrl: imageLink,
             photoId: +photoId,
             userId: userId,
-            albumId: albumId
+            albumId: +albumChoice
 
         }
         const photo = await dispatch(editPhotos(payload))
@@ -69,11 +69,25 @@ const EditOnePhoto = ({ photos, hideForm }) => {
                         placeholder='Enter Image Link'
                         value={imageLink}
                         onChange={(e) => setImageUrl(e.target.value)}
-                    required
+                        required
 
                     />
                 </label>
 
+                <label htmlFor='selectAlbum'>
+                    <select
+                        value={albumChoice}
+                        onChange={(e) => setAlbumChoice(e.target.value)}
+                        className='photo__albumDropDown'>
+                        <option
+                            className='photo__albumSelect'
+                            disabled>Select An Album</option>
+                        {filteredAlbum.map(choice => (
+                            <option key={choice.id} value={choice.id} className='photo__albumDropDown'>{choice.title}</option>
+
+                        ))}
+                    </select>
+                </label>
                 <div className="photo__buttons">
                     <button
                         className='photo__buttonphoto'

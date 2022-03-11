@@ -17,12 +17,13 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
     const image = Object.values(images)
     const [content, setContent] = useState('')
     const [imageUrl, setImageUrl] = useState('')
+
     const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0]?.id)
-
-
     const history = useHistory()
+
     const { albumId } = albumChoice
-    console.log(albumId, '///////////////////////////////')
+    // console.log(albumId, '///////////////////////////////')
+    console.log('this is my albumChoice', albumChoice)
     // console.log(filteredAlbum, '<<<<<<<<<<<<<<<: this is prop ', filteredAlbum)
     const postPhoto = async (e) => {
         e.preventDefault()
@@ -31,9 +32,9 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
             content,
             imageUrl,
             userId: user?.id,
-            albumId: albumChoice
+            albumId: +albumChoice
         }
-        console.log(payload, '<<<<<<<<<<<<<<<<<<<')
+        // console.log(payload, '<<<<<<<<<<<<<<<<<<<')
         let photoPost = await dispatch(addPhotos(payload))
         hideForm()
     }
@@ -76,7 +77,8 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
                         className='photo__albumDropDown'>
                         <option
                             className='photo__albumSelect'
-                            disabled >Select An Album</option>
+
+                            disabled>Select An Album</option>
                         {filteredAlbum.map(choice => (
                             <option key={choice.id} value={choice.id} className='photo__albumDropDown'>{choice.title}</option>
 
