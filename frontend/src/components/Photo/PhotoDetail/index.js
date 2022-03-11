@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { Modal } from '../../../context/Modal';
 import { loadAlbums } from '../../../store/albums';
 import { deletePhoto, loadOnePhoto, loadPhotos } from '../../../store/photos';
+import Comment from '../../Comment';
 import EditOnePhoto from '../EditOnePhoto';
 
 
@@ -90,6 +91,7 @@ const PhotoDetail = () => {
                     </div>
                 </div>
             </div>
+            <Comment />
         </>
     )
 }
