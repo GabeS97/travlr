@@ -8,6 +8,7 @@ import { addPhotos } from '../../../store/photos'
 import './CreatePhotoModal.css'
 
 const CreatePhoto = ({ hideForm, filteredAlbum }) => {
+
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
     const albums = useSelector(state => state.albums)
@@ -16,12 +17,15 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
     const image = Object.values(images)
     const [content, setContent] = useState('')
     const [imageUrl, setImageUrl] = useState('')
-    // const [albumChoice, setAlbumChoice] = useState()
-    const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0])
-    const choice = album.find(ele => console.log(ele, '.....................'))
 
+
+    const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0]?.id)
     const history = useHistory()
+
     const { albumId } = albumChoice
+    // console.log(albumId, '///////////////////////////////')
+    console.log('this is my albumChoice', albumChoice)
+    // console.log(filteredAlbum, '<<<<<<<<<<<<<<<: this is prop ', filteredAlbum)
     const postPhoto = async (e) => {
         e.preventDefault()
 
@@ -29,12 +33,11 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
             content,
             imageUrl,
             userId: user?.id,
-            albumId: albumChoice?.id
+            albumId: +albumChoice
         }
-
+        // console.log(payload, '<<<<<<<<<<<<<<<<<<<')
         let photoPost = await dispatch(addPhotos(payload))
         hideForm()
-
     }
     useEffect(() => {
         dispatch(loadAlbums())
@@ -52,6 +55,7 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
                         placeholder='Fill In Description'
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
+                        required
                     />
                 </label>
 
@@ -63,6 +67,7 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
                         placeholder='Enter Image Link'
                         value={imageUrl}
                         onChange={(e) => setImageUrl(e.target.value)}
+                        required
                     />
                 </label>
 
@@ -73,9 +78,10 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
                         className='photo__albumDropDown'>
                         <option
                             className='photo__albumSelect'
-                            disabled selected>Select An Album</option>
+                            disabled>Select An Album</option>
                         {filteredAlbum.map(choice => (
-                            <option key={choice.id} className='photo__albumDropDown'>{choice.title}</option>
+                            <option key={choice.id} value={choice.id} className='photo__albumDropDown'>{choice.title}</option>
+
                         ))}
                     </select>
                 </label>
