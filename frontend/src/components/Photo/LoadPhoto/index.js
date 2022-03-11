@@ -34,6 +34,8 @@ const Photo = () => {
 
     useEffect(() => {
         dispatch(loadAlbums())
+
+        
     }, [dispatch])
     const hideForm = () => {
         if (photo.length + 1) {

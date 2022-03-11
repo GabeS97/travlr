@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { Modal } from '../../../context/Modal';
+import { loadAlbums } from '../../../store/albums';
 import { deletePhoto, loadOnePhoto, loadPhotos } from '../../../store/photos';
 import EditOnePhoto from '../EditOnePhoto';
 
@@ -18,11 +19,17 @@ const PhotoDetail = () => {
     const photos = useSelector(state => state.photos)
     const photo = Object.values(photos)
     const [showModal, setShowModal] = useState(false)
-
+    const user = useSelector(state => state.session.user)
+    const albums = useSelector(state => state.albums)
+    const album = Object.values(albums)
+    const filteredAlbum = album.filter(choice => choice.userId === user.id)
     useEffect(() => {
         dispatch(loadOnePhoto(photoId))
     }, [dispatch])
 
+    useEffect(() => {
+        dispatch(loadAlbums())
+    }, [dispatch])
 
     const handleDelete = async (e) => {
         // e.preventDefault()
@@ -64,7 +71,7 @@ const PhotoDetail = () => {
                         </button>
                         {showModal && (
                             <Modal onClose={() => setShowModal(false)}>
-                                <EditOnePhoto photos={photo} hideForm={hideForm} />
+                                <EditOnePhoto photos={photo} hideForm={hideForm} filteredAlbum={filteredAlbum} />
                             </Modal>
                         )}
                         <button
