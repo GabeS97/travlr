@@ -48,4 +48,5 @@ router.get('/:photoId', asyncHandler(async (req, res) => {
     const photo = await Photo.findByPk(photoId)
     return res.json(photo)
 }))
+
 module.exports = router
