@@ -1,7 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import ExploreImage from './ExploreImage'
+import ExploreHeader from './Explore'
+
 
 const Explore = () => {
     const user = useSelector(state => state.session.user)
@@ -24,7 +25,7 @@ const Explore = () => {
                 )}
             </div>
 
-            <ExploreImage />
+            <ExploreHeader />
         </>
     )
 }
