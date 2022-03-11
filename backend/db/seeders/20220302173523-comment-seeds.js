@@ -17,7 +17,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        userId: 1,
+        userId: 2,
         imageId: 2,
         comment: "That looks amazing, I can't wait to go",
         createdAt: new Date(),
