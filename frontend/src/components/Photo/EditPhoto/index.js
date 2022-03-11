@@ -75,7 +75,16 @@ const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
                     />
                 </label>
 
-              
+                <label htmlFor='photoDrowpown'>
+                    <select value={albumChoice} onChange={(e) => setAlbumChoice(e.target.value)}>
+                        <option
+                            className='photo__albumSelect'
+                            disabled>Select An Album</option>
+                        {filteredAlbum.map(choice => (
+                            <option key={choice.id} value={choice.id}>{choice.title}</option>
+                        ))}
+                    </select>
+                </label>
 
                 <div className="photo__buttons">
                     <button
