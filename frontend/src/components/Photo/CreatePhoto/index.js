@@ -18,7 +18,6 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
     const [content, setContent] = useState('')
     const [imageUrl, setImageUrl] = useState('')
 
-
     const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0]?.id)
     const history = useHistory()
 
@@ -78,6 +77,7 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
                         className='photo__albumDropDown'>
                         <option
                             className='photo__albumSelect'
+
                             disabled>Select An Album</option>
                         {filteredAlbum.map(choice => (
                             <option key={choice.id} value={choice.id} className='photo__albumDropDown'>{choice.title}</option>

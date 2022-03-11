@@ -38,7 +38,8 @@ router.delete('/:photoId', asyncHandler(async (req, res) => {
     const { photoId } = req.params;
 
     const photo = await Photo.findByPk(photoId)
-    photo.destroy()
+
+    photo.destroy();
     return res.json(photo)
 }))
 

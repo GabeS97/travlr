@@ -5,6 +5,8 @@ const ADD_PHOTOS = 'photos/ADD_PHOTOS';
 const EDIT_PHOTO = 'photots/EDIT_PHOTO';
 const DELETE_PHOTO = 'photos/DELETE_PHOTO';
 const LOAD_PHOTO = 'photos/LOAD_PHOTO'
+
+
 const load = (photos) => {
     return {
         type: LOAD_PHOTOS,

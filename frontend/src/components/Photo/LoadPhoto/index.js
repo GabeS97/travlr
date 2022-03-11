@@ -42,6 +42,11 @@ const Photo = () => {
             setShowModal(false)
         }
     }
+    const closeForm = () => {
+        if (photo.length - 1) {
+            setShowModal(false)
+        }
+    }
 
     return (
         <div className="dashboard__contents">
@@ -78,7 +83,7 @@ const Photo = () => {
                                     {photoModal && (
                                         <Route path='/dashboard/photos/:photoId'>
                                             <Modal classname='photo__editModal' onClose={() => setPhotoModal(false)}>
-                                                <EditPhoto photos={pic} />
+                                                <EditPhoto photos={pic} closeForm={closeForm} filteredAlbum={filteredAlbum}/>
                                             </Modal>
                                         </Route>
                                     )}

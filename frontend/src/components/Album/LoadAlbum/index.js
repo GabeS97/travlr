@@ -33,6 +33,7 @@ const Album = () => {
     }
 
 
+
     return (
         <div className='album__page'>
             <div className="album__title">

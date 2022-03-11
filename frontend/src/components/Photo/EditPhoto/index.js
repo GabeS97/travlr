@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 import { deletePhoto, editPhotos } from '../../../store/photos'
 import './EditPhoto.css'
 
-const EditPhoto = ({ photos }) => {
+const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
     const { userId, albumId, imageUrl, content } = photos
     const history = useHistory();
     const dispatch = useDispatch()
@@ -20,6 +20,7 @@ const EditPhoto = ({ photos }) => {
 
     const pics = Object.values(photo)
     const choice = pics.find(pic => pic.id === +photoId)
+    const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0]?.id)
 
     const photoEdit = async (e) => {
         e.preventDefault()
@@ -29,20 +30,13 @@ const EditPhoto = ({ photos }) => {
             imageUrl: imageLink,
             photoId: +photoId,
             userId: userId,
-            albumId: albumId
+            albumId: +albumChoice
 
         }
         const photo = await dispatch(editPhotos(payload))
         history.push('/dashboard/photos')
-
     }
 
-    // const photoDelete = (e) => {
-    //     e.preventDefault()
-
-    //     dispatch(deletePhoto(photoId))
-
-    // }
     return (
         <div className="photo__pageForm">
             <header className='photo__createHeader'>Edit Your Photo</header>
@@ -76,10 +70,12 @@ const EditPhoto = ({ photos }) => {
                         placeholder='Enter Image Link'
                         // value={imageLink}
                         onChange={(e) => setImageUrl(e.target.value)}
-                    required
+                        required
 
                     />
                 </label>
+
+              
 
                 <div className="photo__buttons">
                     <button
@@ -90,8 +86,9 @@ const EditPhoto = ({ photos }) => {
                         <i className="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button
-                        type='submit'
+                        type='button'
                         className='photo__buttonDelete'
+
                         onClick={() => {
                             const confirm = window.confirm(
                                 'Are you sure you want to delete this photo?'
@@ -100,8 +97,10 @@ const EditPhoto = ({ photos }) => {
                                 dispatch(deletePhoto(choice.id))
                                 history.push('/dashboard/photos')
                             }
+                            closeForm()
                         }}
                     >
+
                         <i className="fa-solid fa-trash"></i>
                     </button>
                 </div>
