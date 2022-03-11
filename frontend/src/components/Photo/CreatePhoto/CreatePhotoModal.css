@@ -1,21 +1,21 @@
 .photo__createHeader {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    font-weight: bolder;
-    flex-direction: column;
-    font-size: larger;
-    /* top: -5em; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-weight: bolder;
+  flex-direction: column;
+  font-size: larger;
+  /* top: -5em; */
 }
 
 .photo__postForm {
-    display: flex;
-    flex-direction: column;;
-    row-gap: 0.5em;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+  align-items: center;
 }
 
 .photo__image {
-    display: flex;
+  display: flex;
 }
