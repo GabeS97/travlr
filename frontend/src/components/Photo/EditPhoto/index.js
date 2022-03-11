@@ -74,9 +74,6 @@ const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
 
                     />
                 </label>
-
-              
-
                 <div className="photo__buttons">
                     <button
                         className='photo__buttonphoto'

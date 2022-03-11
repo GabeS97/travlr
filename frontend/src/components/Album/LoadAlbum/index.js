@@ -20,7 +20,7 @@ const Album = () => {
     const album = Object.values(albums);
     const user = useSelector(state => state.session.user)
     const choice = album.filter(ele => ele.userId === user.id)
-
+    console.log(choice)
 
     useEffect(() => {
         dispatch(loadAlbums())
@@ -44,7 +44,7 @@ const Album = () => {
                 </button>
                 {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
-                        <CreateAlbum hideForm={hideForm}  />
+                        <CreateAlbum hideForm={hideForm} />
                     </Modal>
                 )}
             </div>
@@ -73,6 +73,13 @@ const Album = () => {
                                             </Modal>
                                         </Route>
                                     )}
+                                </div>
+                            </div>
+
+                            <div className="album__infos">
+                                <div className="album__titleContain">
+                                    <h2 className='album__titles'>{ele.title}</h2>
+                                    <p>{ele.createdAt}</p>
                                 </div>
                             </div>
                         </div>
