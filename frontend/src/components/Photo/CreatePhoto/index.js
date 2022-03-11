@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import { loadAlbums } from '../../../store/albums'
 import { addPhotos } from '../../../store/photos'
 import './CreatePhotoModal.css'
+
 const CreatePhoto = ({ hideForm, filteredAlbum }) => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
@@ -15,13 +16,12 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
     const image = Object.values(images)
     const [content, setContent] = useState('')
     const [imageUrl, setImageUrl] = useState('')
+    // const [albumChoice, setAlbumChoice] = useState()
     const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0])
-
+    const choice = album.find(ele => console.log(ele, '.....................'))
 
     const history = useHistory()
     const { albumId } = albumChoice
-    console.log(albumId, '///////////////////////////////')
-    // console.log(filteredAlbum, '<<<<<<<<<<<<<<<: this is prop ', filteredAlbum)
     const postPhoto = async (e) => {
         e.preventDefault()
 
@@ -31,7 +31,7 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
             userId: user?.id,
             albumId: albumChoice?.id
         }
-        console.log(payload, '<<<<<<<<<<<<<<<<<<<')
+
         let photoPost = await dispatch(addPhotos(payload))
         hideForm()
 
@@ -76,7 +76,6 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
                             disabled selected>Select An Album</option>
                         {filteredAlbum.map(choice => (
                             <option key={choice.id} className='photo__albumDropDown'>{choice.title}</option>
-
                         ))}
                     </select>
                 </label>
