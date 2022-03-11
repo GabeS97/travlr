@@ -75,6 +75,7 @@ const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
                     />
                 </label>
 
+
                 <label htmlFor='photoDrowpown'>
                     <select value={albumChoice} onChange={(e) => setAlbumChoice(e.target.value)}>
                         <option
