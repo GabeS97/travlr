@@ -1,3 +1,7 @@
 /* TODO Add site wide styles */
-html { overflow-y: scroll; overflow-x:hidden; }
+html {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: #f3f5f6;
+}
 /* body { position: absolute; } */

@@ -12,6 +12,7 @@ import PhotoDetail from "./components/Photo/PhotoDetail";
 
 function App() {
   const user = useSelector(state => state.session.user)
+
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 

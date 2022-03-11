@@ -35,15 +35,26 @@ const deleteComment = (comment) => {
 
 export const getComments = () => async dispatch => {
     const res = await csrfFetch('/api/comments')
-    console.log('2. this is my thunk for my comments', res)
     if (res.ok) {
         const comments = await res.json()
-        console.log('4. is our response return a string comments ', comments)
         dispatch(loadComments(comments))
         return comments
     }
 }
 
+export const putComment = (payload) => async dispatch => {
+    const res = await csrfFetch(`/api/comments/${payload.commentId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+
+    if (res.ok) {
+        const comment = await res.json()
+        dispatch(editComment(comment))
+        return comment
+    }
+}
 let initialState = {}
 
 const commentsReducer = (state = initialState, action) => {
@@ -56,7 +67,11 @@ const commentsReducer = (state = initialState, action) => {
                 allComments[comment.id] = comment
             })
             newState = allComments
-            console.log('5. whats are reducer looking like right now ? ', newState)
+            return newState
+        }
+        case EDIT_COMMENT: {
+            newState = { ...state }
+            newState = { ...state, [action.comment.id]: action.comment }
             return newState
         }
         default:

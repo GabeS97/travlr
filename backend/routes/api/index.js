@@ -15,6 +15,9 @@ router.use('/albums', albumRouter);
 
 router.use('/comments', commentRouter);
 
+router.use('/listUsers', usersRouter);
+
+
 // router.post('/test', (req, res) => {
 //     res.json({ requestBody: req.body });
 // });
