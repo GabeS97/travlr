@@ -17,7 +17,7 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
     const image = Object.values(images)
     const [content, setContent] = useState('')
     const [imageUrl, setImageUrl] = useState('')
-    const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0])
+    const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0]?.id)
 
 
     const history = useHistory()
@@ -31,7 +31,7 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
             content,
             imageUrl,
             userId: user?.id,
-            albumId: albumChoice?.id
+            albumId: albumChoice
         }
         console.log(payload, '<<<<<<<<<<<<<<<<<<<')
         let photoPost = await dispatch(addPhotos(payload))
@@ -76,9 +76,9 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
                         className='photo__albumDropDown'>
                         <option
                             className='photo__albumSelect'
-                            disabled selected>Select An Album</option>
+                            disabled >Select An Album</option>
                         {filteredAlbum.map(choice => (
-                            <option key={choice.id} className='photo__albumDropDown'>{choice.title}</option>
+                            <option key={choice.id} value={choice.id} className='photo__albumDropDown'>{choice.title}</option>
 
                         ))}
                     </select>

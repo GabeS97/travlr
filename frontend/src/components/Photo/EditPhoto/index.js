@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 import { deletePhoto, editPhotos } from '../../../store/photos'
 import './EditPhoto.css'
 
-const EditPhoto = ({ photos, closeForm }) => {
+const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
     const { userId, albumId, imageUrl, content } = photos
     const history = useHistory();
     const dispatch = useDispatch()
@@ -20,6 +20,7 @@ const EditPhoto = ({ photos, closeForm }) => {
 
     const pics = Object.values(photo)
     const choice = pics.find(pic => pic.id === +photoId)
+    const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0]?.id)
 
     const photoEdit = async (e) => {
         e.preventDefault()
@@ -29,7 +30,7 @@ const EditPhoto = ({ photos, closeForm }) => {
             imageUrl: imageLink,
             photoId: +photoId,
             userId: userId,
-            albumId: albumId
+            albumId: +albumChoice
 
         }
         const photo = await dispatch(editPhotos(payload))
@@ -69,10 +70,12 @@ const EditPhoto = ({ photos, closeForm }) => {
                         placeholder='Enter Image Link'
                         // value={imageLink}
                         onChange={(e) => setImageUrl(e.target.value)}
-                    required
+                        required
 
                     />
                 </label>
+
+              
 
                 <div className="photo__buttons">
                     <button
