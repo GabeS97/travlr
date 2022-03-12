@@ -23,7 +23,7 @@ const ExploreHeader = () => {
         <div className='explore'>
             <div className="explore__page">
                 <div className="explore__title">
-                    <h2>Explore Public Facing Momoments</h2>
+                    <h2>A collection of our users' moments</h2>
                     <p> “NOT ALL THOSE WHO WANDER ARE LOST.” – J.R.R. TOLKIEN</p>
                     {user ?
                         <NavLink to='/dashboard/albums'>
