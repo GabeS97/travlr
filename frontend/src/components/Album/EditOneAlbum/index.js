@@ -90,7 +90,7 @@ const EditOneAlbum = ({ album, hideForm }) => {
                 <button
                     className='edit__buttonEdit'
                     type='submit'
-                    disabled={errors.length > 0}
+                    // disabled={errors.length > 0}
                 >
                     <i className="fa-solid fa-pen-to-square"></i>
                 </button>
