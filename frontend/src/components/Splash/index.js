@@ -2,6 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import LoginFormModal from '../LoginFormModal'
 import './Splash.css'
+import { animated, useTransition, useSpringRef } from 'react-spring';
+
 
 const Splash = () => {
     return (
