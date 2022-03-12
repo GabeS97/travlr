@@ -59,7 +59,7 @@ function LoginForm() {
                 <button
                     className='login__loginSubmit'
                     type="submit"
-                    disabled={errors.length > 0}
+                    // disabled={errors.length > 0}
                 >Log In</button>
                 <DemoUser className='login__demo' />
             </div>
