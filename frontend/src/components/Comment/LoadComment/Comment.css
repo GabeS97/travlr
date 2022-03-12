@@ -82,3 +82,12 @@
   transition-duration: 300ms;
   color: red;
 }
+
+.comment__editLink {
+    text-decoration: none;
+    color: black;
+}
+
+.fa-pen-to-square {
+    display: flex;
+}
