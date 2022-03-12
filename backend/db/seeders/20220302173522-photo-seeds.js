@@ -13,7 +13,7 @@ module.exports = {
         userId: 1,
         albumId: 1,
         imageUrl: 'https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHRyYXZlbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-        content: null,
+        content: 'this pic is amazing',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -21,7 +21,7 @@ module.exports = {
         userId: 1,
         albumId: 2,
         imageUrl: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzF8fHRyYXZlbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-        content: null,
+        content: 'this pic is amazing',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -45,7 +45,7 @@ module.exports = {
         userId: 2,
         albumId: 1,
         imageUrl: 'https://images.unsplash.com/photo-1614640005509-2b10151cf3b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8MzgzMjMwMHx8ZW58MHx8fHw%3D&dpr=1&auto=format&fit=crop&w=294&q=60',
-        content: null,
+        content: 'this pic is amazing',
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -53,7 +53,7 @@ module.exports = {
         userId: 2,
         albumId: 2,
         imageUrl: 'https://images.unsplash.com/photo-1642965961298-02f31304044d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8MzY4ODE0MXx8ZW58MHx8fHw%3D&dpr=1&auto=format&fit=crop&w=294&q=60',
-        content: null,
+        content: 'this pic is amazing',
         createdAt: new Date(),
         updatedAt: new Date()
       },
