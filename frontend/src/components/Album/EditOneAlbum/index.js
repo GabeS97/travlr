@@ -55,7 +55,6 @@ const EditOneAlbum = ({ album, hideForm }) => {
                     className='album__title'
                     type='text'
                     value={titles}
-                    // value={titles}
                     onChange={(e) => setTitle(e.target.value)}
                     required
                 />
@@ -67,7 +66,6 @@ const EditOneAlbum = ({ album, hideForm }) => {
                     className='album__enterImage'
                     type='url'
                     value={imageLink}
-                    // value={imageLink}
                     onChange={(e) => setImageUrl(e.target.value)}
                     // required
 
@@ -79,7 +77,6 @@ const EditOneAlbum = ({ album, hideForm }) => {
                 <input
                     className='album__description'
                     type='text'
-                    // value={descriptions}
                     value={descriptions}
                     onChange={(e) => setDescription(e.target.value)}
                     required
