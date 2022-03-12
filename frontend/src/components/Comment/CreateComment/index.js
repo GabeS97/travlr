@@ -29,12 +29,12 @@ const CreateComment = () => {
         <div className='create__fornComment'>
             <form onSubmit={handleSubmit} action="/form/submit" method="POST">
                 {/* <div className="comment__inputFields"> */}
-                    <input className='comment__title' placeholder='Enter Title of Commnet' onChange={(e) => setTitle(e.target.value)} />
-                    <textarea className="comment" placeholder='Type your comment here.' onChange={(e) => setComment(e.target.value)}></textarea>
+                    <input className='comment__title' placeholder='Enter Title of Commnet' required onChange={(e) => setTitle(e.target.value)} />
+                    <textarea className="comment" placeholder='Type your comment here.' required onChange={(e) => setComment(e.target.value)}></textarea>
                     <br />
                 {/* </div> */}
                 <div className="create__commentSubmit">
-                    <button type='submit' className='create__submitComment'>Send</button>
+                    <button type='submit'className='create__submitComment'>Send</button>
                 </div>
             </form>
         </div>
