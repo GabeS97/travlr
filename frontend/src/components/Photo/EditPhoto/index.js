@@ -56,7 +56,6 @@ const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
                         className='photo__content'
                         type='text'
                         // placeholder={contents}
-                        // value={contents}
                         value={contents}
                         onChange={(e) => setContent(e.target.value)}
                         required
