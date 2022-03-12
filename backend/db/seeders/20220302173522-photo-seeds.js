@@ -13,7 +13,7 @@ module.exports = {
         userId: 1,
         albumId: 1,
         imageUrl: 'https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHRyYXZlbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-        content: 'Beautiful Stroll',
+        content: null,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -21,7 +21,7 @@ module.exports = {
         userId: 1,
         albumId: 2,
         imageUrl: 'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzF8fHRyYXZlbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-        content: 'Amazing photo',
+        content: null,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -29,7 +29,7 @@ module.exports = {
         userId: 1,
         albumId: 1,
         imageUrl: 'https://images.unsplash.com/photo-1506125840744-167167210587?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzB8fHRyYXZlbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-        content: 'Love the sharks',
+        content: null,
         createdAt: new Date(),
         updatedAt: new Date()
       },
