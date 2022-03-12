@@ -61,7 +61,7 @@
   position: relative;
   /* right: 1em; */
 }
-/* 
+/*
 .photo__form > label > input {
   color: lightslategrey;
 }
@@ -79,5 +79,5 @@
   border: none;
   cursor:text;
   border-left: solid blue;
+  color: black;
 }
-
