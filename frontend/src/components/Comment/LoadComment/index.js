@@ -18,6 +18,7 @@ const Comment = () => {
     const comments = useSelector(state => state.comments);
     const comment = Object.values(comments)
     const users = useSelector(state => state.users)
+
     const user = Object.values(users)
     const sessoinUser = useSelector(state => state.session.user)
     const myComment = comment.find(myFeed => myFeed.userId === sessoinUser.id)

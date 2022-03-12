@@ -49,8 +49,7 @@ function Navigation({ isLoaded }) {
                 <div className="home__searchbar">
                     <input
                         className='home__search'
-                        placeholder='This is just for the aesthetics, the actual bar is disabled. Sorry, come again another time'
-                        disabled
+                        placeholder='Search for photss, currently not working'
                     >
                     </input>
                 </div>

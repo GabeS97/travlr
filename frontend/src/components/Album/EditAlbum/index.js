@@ -15,13 +15,12 @@ const EditAlbum = ({ album, setAlbumModal }) => {
     const choice = albumVal.find(val => val.id === +albumId)
     const history = useHistory();
     const dispatch = useDispatch()
-    // const [titles, setTitle] = useState('choice.title '? choice.title : '')
-    const [titles, setTitle] = useState(choice.title ? choice.title : '')
-    const [descriptions, setDescription] = useState(choice.description ? choice.description : '')
+    const [titles, setTitle] = useState(title ? choice.title : '')
+    const [descriptions, setDescription] = useState(choice.description ? description : '')
     const [imageLink, setImageUrl] = useState(choice.imageUrl ? imageUrl : '')
     const [errors, setErrors] = useState([])
     const user = useSelector(state => state.session.user);
-    // console.log(titles, '<<<<<<<<<<<<<< this is the description >>>>>>>>>>>>>>', title)
+
     // useEffect(() => {
     //     const errorValidation = [];
 
@@ -79,6 +78,7 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                         type='text'
                         // value={titles}
                         value={titles}
+
                         onChange={(e) => setTitle(e.target.value)}
                         required
                     />
@@ -89,7 +89,6 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                     <input
                         className='album__enterImage'
                         type='url'
-                        // value={imageLink}
                         value={imageLink}
                         onChange={(e) => setImageUrl(e.target.value)}
                         required
@@ -100,10 +99,9 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                 <label htmlFor='description'>
                     {/* Enter a description */}
                     <input
-                        className='album__descriptions'
+                        className='album__description'
                         type='text'
                         value={descriptions}
-                        // value={descriptions}
                         onChange={(e) => setDescription(e.target.value)}
                         required
 
