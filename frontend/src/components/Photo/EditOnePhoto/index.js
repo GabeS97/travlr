@@ -11,14 +11,14 @@ const EditOnePhoto = ({ photos, hideForm, filteredAlbum }) => {
     const history = useHistory();
     const dispatch = useDispatch()
     const { photoId } = useParams();
-    const [imageLink, setImageUrl] = useState(imageUrl ? imageUrl : '')
-    const [contents, setContent] = useState(content ? content : '')
-    const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0]?.id)
     const photo = useSelector(state => state.photos)
-    const user = useSelector(state => state.session.user)
-
     const pics = Object.values(photo)
     const choice = pics.find(pic => pic.id === +photoId)
+    const [imageLink, setImageUrl] = useState(choice.imageUrl ? choice.imageUrl : '')
+    const [contents, setContent] = useState(choice.content ? choice.content : '')
+    const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0]?.id)
+    const user = useSelector(state => state.session.user)
+
 
     const photoEdit = async (e) => {
         e.preventDefault()
@@ -54,7 +54,7 @@ const EditOnePhoto = ({ photos, hideForm, filteredAlbum }) => {
                     <input
                         className='photo__content'
                         type='text'
-                        placeholder='Fill In Content'
+                        // placeholder='Fill In Content'
                         value={contents}
                         onChange={(e) => setContent(e.target.value)}
                         required
@@ -66,7 +66,7 @@ const EditOnePhoto = ({ photos, hideForm, filteredAlbum }) => {
                     <input
                         className='photo__enterImage'
                         type='url'
-                        placeholder='Enter Image Link'
+                        // placeholder='Enter Image Link'
                         value={imageLink}
                         onChange={(e) => setImageUrl(e.target.value)}
                         required

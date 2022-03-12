@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import DemoUser from "../Navigation/DemoUser";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
@@ -11,7 +11,6 @@ function LoginForm() {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
     const history = useHistory()
-
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
@@ -22,9 +21,6 @@ function LoginForm() {
             }
         );
     };
-
-
-
 
     return (
         <form className='login__loginForm'
@@ -55,7 +51,7 @@ function LoginForm() {
                         value={password}
                         placeholder='Password'
                         onChange={(e) => setPassword(e.target.value)}
-                    required
+                    // required
                     />
                 </label>
             </div>
