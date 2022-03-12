@@ -68,6 +68,19 @@ export const putComment = (payload) => async dispatch => {
         return comment
     }
 }
+
+export const removeComment = (payload) => async dispatch => {
+    const res = await csrfFetch(`/api/comments/${payload}`, {
+        method: 'DELETE',
+        body: JSON.stringify({ payload })
+    })
+
+    if (res.ok) {
+        const comment = await res.json()
+        dispatch(deleteComment(comment))
+        return comment
+    }
+}
 let initialState = {}
 
 const commentsReducer = (state = initialState, action) => {
@@ -90,6 +103,11 @@ const commentsReducer = (state = initialState, action) => {
         case EDIT_COMMENT: {
             newState = { ...state }
             newState = { ...state, [action.comment.id]: action.comment }
+            return newState
+        }
+        case DELETE_COMMENT: {
+            newState = { ...state }
+            delete newState[action.comment.id]
             return newState
         }
         default:

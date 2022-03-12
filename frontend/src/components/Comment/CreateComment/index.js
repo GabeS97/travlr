@@ -24,7 +24,6 @@ const CreateComment = () => {
             comment
         }
         const createdComments = await dispatch(addComment(payload))
-
     }
     return (
         <div className='create__fornComment'>
