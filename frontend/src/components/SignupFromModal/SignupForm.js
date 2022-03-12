@@ -98,10 +98,10 @@ function SignupForm({ hideForm }) {
                 </label>
                 <button type="submit" className="submitSignup" disabled={errors.length > 0}>Sign Up</button>
 
-                <button
+                {/* <button
                 onClick={() => setShowLoginForm(true) }
-                >Already Have an Account?</button>
-                {showLoginForm  && <Modal onClose={() => setShowLoginForm(false)}><LoginForm /></Modal>}
+                >Already Have an Account?</button> */}
+                {/* {showLoginForm  && <Modal onClose={() => setShowLoginForm(false)}><LoginForm /></Modal>} */}
                 {/* <button
                     onClick={switchForm}
                 >Already Have An Account?</button>

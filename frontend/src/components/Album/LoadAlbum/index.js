@@ -19,7 +19,7 @@ const Album = () => {
     const albums = useSelector(state => state.albums)
     const album = Object.values(albums);
     const user = useSelector(state => state.session.user)
-    const choice = album.filter(ele => ele.userId === user.id)
+    const choice = album.filter(ele => ele.userId === user?.id)
     console.log(choice)
 
     useEffect(() => {
@@ -66,7 +66,7 @@ const Album = () => {
                                             onClick={(e => setAlbumModal(true))}
                                         ></i>
                                     </NavLink>
-                                    
+
                                     {albumModal && (
                                         <Route path='/dashboard/albums/:albumId'>
                                             <Modal classname='album__editModal' onClose={() => setAlbumModal(false)}>
