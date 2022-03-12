@@ -60,7 +60,16 @@
   position: relative;
   /* right: 1em; */
 }
+/* 
+.photo__form > label > input {
+  color: lightslategrey;
+}
 
+.photo__form > label > input:focus {
+  border: none;
+  cursor:text;
+  border-left: solid blue;
+} */
 .photo__form > label > input {
   color: lightslategrey;
 }

@@ -57,6 +57,15 @@
   /* right: 1em; */
 }
 
+/* .edit__form > label > input {
+  color: lightslategrey;
+}
+
+.edit__form > label > input:focus {
+  border: none;
+  cursor:text;
+  border-left: solid blue;
+} */
 .edit__form > label > input {
   color: lightslategrey;
 }
