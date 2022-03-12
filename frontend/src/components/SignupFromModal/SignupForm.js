@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 // import { useSelector } from "react-redux";
@@ -20,7 +20,6 @@ function SignupForm({ hideForm }) {
 
     const [showLoginForm, setShowLoginForm] = useState(false)
     const [showModal, setShowModal] = useState(false)
-    // if (sessionUser) return <Redirect to="/" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -96,7 +95,7 @@ function SignupForm({ hideForm }) {
                         required
                     />
                 </label>
-                <button type="submit" className="submitSignup" disabled={errors.length > 0}>Sign Up</button>
+                <button type="submit" className="submitSignup">Sign Up</button>
 
                 {/* <button
                 onClick={() => setShowLoginForm(true) }

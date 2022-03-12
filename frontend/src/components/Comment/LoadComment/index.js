@@ -13,14 +13,6 @@ const Comment = () => {
     const comments = useSelector(state => state.comments);
     const comment = Object.values(comments)
     const users = useSelector(state => state.users)
-    // const user = Object.values(users)
-    // const choice  = user.map(ele => {
-    //     const { id } = ele
-
-    //     const match = comment.filter(feed => feed?.id === id)
-    //     console.log(match, '<<<<<<<<<<<<')
-    // })
-
 
     const picComment = comment.filter(ele => ele.imageId === +photoId)
 
