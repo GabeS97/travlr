@@ -6,10 +6,12 @@ import EditAlbum from '../Album/EditAlbum'
 import Album from '../Album/LoadAlbum'
 import Photo from '../Photo/LoadPhoto'
 import './Dashboard.css'
+import DefaultImage from './DefaultImage'
 
 const Dashboard = () => {
     const user = useSelector(state => state.session.user)
-
+    const [album, setAlbum] = useState(false)
+    const [photo, setPhoto] = useState(false)
     // console.log('this is the album state: ', album, 'this is the photo state: ', photo)
     return (
 
@@ -22,29 +24,32 @@ const Dashboard = () => {
                     )}
                 </div>
             </div>
-
             <nav className="dashboard__actions">
-                    <NavLink
-                    // onClick={() => setAlbum(true)}
+                <NavLink
+                    onClick={() => setAlbum(true)}
                     className='dashboard__albums'
                     to='/dashboard/albums'>Album</NavLink>
                 <NavLink
-                // onClick={() => setPhoto(true)}
-                className='dashboard__photos'
-                to='/dashboard/photos'>Photo</NavLink>
+                    onClick={() => setPhoto(true)}
+                    className='dashboard__photos'
+                    to='/dashboard/photos'>Photo</NavLink>
             </nav>
 
 
-            <div className="dashboard__body">
-                <Switch>
-                    <Route path='/dashboard/albums'>
-                        <Album />
-                    </Route>
-                    <Route path='/dashboard/photos'>
-                        <Photo />
-                    </Route>
-                </Switch>
-            </div>
+            {(!album && !photo) ?
+                <DefaultImage /> :
+                <div className="dashboard__body">
+                    <Switch>
+                        <Route path='/dashboard/albums'>
+                            <Album />
+                        </Route>
+                        <Route path='/dashboard/photos'>
+                            <Photo />
+                        </Route>
+                    </Switch>
+                </div>
+            }
+
         </div>
     )
 }
