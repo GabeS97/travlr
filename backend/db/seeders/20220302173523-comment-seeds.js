@@ -20,7 +20,7 @@ module.exports = {
       {
         userId: 2,
         imageId: 1,
-        title: 'Such a beautiful pics ',
+        title: 'Such a beautiful pics user2, did this though',
         comment: "That looks amazing, I can't wait to go",
         createdAt: new Date(),
         updatedAt: new Date()
@@ -28,7 +28,7 @@ module.exports = {
       {
         userId: 3,
         imageId: 1,
-        title: 'Such a beautiful pics ',
+        title: 'Such a beautiful pics, and this is done by user 3',
         comment: "That looks amazing, I can't wait to go",
         createdAt: new Date(),
         updatedAt: new Date()

@@ -14,6 +14,16 @@ const Comment = () => {
     const comment = Object.values(comments)
     const users = useSelector(state => state.users)
 
+    const user = Object.values(users)
+    const sessoinUser = useSelector(state => state.session.user)
+    const myComment = comment.find(myFeed => myFeed.userId === sessoinUser.id)
+    const choice = user.map(ele => {
+        const { id } = ele
+
+        const match = comment.filter(feed => feed?.id === id)
+    })
+
+
     const picComment = comment.filter(ele => ele.imageId === +photoId)
 
     useEffect(() => {
@@ -32,9 +42,18 @@ const Comment = () => {
             <div className="comment__page">
                 <div className='comment__card'>
                     {picComment.map(feedback => (
-                        <div key={feedback.id} className='comment__box'>
-                            <h3>{feedback.title}</h3>
-                            <p className='comment__comment'>{feedback.comment}</p>
+                        <div>
+                            {feedback.userId === sessoinUser.id && (
+                                <div className="comment__editNDelete">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    <i class="fa-solid fa-trash"></i>
+                                </div>
+                            )}
+
+                            <div key={feedback.id} className='comment__box'>
+                                <h3>{feedback.title}</h3>
+                                <p className='comment__comment'>{feedback.comment}</p>
+                            </div>
                         </div>
                     ))}
                     <CreateComment />
