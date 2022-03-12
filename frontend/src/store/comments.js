@@ -42,19 +42,6 @@ export const getComments = () => async dispatch => {
     }
 }
 
-export const addComment = (payload) => async dispatch => {
-    const res = await csrfFetch('/api/comments', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-    })
-
-    if (res.ok) {
-        const comment = await res.json()
-        dispatch(createComment(comment))
-        return comment
-    }
-}
 export const putComment = (payload) => async dispatch => {
     const res = await csrfFetch(`/api/comments/${payload.commentId}`, {
         method: 'PUT',
@@ -80,11 +67,6 @@ const commentsReducer = (state = initialState, action) => {
                 allComments[comment.id] = comment
             })
             newState = allComments
-            return newState
-        }
-        case CREATE_COMMENT: {
-            newState = { ...state }
-            newState = { ...state, [action.comment.id]: action.comment}
             return newState
         }
         case EDIT_COMMENT: {
