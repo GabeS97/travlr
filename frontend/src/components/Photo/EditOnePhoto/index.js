@@ -54,7 +54,7 @@ const EditOnePhoto = ({ photos, hideForm, filteredAlbum }) => {
                     <input
                         className='photo__content'
                         type='text'
-                        // placeholder='Fill In Content'
+                        // value={contents}
                         value={contents}
                         onChange={(e) => setContent(e.target.value)}
                         required
@@ -66,7 +66,7 @@ const EditOnePhoto = ({ photos, hideForm, filteredAlbum }) => {
                     <input
                         className='photo__enterImage'
                         type='url'
-                        // placeholder='Enter Image Link'
+                        // value={imageLink}
                         value={imageLink}
                         onChange={(e) => setImageUrl(e.target.value)}
                         required
