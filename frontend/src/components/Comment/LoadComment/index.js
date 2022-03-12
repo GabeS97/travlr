@@ -1,10 +1,15 @@
 import React from 'react'
+import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+import { Modal } from '../../../context/Modal'
 import { getComments } from '../../../store/comments'
 import { getUsers } from '../../../store/users'
 import CreateComment from '../CreateComment'
+import EditComment from '../EditComment'
 import './Comment.css'
 
 const Comment = () => {
@@ -17,11 +22,12 @@ const Comment = () => {
     const user = Object.values(users)
     const sessoinUser = useSelector(state => state.session.user)
     const myComment = comment.find(myFeed => myFeed.userId === sessoinUser.id)
-    const choice = user.map(ele => {
-        const { id } = ele
+    const [showModal, setShowModal] = useState(false)
+    // const choice = user.map(ele => {
+    //     const { id } = ele
 
-        const match = comment.filter(feed => feed?.id === id)
-    })
+    //     const match = comment.filter(feed => feed?.id === id)
+    // })
 
 
     const picComment = comment.filter(ele => ele.imageId === +photoId)
@@ -45,10 +51,21 @@ const Comment = () => {
                         <div>
                             {feedback.userId === sessoinUser.id && (
                                 <div className="comment__editNDelete">
-                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    <NavLink className='comment__editLink' to={`/photos/${photoId}/reviews/${feedback.id}`}>
+                                        <i class="fa-solid fa-pen-to-square" onClick={() => setShowModal(true)}></i>
+                                    </NavLink>
                                     <i class="fa-solid fa-trash"></i>
                                 </div>
                             )}
+                            {showModal && (
+                                <Modal onClose={() => setShowModal(false)}>
+                                    <EditComment />
+                                </Modal>
+                            )}
+
+                            <Route path='/photos/:photoId/revieews/:commentId'>
+                                <EditComment/>
+                            </Route>
 
                             <div key={feedback.id} className='comment__box'>
                                 <h3>{feedback.title}</h3>
