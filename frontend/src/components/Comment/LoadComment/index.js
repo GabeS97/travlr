@@ -3,8 +3,8 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getComments } from '../../../store/comments'
+import { getUsers } from '../../../store/users'
 import CreateComment from '../CreateComment'
-// import { getUsers } from '../../store/users'
 import './Comment.css'
 
 const Comment = () => {
@@ -12,16 +12,25 @@ const Comment = () => {
     const { photoId } = useParams();
     const comments = useSelector(state => state.comments);
     const comment = Object.values(comments)
-    // const users = useSelector(state => console.log(state, '<<<<<<<<<<<<<<<<'))
+    const users = useSelector(state => state.users)
+    const user = Object.values(users)
+    const choice  = user.map(ele => {
+        const { id } = ele
+
+        const match = comment.filter(feed => feed?.id === id)
+        console.log(match, '<<<<<<<<<<<<')
+    })
+
+
     const picComment = comment.filter(ele => ele.imageId === +photoId)
 
     useEffect(() => {
         dispatch(getComments())
     }, [dispatch])
 
-    // useEffect(() => {
-    //     dispatch(getUsers())
-    // }, [dispatch])
+    useEffect(() => {
+        dispatch(getUsers())
+    }, [dispatch])
 
 
 
