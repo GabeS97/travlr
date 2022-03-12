@@ -15,12 +15,13 @@ const EditAlbum = ({ album, setAlbumModal }) => {
     const choice = albumVal.find(val => val.id === +albumId)
     const history = useHistory();
     const dispatch = useDispatch()
-    const [titles, setTitle] = useState(title ? choice.title : '')
-    const [descriptions, setDescription] = useState(choice.description ? description : '')
+    // const [titles, setTitle] = useState('choice.title '? choice.title : '')
+    const [titles, setTitle] = useState(choice.title ? choice.title : '')
+    const [descriptions, setDescription] = useState(choice.description ? choice.description : '')
     const [imageLink, setImageUrl] = useState(choice.imageUrl ? imageUrl : '')
     const [errors, setErrors] = useState([])
     const user = useSelector(state => state.session.user);
-
+    // console.log(titles, '<<<<<<<<<<<<<< this is the description >>>>>>>>>>>>>>', title)
     // useEffect(() => {
     //     const errorValidation = [];
 
@@ -76,8 +77,9 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                     <input
                         className='album__title'
                         type='text'
-                        placeholder='Fill In Title'
-                        // value={titles}
+                        // placeholder={titles}
+                        // placeholder='Fill In Title'
+                        value={titles}
                         onChange={(e) => setTitle(e.target.value)}
                         required
                     />
@@ -88,8 +90,9 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                     <input
                         className='album__enterImage'
                         type='url'
-                        placeholder='Enter Image Link'
-                        // value={imageLink}
+                        // placeholder='Enter Image Link'
+                        // placeholder={imageLink}
+                        value={imageLink}
                         onChange={(e) => setImageUrl(e.target.value)}
                         required
 
@@ -99,10 +102,11 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                 <label htmlFor='description'>
                     {/* Enter a description */}
                     <input
-                        className='album__description'
+                        className='album__descriptions'
                         type='text'
-                        placeholder='Entler Description'
-                        // value={descriptions}
+                        // placeholder='Entler Description'
+                        // placeholder={descriptions}
+                        value={descriptions}
                         onChange={(e) => setDescription(e.target.value)}
                         required
 

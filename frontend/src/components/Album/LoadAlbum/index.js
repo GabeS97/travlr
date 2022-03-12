@@ -66,6 +66,7 @@ const Album = () => {
                                             onClick={(e => setAlbumModal(true))}
                                         ></i>
                                     </NavLink>
+                                    
                                     {albumModal && (
                                         <Route path='/dashboard/albums/:albumId'>
                                             <Modal classname='album__editModal' onClose={() => setAlbumModal(false)}>
