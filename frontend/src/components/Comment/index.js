@@ -2,9 +2,8 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { getComments } from '../../../store/comments'
-import CreateComment from '../CreateComment'
-// import { getUsers } from '../../store/users'
+import { getComments } from '../../store/comments'
+import { getUsers } from '../../store/users'
 import './Comment.css'
 
 const Comment = () => {
@@ -31,12 +30,10 @@ const Comment = () => {
             <div className="comment__page">
                 <div className='comment__card'>
                     {picComment.map(feedback => (
-                        <div key={feedback.id} className='comment__box'>
-                            <h3>{feedback.title}</h3>
+                        <div key={feedback.id}className='comment__box'>
                             <p className='comment__comment'>{feedback.comment}</p>
                         </div>
                     ))}
-                    <CreateComment />
                 </div>
             </div>
         </>
