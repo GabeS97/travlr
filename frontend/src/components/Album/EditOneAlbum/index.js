@@ -14,9 +14,9 @@ const EditOneAlbum = ({ album, hideForm }) => {
     const choice = albumVal.find(val => val.id === +albumId)
     const history = useHistory();
     const dispatch = useDispatch()
-    const [titles, setTitle] = useState(choice.title ? choice.title : '')
-    const [descriptions, setDescription] = useState(choice.description ? choice.description : '')
-    const [imageLink, setImageUrl] = useState(choice.imageUrl ? choice.imageUrl : '')
+    const [titles, setTitle] = useState(title ? choice.title : '')
+    const [descriptions, setDescription] = useState(choice.description ? description : '')
+    const [imageLink, setImageUrl] = useState(choice.imageUrl ? imageUrl : '')
     const [errors, setErrors] = useState([])
     const user = useSelector(state => state.session.user);
 
@@ -54,7 +54,7 @@ const EditOneAlbum = ({ album, hideForm }) => {
                 <input
                     className='album__title'
                     type='text'
-                    // placeholder='Fill In Title'
+                    placeholder='Fill In Title'
                     value={titles}
                     onChange={(e) => setTitle(e.target.value)}
                     required
@@ -66,7 +66,7 @@ const EditOneAlbum = ({ album, hideForm }) => {
                 <input
                     className='album__enterImage'
                     type='url'
-                    // placeholder='Enter Image Link'
+                    placeholder='Enter Image Link'
                     value={imageLink}
                     onChange={(e) => setImageUrl(e.target.value)}
                     // required
@@ -79,7 +79,7 @@ const EditOneAlbum = ({ album, hideForm }) => {
                 <input
                     className='album__description'
                     type='text'
-                    // placeholder='Entler Description'
+                    placeholder='Entler Description'
                     value={descriptions}
                     onChange={(e) => setDescription(e.target.value)}
                     required
