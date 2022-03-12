@@ -11,14 +11,14 @@ const EditOnePhoto = ({ photos, hideForm, filteredAlbum }) => {
     const history = useHistory();
     const dispatch = useDispatch()
     const { photoId } = useParams();
-    const photo = useSelector(state => state.photos)
-    const pics = Object.values(photo)
-    const choice = pics.find(pic => pic.id === +photoId)
-    const [imageLink, setImageUrl] = useState(choice.imageUrl ? choice.imageUrl : '')
-    const [contents, setContent] = useState(choice.content ? choice.content : '')
+    const [imageLink, setImageUrl] = useState(imageUrl ? imageUrl : '')
+    const [contents, setContent] = useState(content ? content : '')
     const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0]?.id)
+    const photo = useSelector(state => state.photos)
     const user = useSelector(state => state.session.user)
 
+    const pics = Object.values(photo)
+    const choice = pics.find(pic => pic.id === +photoId)
 
     const photoEdit = async (e) => {
         e.preventDefault()

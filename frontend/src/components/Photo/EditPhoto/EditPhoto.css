@@ -6,6 +6,7 @@
   font-weight: bolder;
   flex-direction: column;
   font-size: larger;
+
   /* top: -5em; */
 }
 
@@ -79,3 +80,4 @@
   cursor:text;
   border-left: solid blue;
 }
+

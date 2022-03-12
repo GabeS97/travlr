@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -32,6 +33,7 @@ const CreateComment = () => {
                     <input className='comment__title' placeholder='Enter Title of Commnet' required onChange={(e) => setTitle(e.target.value)} />
                     <textarea className="comment" placeholder='Type your comment here.' required onChange={(e) => setComment(e.target.value)}></textarea>
                     <br />
+
                 {/* </div> */}
                 <div className="create__commentSubmit">
                     <button type='submit'className='create__submitComment'>Send</button>

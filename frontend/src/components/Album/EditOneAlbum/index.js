@@ -14,9 +14,9 @@ const EditOneAlbum = ({ album, hideForm }) => {
     const choice = albumVal.find(val => val.id === +albumId)
     const history = useHistory();
     const dispatch = useDispatch()
-    const [titles, setTitle] = useState(choice.title ? choice.title : '')
-    const [descriptions, setDescription] = useState(choice.description ? choice.description : '')
-    const [imageLink, setImageUrl] = useState(choice.imageUrl ? choice.imageUrl : '')
+    const [titles, setTitle] = useState(title ? choice.title : '')
+    const [descriptions, setDescription] = useState(choice.description ? description : '')
+    const [imageLink, setImageUrl] = useState(choice.imageUrl ? imageUrl : '')
     const [errors, setErrors] = useState([])
     const user = useSelector(state => state.session.user);
 
