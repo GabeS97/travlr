@@ -20,7 +20,7 @@ const ExploreHeader = () => {
     }, [dispatch])
 
     return (
-        <>
+        <div className='explore'>
             <div className="explore__page">
                 <div className="explore__title">
                     <p>Easily organize all your photos into beautiful albums to share with friends, family, or even other Flickr members.</p>
@@ -39,11 +39,11 @@ const ExploreHeader = () => {
                         </Modal>
                     )}
                 </div>
+            </div>
                 <div className="photoDetail__page">
                     <ExploreImage />
                 </div>
-            </div>
-        </>
+        </div>
     )
 }
 
