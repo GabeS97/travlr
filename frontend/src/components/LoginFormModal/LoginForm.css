@@ -16,12 +16,17 @@
 }
 
 .login__loginInputs {
-  /* margin-top: 30%; */
+  /* margin-top: 2%; */
   display: flex;
   /* position: absolute; */
+  justify-content: center;
+  width: 145px;
   flex-direction: column;
-  bottom: 25vh;
-  text-align: center;
+  row-gap: 0.5em;
+  align-items: center;
+  /* bottom: 25vh; */
+  /* width: 100%; */
+  /* text-align: center; */
   row-gap: 10px;
   align-items: center;
 }

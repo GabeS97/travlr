@@ -49,7 +49,7 @@ function SignupForm({ hideForm }) {
     //     setErrors(validationErrors)
     // }, [username, email])
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='signu__loginForm' onSubmit={handleSubmit}>
             <header className="signinTitle">Sign In</header>
             <div className="signin__errors">
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}

@@ -4,7 +4,7 @@
 
 .modal__signup {
   background-color: white;
-  color: black;;
+  color: black;
   font-weight: bold;
   border-radius: 5px;
   height: 50%;
@@ -31,13 +31,15 @@
   display: flex;
   /* position: absolute; */
   justify-content: center;
+  width: 145px;
   flex-direction: column;
+  row-gap: 0.5em;
+  align-items: center;
   /* bottom: 25vh; */
   /* width: 100%; */
   /* text-align: center; */
   row-gap: 10px;
   align-items: center;
-
 }
 
 .submitSignup {
