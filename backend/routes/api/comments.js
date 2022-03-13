@@ -12,6 +12,18 @@ router.get('/', asyncHandler(async (req, res) => {
     return res.json(comments)
 }))
 
+router.post('/', asyncHandler(async (req, res) => {
+    const { userId, imageId, comment, title } = req.body
+
+    const createdComment = await Comment.create({
+        userId,
+        imageId,
+        comment,
+        title
+    })
+    return res.json(createdComment)
+}))
+
 router.put('/:commentId', asyncHandler(async (req, res) => {
     const { commentId } = req.params;
     const { title, comment, userId, imageId } = req.body
