@@ -10,7 +10,7 @@ import './Navigation.css';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
-    
+
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
@@ -49,7 +49,8 @@ function Navigation({ isLoaded }) {
                 <div className="home__searchbar">
                     <input
                         className='home__search'
-                        placeholder='Search for photss, currently not working'
+                        placeholder="This bar is meant for aesthetics only, it doesn't do anything, sorry! Come back again... 😀"
+                        disabled
                     >
                     </input>
                 </div>

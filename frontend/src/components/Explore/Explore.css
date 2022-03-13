@@ -99,7 +99,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border:  solid black;
+  border: solid black;
   gap: 2em;
 }
 
@@ -115,9 +115,7 @@
   justify-content: flex-end;
   align-items: flex-start;
   flex-direction: row;
-
 }
-
 
 .image__contents {
   display: flex;

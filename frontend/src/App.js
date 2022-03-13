@@ -10,6 +10,7 @@ import AlbumDetail from "./components/Album/AlbumDetail";
 import Explore from "./components/Explore";
 import PhotoDetail from "./components/Photo/PhotoDetail";
 import EditComment from "./components/Comment/EditComment";
+import PageNotFound from "./PageNotFound";
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -41,7 +42,9 @@ function App() {
           <Route path='/view-all'>
             <Explore />
           </Route>
-          <Route>Page Not Found</Route>
+          <Route>
+            <PageNotFound />
+          </Route>
         </Switch>
       )}
       <Footer />
