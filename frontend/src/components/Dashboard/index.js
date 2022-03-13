@@ -36,19 +36,16 @@ const Dashboard = () => {
             </nav>
 
 
-            {(!album && !photo) ?
-                <DefaultImage /> :
-                <div className="dashboard__body">
-                    <Switch>
-                        <Route path='/dashboard/albums'>
-                            <Album />
-                        </Route>
-                        <Route path='/dashboard/photos'>
-                            <Photo />
-                        </Route>
-                    </Switch>
-                </div>
-            }
+            <div className="dashboard__body">
+                <Switch>
+                    <Route path='/dashboard/albums'>
+                        <Album />
+                    </Route>
+                    <Route path='/dashboard/photos'>
+                        <Photo />
+                    </Route>
+                </Switch>
+            </div>
 
         </div>
     )
