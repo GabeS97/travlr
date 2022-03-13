@@ -21,7 +21,7 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
     const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0]?.id)
     const history = useHistory()
 
-    const { albumId } = albumChoice
+    // const { albumId } = albumChoice
     // console.log(albumId, '///////////////////////////////')
     console.log('this is my albumChoice', albumChoice)
     // console.log(filteredAlbum, '<<<<<<<<<<<<<<<: this is prop ', filteredAlbum)
