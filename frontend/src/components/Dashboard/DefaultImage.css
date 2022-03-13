@@ -3,6 +3,9 @@
   background-color: transparent;
   object-fit: cover;;
   position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .defaultgrid__images {
@@ -11,7 +14,11 @@
   background-color: transparent;
   grid-template-columns: 1fr 1fr 1fr;
   margin-top: 35px;
-  margin-left: 20vw;
+  /* margin-left: 20vw; */
+  /* mari */
+  /* margin-left: auto; */
+  /* margin-right: auto; */  ;
+  margin: 2em 20vh;
   justify-content: center;
 }
 
