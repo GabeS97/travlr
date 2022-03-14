@@ -16,8 +16,8 @@ const EditAlbum = ({ album, setAlbumModal }) => {
     const history = useHistory();
     const dispatch = useDispatch()
     const [titles, setTitle] = useState(title ? choice.title : '')
-    const [descriptions, setDescription] = useState(choice.description ? description : '')
-    const [imageLink, setImageUrl] = useState(choice.imageUrl ? imageUrl : '')
+    const [descriptions, setDescription] = useState(choice.description ? choice.description : '')
+    const [imageLink, setImageUrl] = useState(choice.imageUrl ? choice.imageUrl : '')
     const [errors, setErrors] = useState([])
     const user = useSelector(state => state.session.user);
 
