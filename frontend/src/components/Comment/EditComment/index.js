@@ -66,8 +66,8 @@ const EditComment = ({ comments, hideForm }) => {
                     // disabled={errors.length > 0}
                     >
                         <i className="fa-solid fa-pen-to-square"></i>
-                    </button>w
-                    <button
+                    </button>
+                    {/* <button
                         className='edit__buttonDelete'
                         disabled
                         // onClick={(e) => dispatch(deleteAlbum(choice.id))}
@@ -80,7 +80,7 @@ const EditComment = ({ comments, hideForm }) => {
                             }
                         }}                    >
                         <i className="fa-solid fa-trash"></i>
-                    </button>
+                    </button> */}
                 </div>
             </form>
         </div>
