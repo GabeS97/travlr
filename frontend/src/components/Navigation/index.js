@@ -7,6 +7,7 @@ import SignupFormModal from '../SignupFromModal';
 import Explore from '../Explore';
 
 import './Navigation.css';
+import Dashboard from '../Dashboard';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -47,12 +48,15 @@ function Navigation({ isLoaded }) {
                 </div>
 
                 <div className="home__searchbar">
-                    <input
+                    {/* <input
                         className='home__search'
                         placeholder="This bar is meant for aesthetics only, it doesn't do anything, sorry! Come back again... 😀"
                         disabled
                     >
-                    </input>
+                    </input> */}
+                    {/* <p>
+                        Travlr is a Flickr clone! .... 😀
+                    </p> */}
                 </div>
                 <div className="home__buttons">
                     {isLoaded && sessionLinks}

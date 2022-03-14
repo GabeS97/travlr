@@ -66,9 +66,10 @@ const EditComment = ({ comments, hideForm }) => {
                     // disabled={errors.length > 0}
                     >
                         <i className="fa-solid fa-pen-to-square"></i>
-                    </button>
+                    </button>w
                     <button
                         className='edit__buttonDelete'
+                        disabled
                         // onClick={(e) => dispatch(deleteAlbum(choice.id))}
                         onClick={() => {
                             const confrim = window.confirm(
