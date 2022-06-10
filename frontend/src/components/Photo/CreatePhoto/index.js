@@ -34,11 +34,7 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
             userId: user?.id,
             albumId: +albumChoice
         }
-<<<<<<< HEAD
-        console.log(payload, 'this is our first trail in the component ')
-=======
         // console.log(payload, '<<<<<<<<<<<<<<<<<<<')
->>>>>>> e53b241bb68ec5bd793481041ae73340945fac0d
         let photoPost = await dispatch(addPhotos(payload))
         hideForm()
     }
