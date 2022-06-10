@@ -30,6 +30,7 @@ const CreatePhoto = () => {
             userId: user?.id,
             // albumId: listAlbum
         }
+        console.log(payload, 'this is our first trail in the component ')
         let photoPost = await dispatch(addPhotos(payload))
 
     }

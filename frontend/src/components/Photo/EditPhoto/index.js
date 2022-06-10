@@ -18,9 +18,8 @@ const EditPhoto = () => {
             contents,
             imageLink,
             photoId: +photoId,
-            
+
         }
-        console.log('1................', payload)
 
         const photo = await dispatch(editPhotos(payload))
     }

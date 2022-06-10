@@ -35,6 +35,7 @@ export const loadPhotos = () => async dispatch => {
 }
 
 export const addPhotos = (payload) => async dispatch => {
+    console.log(payload, 'we just want to console.log this first to make sure, this is coming from our comp');
     const res = await csrfFetch('/api/photos', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -43,13 +44,13 @@ export const addPhotos = (payload) => async dispatch => {
 
     if (res.ok) {
         const photos = await res.json()
+        console.log(photos, 'then we want to see if our backend successfully send data to our thunk. therefore we are checking for the value after it had been json\'ed after the if ');
         dispatch(add(photos))
         return photos
     }
 }
 
 export const editPhotos = (payload) => async dispatch => {
-    console.log('2.............', payload)
     const res = await csrfFetch(`api/photos/${payload.photoId}`, {
         method: 'PUT',
         header: { 'Content-Type': 'application/json' },
@@ -58,7 +59,6 @@ export const editPhotos = (payload) => async dispatch => {
 
     if (res.ok) {
         const photo = await res.json()
-        console.log('4...............', photo)
         dispatch(edit(photo))
         return photo
     }

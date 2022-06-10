@@ -14,6 +14,7 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.post('/', asyncHandler(async (req, res) => {
     const { content, imageUrl, albumId, userId } = req.body;
+    console.log(req.body, 'then you are going to follow the trail back to the backend and see if you are getting back what you want');
     const photosPosted = await Photo.create({
         content,
         imageUrl,
@@ -26,7 +27,6 @@ router.post('/', asyncHandler(async (req, res) => {
 
 router.put('/:photoId', asyncHandler(async (req, res) => {
     const { content, image } = req.body
-    console.log('3...............', req.body)
     const { photoId } = req.params
 
     const photo = await Photo.findOne({ where: { id: photoId } })
