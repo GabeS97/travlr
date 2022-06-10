@@ -29,13 +29,8 @@ const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
             content: contents,
             imageUrl: imageLink,
             photoId: +photoId,
-<<<<<<< HEAD
-
-        }
-=======
             userId: userId,
             albumId: +albumChoice
->>>>>>> e53b241bb68ec5bd793481041ae73340945fac0d
 
         }
         const photo = await dispatch(editPhotos(payload))
