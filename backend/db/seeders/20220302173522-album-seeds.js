@@ -12,7 +12,7 @@ module.exports = {
       {
         userId: 1,
         title: 'SightSee',
-        description: null,
+        description: 'Must See Vacay Spots',
         imageUrl: 'https://subang.go.id/backend/images/default.png',
         createdAt: new Date(),
         updatedAt: new Date()
@@ -20,7 +20,7 @@ module.exports = {
       {
         userId: 1,
         title: 'My Favorites',
-        description: null,
+        description: 'Come Back Soon',
         imageUrl: 'https://subang.go.id/backend/images/default.png',
         createdAt: new Date(),
         updatedAt: new Date()
@@ -28,7 +28,7 @@ module.exports = {
       {
         userId: 1,
         title: 'Fam Faves',
-        description: null,
+        description: 'Family Favorites',
         imageUrl: 'https://subang.go.id/backend/images/default.png',
         createdAt: new Date(),
         updatedAt: new Date()

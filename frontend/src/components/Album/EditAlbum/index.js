@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { deleteAlbum, editAlbum } from '../../../store/albums';
 import './EditAlbum.css'
+
 const EditAlbum = ({ album, setAlbumModal }) => {
     const { id, userId, title, description, imageUrl } = album;
     const { albumId } = useParams();
@@ -15,8 +16,8 @@ const EditAlbum = ({ album, setAlbumModal }) => {
     const history = useHistory();
     const dispatch = useDispatch()
     const [titles, setTitle] = useState(title ? choice.title : '')
-    const [descriptions, setDescription] = useState(choice.description ? description : '')
-    const [imageLink, setImageUrl] = useState(choice.imageUrl ? imageUrl : '')
+    const [descriptions, setDescription] = useState(choice.description ? choice.description : '')
+    const [imageLink, setImageUrl] = useState(choice.imageUrl ? choice.imageUrl : '')
     const [errors, setErrors] = useState([])
     const user = useSelector(state => state.session.user);
 
@@ -50,17 +51,13 @@ const EditAlbum = ({ album, setAlbumModal }) => {
 
     }
 
+    // const handleDelete = (e) => {
+    //     e.preventDefault()
 
-    // useEffect(() => {
-    const handleDelete = (e) => {
-        e.preventDefault()
+    //     dispatch(deleteAlbum(choice.id))
 
-        dispatch(deleteAlbum(choice.id))
-
-        history.push('/dashboard/albums')
-    }
-    // }, [dispatch])
-
+    //     history.push('/dashboard/albums')
+    // }
     return (
         <div className="edit__page">
             <header className='edit__createHeader'>Edit Your Album</header>
@@ -79,8 +76,9 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                     <input
                         className='album__title'
                         type='text'
-                        placeholder='Fill In Title'
+                        // value={titles}
                         value={titles}
+
                         onChange={(e) => setTitle(e.target.value)}
                         required
                     />
@@ -91,10 +89,9 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                     <input
                         className='album__enterImage'
                         type='url'
-                        placeholder='Enter Image Link'
                         value={imageLink}
                         onChange={(e) => setImageUrl(e.target.value)}
-                        // required
+                        required
 
                     />
                 </label>
@@ -104,7 +101,6 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                     <input
                         className='album__description'
                         type='text'
-                        placeholder='Entler Description'
                         value={descriptions}
                         onChange={(e) => setDescription(e.target.value)}
                         required
@@ -115,14 +111,23 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                     <button
                         className='edit__buttonEdit'
                         type='submit'
-                        disabled={errors.length > 0}
+                        // disabled={errors.length > 0}
                     >
                         <i className="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button
                         className='edit__buttonDelete'
                         // onClick={(e) => dispatch(deleteAlbum(choice.id))}
-                        onClick={handleDelete}                    >
+                        onClick={() => {
+                            const confrim = window.confirm(
+                                'Deleting this album, will delete all the photos stored within this album. Are you sure you wish to continue?'
+                            )
+                            if (confrim === true) {
+                                dispatch(deleteAlbum(choice.id))
+                                history.push('/dashboard/albums')
+                            }
+                        }}
+                    >
                         <i className="fa-solid fa-trash"></i>
                     </button>
                 </div>

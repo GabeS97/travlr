@@ -1,0 +1,44 @@
+.comment {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 8em;
+}
+
+.create__fornComment > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.create__commentSubmit {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  top: -0.5em;
+}
+
+.create__submitComment {
+  background-color: #128fdc;
+  color: #fff;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 7em;
+  height: 2em;
+  border: none;
+  cursor: pointer;
+}
+
+.comment::placeholder {
+  margin-left: 15em;
+}
+
+.comment__title::placeholder {
+  margin-left: 18em;
+}
+/* .comment__inputFields {
+  display: flex;
+  flex-direction: row;
+} */
+

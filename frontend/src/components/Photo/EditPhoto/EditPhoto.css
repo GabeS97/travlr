@@ -1,61 +1,83 @@
 .photo__createHeader {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    margin-top: 5em;
-    font-weight: bolder;
-    flex-direction: column;
-    font-size: larger;
-    /* top: -5em; */
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-weight: bolder;
+  flex-direction: column;
+  font-size: larger;
 
-  .photo__form {
-    display: flex;
-    flex-direction: column;
-    row-gap: 0.5em;
-    align-items: center;
-    margin-top: 7em;
-    justify-content: center;
-  }
+  /* top: -5em; */
+}
 
-  .photo__buttons {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: flex-end;
-    column-gap: 0.25em;
-    margin-top: 2em;
-  }
+.photo__form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+  align-items: center;
+}
 
-  .photo__buttonphoto,
-  .photo__buttonDelete {
-    background-color: transparent;
-    border: none;
-    display: flex;
-  }
+.photo__buttons {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 0.25em;
+  margin: auto;
+  bottom: 9em;
+  right: 9.3em;
+  position: absolute;
+  bottom: 15px;
+}
 
-  .photo__buttonphoto:hover,
-  .photo__buttonDelete:hover {
-    cursor: pointer;
-  }
+.photo__buttonphoto,
+.photo__buttonDelete {
+  background-color: transparent;
+  border: none;
+  display: flex;
+}
 
-  .fa-pen-to-square:hover {
-    color: white;
-  }
+.photo__buttonphoto:hover,
+.photo__buttonDelete:hover {
+  cursor: pointer;
+}
 
-  .fa-trash:hover {
-    color: white;
-  }
+.fa-pen-to-square:hover {
+  color: white;
+}
 
-  .photo__errorsUpdate {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 1em;
-    justify-content: center;
-    text-align: center;
-    color: red;
-    position: relative;
-    /* right: 1em; */
-  }
+.fa-trash:hover {
+  color: white;
+}
+
+.photo__errorsUpdate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1em;
+  justify-content: center;
+  text-align: center;
+  color: red;
+  position: relative;
+  /* right: 1em; */
+}
+/*
+.photo__form > label > input {
+  color: lightslategrey;
+}
+
+.photo__form > label > input:focus {
+  border: none;
+  cursor:text;
+  border-left: solid blue;
+} */
+.photo__form > label > input {
+  color: lightslategrey;
+}
+
+.photo__form > label > input:focus {
+  border: none;
+  cursor:text;
+  border-left: solid blue;
+  color: black;
+}

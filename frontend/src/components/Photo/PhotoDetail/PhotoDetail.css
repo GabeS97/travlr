@@ -1,0 +1,92 @@
+
+.photoDetail__header {
+  background-color: rgb(238, 234, 234);
+  display: flex;;
+  justify-content: center;
+  border-right: solid lightblue;
+  border-left: solid lightblue;
+}
+
+.photoDetail__infoPage {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  column-gap: 2em;
+  align-items: center;
+  padding: 2em;
+}
+
+.photoDetail__infoPage > img {
+    display: flex;
+    padding: 2em;
+    max-width: 100%;
+    height: auto;
+
+}
+
+.photoDetail__text {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* border: solid white; */
+    width: 25em;
+}
+
+.photoDetail__title, .photoDetail__description{
+    border-bottom: solid black;
+    display: flex;
+    text-align: center;
+}
+
+.photoDetail__title {
+    font-size: 3em;
+}
+
+.photoDetail__description {
+    font-size: 1.5em;
+    overflow-wrap: break-word;
+}
+.photoDetail__imageCard {
+    height: 20em;
+    display: flex;
+    justify-content: center;
+
+}
+
+.photoDetail__page {
+    display: flex;
+    justify-content: center;;
+    background-color: rgb(238, 234, 234);
+    height: 25em;
+    border-bottom: solid lightgrey;
+
+}
+
+.photoDetail__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1em;
+    align-items: flex-start;
+
+}
+
+.photoDetail__buttons > button {
+    background-color: transparent;
+    display: flex;
+    position: relative;
+    right: 1em;
+    margin-top: 2em;
+    border: none;
+    font-size: larger;
+
+}
+
+.photoDetail__buttons > button:hover {
+    cursor: pointer;
+    color: white;
+    transform: scale(1.015);
+    transition-duration: 300ms;
+}

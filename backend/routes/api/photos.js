@@ -26,11 +26,32 @@ router.post('/', asyncHandler(async (req, res) => {
 }))
 
 router.put('/:photoId', asyncHandler(async (req, res) => {
+<<<<<<< HEAD
     const { content, image } = req.body
+=======
+    const { content, imageUrl, userId, albumId } = req.body
+    console.log(req.body)
+>>>>>>> e53b241bb68ec5bd793481041ae73340945fac0d
     const { photoId } = req.params
 
     const photo = await Photo.findOne({ where: { id: photoId } })
-    photo.update({ content, image })
+    photo.update({ content, imageUrl, albumId, userId })
     return res.json(photo)
 }))
+
+router.delete('/:photoId', asyncHandler(async (req, res) => {
+    const { photoId } = req.params;
+
+    const photo = await Photo.findByPk(photoId)
+
+    photo.destroy();
+    return res.json(photo)
+}))
+
+router.get('/:photoId', asyncHandler(async (req, res) => {
+    const { photoId } = req.params
+    const photo = await Photo.findByPk(photoId)
+    return res.json(photo)
+}))
+
 module.exports = router

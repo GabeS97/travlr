@@ -100,8 +100,7 @@
   transition-duration: 300ms;
 }
 
-
-.fa-magnifying-glass{
+.fa-magnifying-glass {
   display: flex;
   color: black;
 }
@@ -148,4 +147,32 @@
 
 .edit__buttonLink {
   text-decoration: none;
+}
+
+.album__infos {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  bottom: 7.2em;
+  left: 1em;
+  color: white;
+  z-index: 3;
+  font-size: small;
+  overflow: hidden;
+}
+
+/* .album__description {
+  display: flex;
+  position: relative;
+  bottom: 2.2em;
+  right: 2.8em;
+} */
+
+.album__titles {
+  position: relative;
+  top: 15px;
+}
+
+.album__titleContain {
+  color: black;
 }

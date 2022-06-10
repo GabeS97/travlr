@@ -6,11 +6,15 @@ import EditAlbum from '../Album/EditAlbum'
 import Album from '../Album/LoadAlbum'
 import Photo from '../Photo/LoadPhoto'
 import './Dashboard.css'
+import DefaultImage from './DefaultImage'
 
 const Dashboard = () => {
     const user = useSelector(state => state.session.user)
-
+    const [album, setAlbum] = useState(false)
+    const [photo, setPhoto] = useState(false)
+    // console.log('this is the album state: ', album, 'this is the photo state: ', photo)
     return (
+
         <div className="dashboard__page">
             <div className="dashboard__profile">
                 <div className="dashboard__avatar">
@@ -21,9 +25,16 @@ const Dashboard = () => {
                 </div>
             </div>
             <nav className="dashboard__actions">
-                <NavLink className='dashboard__albums' to='/dashboard/albums'>Album</NavLink>
-                <NavLink className='dashboard__photos' to='/dashboard/photos'>Photo</NavLink>
+                <NavLink
+                    onClick={() => setAlbum(true)}
+                    className='dashboard__albums'
+                    to='/dashboard/albums'>Album</NavLink>
+                <NavLink
+                    onClick={() => setPhoto(true)}
+                    className='dashboard__photos'
+                    to='/dashboard/photos'>Photo</NavLink>
             </nav>
+
 
             <div className="dashboard__body">
                 <Switch>
@@ -35,6 +46,7 @@ const Dashboard = () => {
                     </Route>
                 </Switch>
             </div>
+
         </div>
     )
 }

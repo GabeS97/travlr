@@ -1,3 +1,11 @@
 /* TODO Add site wide styles */
-html { overflow-y: scroll; overflow-x:hidden; }
+html {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: #f3f5f6;
+      /* display: flex;
+    justify-content: center;;
+    background-color: rgb(238, 234, 234);
+    height: 25em; */
+}
 /* body { position: absolute; } */

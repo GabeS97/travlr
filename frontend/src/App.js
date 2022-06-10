@@ -7,11 +7,17 @@ import Splash from "./components/Splash";
 import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer";
 import AlbumDetail from "./components/Album/AlbumDetail";
+import Explore from "./components/Explore";
+import PhotoDetail from "./components/Photo/PhotoDetail";
+import EditComment from "./components/Comment/EditComment";
+import PageNotFound from "./PageNotFound";
 
 function App() {
   const user = useSelector(state => state.session.user)
+
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -30,7 +36,15 @@ function App() {
           <Route path='/albums/:albumId'>
             <AlbumDetail />
           </Route>
-          {/* <Route>Page Not Found</Route> */}
+          <Route path='/photos/:photoId'>
+            <PhotoDetail />
+          </Route>
+          <Route path='/view-all'>
+            <Explore />
+          </Route>
+          <Route>
+            <PageNotFound />
+          </Route>
         </Switch>
       )}
       <Footer />

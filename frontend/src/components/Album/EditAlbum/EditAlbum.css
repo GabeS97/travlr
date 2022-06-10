@@ -56,3 +56,28 @@
   position: relative;
   /* right: 1em; */
 }
+
+.edit__form > label > input {
+  color: lightslategrey;
+}
+
+.edit__form > label > input:focus {
+  border: none;
+  cursor:text;
+  color: black;
+  border-left: solid blue;
+}
+
+.edit__submitComment {
+  background-color: #128fdc;
+  color: #fff;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 9em;
+  height: 2em;
+  border: none;
+  cursor: pointer;
+}
+

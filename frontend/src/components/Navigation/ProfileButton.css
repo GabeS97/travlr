@@ -56,7 +56,6 @@ body {
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
 
-
 .dropdown__button > .dropdown__link + .dropdown__menu {
   /* opacity: 1; */
   transform: translateY(0);
@@ -69,6 +68,9 @@ body {
 
 .profile-dropdown {
   display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   position: relative;
   right: 1em;

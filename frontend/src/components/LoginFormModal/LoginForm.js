@@ -3,6 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import DemoUser from "../Navigation/DemoUser";
 import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
 
 function LoginForm() {
     const dispatch = useDispatch();
@@ -10,20 +11,25 @@ function LoginForm() {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
     const history = useHistory()
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        history.push('/dasboard')
         return dispatch(sessionActions.login({ credential, password })).catch(
             async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
             }
-        );
-    };
+            );
+        };
+
+
+
 
     return (
-        <form className='login__loginForm' onSubmit={handleSubmit}>
+        <form className='login__loginForm'
+        onSubmit={handleSubmit}
+        >
             <header className="login__loginTitle">Log In</header>
             <ul className="login__errors">
                 {errors.map((error, idx) => (
@@ -38,7 +44,7 @@ function LoginForm() {
                         value={credential}
                         placeholder='Username and Email'
                         onChange={(e) => setCredential(e.target.value)}
-                    // required
+                    required
                     />
                 </label>
                 <label className="login__password">
@@ -49,7 +55,7 @@ function LoginForm() {
                         value={password}
                         placeholder='Password'
                         onChange={(e) => setPassword(e.target.value)}
-                    // required
+                    required
                     />
                 </label>
             </div>
@@ -57,7 +63,7 @@ function LoginForm() {
                 <button
                     className='login__loginSubmit'
                     type="submit"
-                    disabled={errors.length > 0}
+                    // disabled={errors.length > 0}
                 >Log In</button>
                 <DemoUser className='login__demo' />
             </div>

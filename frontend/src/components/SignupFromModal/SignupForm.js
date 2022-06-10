@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Modal } from "../../context/Modal";
 // import { useSelector } from "react-redux";
 // import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import LoginForm from "../LoginFormModal/LoginForm";
 import './SignupForm.css'
 
-function SignupForm() {
+function SignupForm({ hideForm }) {
     const dispatch = useDispatch();
     // const sessionUser = useSelector((state) => state.session.user);
     const [email, setEmail] = useState("");
@@ -14,7 +17,9 @@ function SignupForm() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
-    // if (sessionUser) return <Redirect to="/" />;
+
+    const [showLoginForm, setShowLoginForm] = useState(false)
+    const [showModal, setShowModal] = useState(false)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,8 +34,22 @@ function SignupForm() {
         return setErrors(['Confirm Password field must be the same as the Password field']);
     };
 
+
+    // const hideForms = () => {
+    //     if (showLoginForm) {
+    //         hideForm()
+    //     }
+    // }
+    // useEffect(() => {
+    //     const validationErrors = [];
+    //     if (!email) validationErrors.push('Please provide a valid email.')
+    //     if (username.length < 4) validationErrors.push("Please provide a username with at least 4 characters.")
+    //     if (username.length < 6) validationErrors.push('Password must be 6 characters or more.')
+
+    //     setErrors(validationErrors)
+    // }, [username, email])
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='signu__loginForm' onSubmit={handleSubmit}>
             <header className="signinTitle">Sign In</header>
             <div className="signin__errors">
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -43,7 +62,7 @@ function SignupForm() {
                         type="text"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                    // required
+                        required
                     />
                 </label>
                 <label>
@@ -53,7 +72,7 @@ function SignupForm() {
                         type="text"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                    // required
+                        required
                     />
                 </label>
                 <label>
@@ -63,7 +82,7 @@ function SignupForm() {
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                    // required
+                        required
                     />
                 </label>
                 <label>
@@ -73,10 +92,25 @@ function SignupForm() {
                         type="password"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                    // required
+                        required
                     />
                 </label>
-                <button type="submit" className="submitSignup" disabled={errors.length > 0}>Sign Up</button>
+                <button type="submit" className="submitSignup">Sign Up</button>
+
+                {/* <button
+                onClick={() => setShowLoginForm(true) }
+                >Already Have an Account?</button> */}
+                {/* {showLoginForm  && <Modal onClose={() => setShowLoginForm(false)}><LoginForm /></Modal>} */}
+                {/* <button
+                    onClick={switchForm}
+                >Already Have An Account?</button>
+
+                {showModal && (
+                    <Modal onClose={() => setShowModal(false)}>
+                        <LoginForm />
+                    </Modal>
+                )} */}
+
             </div>
         </form>
     );

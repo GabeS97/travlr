@@ -1,0 +1,45 @@
+.defaultgrid__container {
+  display: flex;
+  background-color: transparent;
+  object-fit: cover;
+  /* position: absolute; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.defaultgrid__images {
+  /* align-self: center; */
+  display: grid;
+  background-color: transparent;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 35px;
+  /* margin-left: 20vw; */
+  /* mari */
+  /* margin-left: auto; */
+  /* margin-right: auto;  ; */
+  margin: 2em 20vw;
+  justify-content: center;
+}
+
+.defaultgrid__images > img {
+  display: flex;
+  height: 3em;
+  display: flex;
+  align-self: center;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 15rem;
+  opacity: 0.2;
+  object-fit: cover;
+  padding: 5px;
+  width: 19em;
+}
+
+.defaultgrid__images > img:hover {
+  cursor: default;
+  transform: scale(1.015);
+  transition-duration: 300ms;
+}

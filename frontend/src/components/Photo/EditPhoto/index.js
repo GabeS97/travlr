@@ -1,30 +1,49 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
-import { editPhotos } from '../../../store/photos'
+import { deletePhoto, editPhotos } from '../../../store/photos'
 import './EditPhoto.css'
-const EditPhoto = () => {
+
+const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
+    const { userId, albumId, imageUrl, content } = photos
+    const history = useHistory();
     const dispatch = useDispatch()
     const { photoId } = useParams();
-    const [imageLink, setImageUrl] = useState('')
-    const [contents, setContent] = useState('')
+    const photo = useSelector(state => state.photos)
+    const pics = Object.values(photo)
+    const choice = pics.find(pic => pic.id === +photoId)
+    const [imageLink, setImageUrl] = useState(choice.imageUrl ? choice.imageUrl : '')
+    const [contents, setContent] = useState(choice.content ? choice.content : '')
+
+    const user = useSelector(state => state.session.user)
+
+    const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0]?.id)
 
     const photoEdit = async (e) => {
         e.preventDefault()
 
         const payload = {
-            contents,
-            imageLink,
+            content: contents,
+            imageUrl: imageLink,
             photoId: +photoId,
+<<<<<<< HEAD
 
         }
+=======
+            userId: userId,
+            albumId: +albumChoice
+>>>>>>> e53b241bb68ec5bd793481041ae73340945fac0d
 
+        }
         const photo = await dispatch(editPhotos(payload))
+        history.push('/dashboard/photos')
     }
+
     return (
-        <div className="photo__page">
+        <div className="photo__pageForm">
             <header className='photo__createHeader'>Edit Your Photo</header>
             {/* <ul className='photo__errorsUpdate'>
             {errors.map(err => (
@@ -41,7 +60,7 @@ const EditPhoto = () => {
                     <input
                         className='photo__content'
                         type='text'
-                        placeholder='Fill In Content'
+                        // placeholder={contents}
                         value={contents}
                         onChange={(e) => setContent(e.target.value)}
                         required
@@ -53,12 +72,25 @@ const EditPhoto = () => {
                     <input
                         className='photo__enterImage'
                         type='url'
-                        placeholder='Enter Image Link'
+                        // placeholder='Enter Image Link'
                         value={imageLink}
+                        // value={imageLink}
                         onChange={(e) => setImageUrl(e.target.value)}
-                    // required
+                        required
 
                     />
+                </label>
+
+
+                <label htmlFor='photoDrowpown'>
+                    <select value={albumChoice} onChange={(e) => setAlbumChoice(e.target.value)}>
+                        <option
+                            className='photo__albumSelect'
+                            disabled>Select An Album</option>
+                        {filteredAlbum.map(choice => (
+                            <option key={choice.id} value={choice.id}>{choice.title}</option>
+                        ))}
+                    </select>
                 </label>
 
                 <div className="photo__buttons">
@@ -70,10 +102,21 @@ const EditPhoto = () => {
                         <i className="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button
+                        type='button'
                         className='photo__buttonDelete'
-                    // onClick={(e) => dispatch(deleteAlbum(choice.id))}
-                    // onClick={handleDelete}
+
+                        onClick={() => {
+                            const confirm = window.confirm(
+                                'Are you sure you want to delete this photo?'
+                            )
+                            if (confirm === true) {
+                                dispatch(deletePhoto(choice.id))
+                                history.push('/dashboard/photos')
+                            }
+                            closeForm()
+                        }}
                     >
+
                         <i className="fa-solid fa-trash"></i>
                     </button>
                 </div>

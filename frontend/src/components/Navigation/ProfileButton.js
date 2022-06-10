@@ -6,6 +6,7 @@ import * as sessionActions from '../../store/session';
 import './ProfileButton.css'
 
 function ProfileButton({ user }) {
+    console.log(user)
     const dispatch = useDispatch();
     const history = useHistory()
     const [showMenu, setShowMenu] = useState(false);
