@@ -12,7 +12,6 @@ const Dashboard = () => {
     const user = useSelector(state => state.session.user)
     const [album, setAlbum] = useState(false)
     const [photo, setPhoto] = useState(false)
-    // console.log('this is the album state: ', album, 'this is the photo state: ', photo)
     return (
 
         <div className="dashboard__page">

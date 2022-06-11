@@ -31,7 +31,6 @@ const ExploreImage = () => {
 
         const choice = photo.find(pic => pic.userId === selectUser?.id)
         test.push(choice)
-        console.log(test)
 
     }
 

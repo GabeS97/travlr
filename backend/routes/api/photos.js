@@ -4,6 +4,17 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { restoreUser } = require('../../utils/auth');
 const { Photo } = require('../../db/models')
+
+const { handleValidationErrors } = require("../../utils/validation");
+const { setTokenCookie, requireAuth } = require("../../utils/auth");
+
+const {
+    singleMulterUpload,
+    singlePublicFileUpload,
+    multipleMulterUpload,
+    multiplePublicFileUpload,
+} = require("../../awsS3");
+
 const router = express.Router();
 
 router.get('/', asyncHandler(async (req, res) => {
@@ -12,27 +23,34 @@ router.get('/', asyncHandler(async (req, res) => {
     return res.json(photos)
 }))
 
-router.post('/', asyncHandler(async (req, res) => {
-    const { content, imageUrl, albumId, userId } = req.body;
-    console.log(req.body, 'then you are going to follow the trail back to the backend and see if you are getting back what you want');
-    const photosPosted = await Photo.create({
-        content,
-        imageUrl,
-        albumId,
-        userId
-    })
+router.post(
+    '/',
+    singleMulterUpload('image'),
+    asyncHandler(async (req, res) => {
+        const { content, albumId, userId } = req.body;
+        const imageUrl = await singlePublicFileUpload(req.file)
+        console.log(req, '<<<<<<<<<<<<<<<<<<<<<<<<< ImageUrl')
+        const photosPosted = await Photo.create({
+            content,
+            imageUrl,
+            albumId,
+            userId
+        })
+        return res.json(photosPosted)
+    }))
 
-    return res.json(photosPosted)
-}))
+router.put('/:photoId',
+    singleMulterUpload("image"),
+    asyncHandler(async (req, res) => {
+        const { content, image } = req.body
+        const { photoId } = req.params
 
-router.put('/:photoId', asyncHandler(async (req, res) => {
-    const { content, image } = req.body
-    const { photoId } = req.params
-
-    const photo = await Photo.findOne({ where: { id: photoId } })
-    photo.update({ content, imageUrl, albumId, userId })
-    return res.json(photo)
-}))
+        const imageUrl = await singlePublicFileUpload(req.file)
+        const photo = await Photo.findOne({ where: { id: photoId } }
+        )
+        photo.update({ content, imageUrl, albumId, userId })
+        return res.json(photo)
+    }))
 
 router.delete('/:photoId', asyncHandler(async (req, res) => {
     const { photoId } = req.params;

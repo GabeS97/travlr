@@ -51,23 +51,28 @@ export const loadPhotos = () => async dispatch => {
 }
 
 export const addPhotos = (payload) => async dispatch => {
-    console.log(payload, 'we just want to console.log this first to make sure, this is coming from our comp');
+    const { image, content, userId, albumId } = payload
+    const formData = new FormData()
+    formData.append('userId', userId)
+    formData.append('albumId', albumId)
+    if (content) formData.append('content', content)
+    if (image) formData.append('image', image)
+    console.log(formData, 'this is the formData from thunk')
     const res = await csrfFetch('/api/photos', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+        body: formData,
     })
-
     if (res.ok) {
         const photos = await res.json()
-        console.log(photos, 'then we want to see if our backend successfully send data to our thunk. therefore we are checking for the value after it had been json\'ed after the if ');
         dispatch(add(photos))
         return photos
     }
 }
 
 export const editPhotos = (payload) => async dispatch => {
-    console.log('2. payload from the single pic for the PhotoDetail', payload)
     const res = await csrfFetch(`/api/photos/${payload.photoId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -76,7 +81,6 @@ export const editPhotos = (payload) => async dispatch => {
 
     if (res.ok) {
         const photo = await res.json()
-        console.log('4. this is the res.json() of photos for our singlePhoto', photo)
         dispatch(edit(photo))
         return photo
     }

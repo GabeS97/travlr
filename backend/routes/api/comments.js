@@ -27,7 +27,6 @@ router.post('/', asyncHandler(async (req, res) => {
 router.put('/:commentId', asyncHandler(async (req, res) => {
     const { commentId } = req.params;
     const { title, comment, userId, imageId } = req.body
-    console.log('3. check params of our backend comment route: ', 'req.body:', req.body, 'req.params: ', req.params)
     const comments = await Comment.findOne({ where: { id: commentId } })
     comments.update({ title, comment, userId, imageId })
     return res.json(comment)

@@ -11,33 +11,31 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
 
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
-    const albums = useSelector(state => state.albums)
-    const images = useSelector(state => state.photos)
-    const album = Object.values(albums)
-    const image = Object.values(images)
     const [content, setContent] = useState('')
-    const [imageUrl, setImageUrl] = useState('')
+    const [image, setImage] = useState(null)
 
     const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0]?.id)
     const history = useHistory()
 
-    // const { albumId } = albumChoice
-    // console.log(albumId, '///////////////////////////////')
-    console.log('this is my albumChoice', albumChoice)
-    // console.log(filteredAlbum, '<<<<<<<<<<<<<<<: this is prop ', filteredAlbum)
     const postPhoto = async (e) => {
         e.preventDefault()
 
         const payload = {
             content,
-            imageUrl,
+            image,
             userId: user?.id,
             albumId: +albumChoice
         }
-        // console.log(payload, '<<<<<<<<<<<<<<<<<<<')
         let photoPost = await dispatch(addPhotos(payload))
         hideForm()
     }
+
+
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) setImage(file);
+    };
+
     useEffect(() => {
         dispatch(loadAlbums())
     }, [dispatch])
@@ -58,17 +56,6 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
                     />
                 </label>
 
-                <label htmlFor='image'>
-                    {/* Enter Image Link */}
-                    <input
-                        className='photo__createImage'
-                        type='url'
-                        placeholder='Enter Image Link'
-                        value={imageUrl}
-                        onChange={(e) => setImageUrl(e.target.value)}
-                        required
-                    />
-                </label>
 
                 <label htmlFor='selectAlbum'>
                     <select
@@ -77,13 +64,25 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
                         className='photo__albumDropDown'>
                         <option
                             className='photo__albumSelect'
-
                             disabled>Select An Album</option>
                         {filteredAlbum.map(choice => (
                             <option key={choice.id} value={choice.id} className='photo__albumDropDown'>{choice.title}</option>
-
                         ))}
                     </select>
+                </label>
+
+                <label htmlFor='image'>
+                    {/* Enter Image Link */}
+                    <input
+                        type="file"
+                        onChange={updateFile}
+                    // className='photo__createImage'
+                    // type='url'
+                    // placeholder='Enter Image Link'
+                    // value={imageUrl}
+                    // onChange={(e) => setImageUrl(e.target.value)}
+                    // required
+                    />
                 </label>
             </div>
             <button

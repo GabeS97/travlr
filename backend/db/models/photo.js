@@ -4,7 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     albumId: DataTypes.INTEGER,
     imageUrl: DataTypes.STRING,
-    content: DataTypes.STRING
+    content: DataTypes.STRING,
+    tags: DataTypes.STRING, 
   }, {});
   Photo.associate = function(models) {
     // associations can be defined here

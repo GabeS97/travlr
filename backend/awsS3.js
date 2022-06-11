@@ -1,6 +1,6 @@
 const AWS = require("aws-sdk");
 // name of your bucket here
-const NAME_OF_BUCKET = "travlr-flickr-clone";
+const NAME_OF_BUCKET = "travlr-aws-bucket";
 
 const multer = require("multer");
 
@@ -85,6 +85,7 @@ const storage = multer.memoryStorage({
 
 const singleMulterUpload = (nameOfKey) =>
     multer({ storage: storage }).single(nameOfKey);
+    
 const multipleMulterUpload = (nameOfKey) =>
     multer({ storage: storage }).array(nameOfKey);
 
