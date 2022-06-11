@@ -26,7 +26,8 @@ module.exports = {
         type: Sequelize.STRING(100),
       },
       tags: {
-        type: Sequelize.STRING(25)
+        type: Sequelize.ARRAY(Sequelize.TEXT),
+        defaultValue: []
       },
       createdAt: {
         allowNull: false,

@@ -1,9 +1,6 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
 import { Modal } from '../../../context/Modal';
 import { loadAlbums } from '../../../store/albums';
 import { loadPhotos } from '../../../store/photos';
@@ -23,10 +20,8 @@ const Photo = () => {
     const albums = useSelector(state => state.albums)
     const album = Object.values(albums)
     const choice = photo.filter(pic => pic.userId === user?.id)
-    // const filteredPhoto = photo.filter(choice => choice.userId === user.id)
     const filteredAlbum = album.filter(choice => choice.userId === user.id)
-    // console.log('this is my filtered album ', filteredAlbum)
-
+    console.log(choice)
 
 
     useEffect(() => {
@@ -51,7 +46,6 @@ const Photo = () => {
 
     return (
         <div className="dashboard__contents">
-
             {choice.length > 0 ?
                 <div className="photo__title">
                     <p>Your photostream is your public-facing portfolio. Set your photos to public using the Camera Roll to populate your photostream.</p>
@@ -64,7 +58,9 @@ const Photo = () => {
                             <CreatePhoto hideForm={hideForm} filteredAlbum={filteredAlbum} />
                         </Modal>
                     )}
-                </div> :   <div className="photo__title">
+                </div> :
+
+                <div className="photo__title">
                     <p>There is currently no public facing photos, Go to your camera roll to pupulate your photostream.</p>
                     <button className='photo__upload'
                         onClick={() => setShowModal(true)}
@@ -79,30 +75,53 @@ const Photo = () => {
             }
 
             {choice.length > 0 ?
-                <div div className="photo__body">
+                <div className="photo__body">
                     <div className="photo__info">
                         {choice.map(pic => (
                             <div key={pic.id} className='photo__cardContainer' >
                                 <div className="photo__linkCard">
-                                    <Link to={`/photos/${pic.id}`}>
+                                    <NavLink to={`/photos/${pic.id}`}>
                                         <img className='photo__image' src={pic.imageUrl} alt='' />
-                                    </Link>
-                                </div>
+                                    </NavLink>
 
-                                <div className="photo__edits">
-                                    <div className='edit__page'>
-                                        <NavLink className='edit__buttonLink' to={`/dashboard/photos/${pic.id}`}>
-                                            <i className="fa-solid fa-magnifying-glass"
-                                                onClick={(e) => setPhotoModal(true)}
-                                            ></i>
-                                        </NavLink>
-                                        {photoModal && (
-                                            <Route path='/dashboard/photos/:photoId'>
-                                                <Modal classname='photo__editModal' onClose={() => setPhotoModal(false)}>
-                                                    <EditPhoto photos={pic} closeForm={closeForm} filteredAlbum={filteredAlbum} />
-                                                </Modal>
-                                            </Route>
-                                        )}
+                                    <div className="photo__linkCard__info">
+                                        <div className="photo__linkCard__info__container">
+                                            <div className="photo__linkCard__description">
+                                                {pic?.content}
+                                            </div>
+
+                                            <div className="photo__linkCard__tags">
+                                                {pic?.tags?.map(tag => (
+                                                    <p>{`#${tag}`}</p>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div className="photo__post__top">
+
+                                        <div className="photo__posted__user">
+                                            {`@${pic?.User?.username}`}
+                                        </div>
+
+                                        <div className="photo__edits">
+                                            <div className='edit__page'>
+                                                <NavLink className='edit__buttonLink' to={`/dashboard/photos/${pic.id}`}>
+                                                    <i className="fa-solid fa-magnifying-glass"
+                                                        onClick={(e) => setPhotoModal(true)}
+                                                    ></i>
+                                                </NavLink>
+                                                {photoModal && (
+                                                    <Route path='/dashboard/photos/:photoId'>
+                                                        <Modal classname='photo__editModal' onClose={() => setPhotoModal(false)}>
+                                                            <EditPhoto photos={pic} closeForm={closeForm} filteredAlbum={filteredAlbum} />
+                                                        </Modal>
+                                                    </Route>
+                                                )}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

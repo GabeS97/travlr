@@ -28,9 +28,11 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path="/">
-            {user ? <Dashboard /> : <Splash />}
+            {user ? <Dashboard />
+              : <Splash />
+            }
           </Route>
-          <Route path="/dashboard">
+          <Route path="/dashboard/">
             <Dashboard />
           </Route>
           <Route path='/albums/:albumId'>
