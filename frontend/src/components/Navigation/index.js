@@ -4,10 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFromModal';
-import Explore from '../Explore';
-
 import './Navigation.css';
-import Dashboard from '../Dashboard';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -30,30 +27,36 @@ function Navigation({ isLoaded }) {
         <>
             <nav className='home__navBar'>
                 <div className="home__rightButtons">
-                    <NavLink className='home__mainPage' exact to="/">
-                        <img
-                            className='home__logo'
-                            src='../../travlr.png'
-                            alt='' />
-                    </NavLink>
+                    <div className="home__home">
+                        <div className="home__goHome">
+                            <NavLink className='home__mainPage' exact to="/">
+                                <img
+                                    className='home__logo'
+                                    src='../../travlr.png'
+                                    alt='' />
+                            </NavLink>
+                        </div>
 
-                    {sessionUser ?
-                        <NavLink to='/view-all'>
-                            <button className='home__explore'>Explore</button>
-                        </NavLink> : null
-                    }
-
+                        <div className="home__exploreAll">
+                            {sessionUser ?
+                                <NavLink to='/view-all'>
+                                    <button className='home__explore'>Explore</button>
+                                </NavLink> : null
+                            }
+                        </div>
+                    </div>
                 </div>
+
                 <div className="home__options">
                 </div>
 
                 <div className="home__searchbar">
-                    {/* <input
+                    <input
                         className='home__search'
                         placeholder="This bar is meant for aesthetics only, it doesn't do anything, sorry! Come back again... 😀"
                         disabled
                     >
-                    </input> */}
+                    </input>
                     {/* <p>
                         Travlr is a Flickr clone! .... 😀
                     </p> */}

@@ -9,3 +9,12 @@ html {
     height: 25em; */
 }
 /* body { position: absolute; } */
+* {
+  margin: 0;
+  overflow-y: scroll;
+  padding: 0;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}

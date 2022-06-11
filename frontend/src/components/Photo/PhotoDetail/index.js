@@ -1,9 +1,6 @@
-import React from 'react'
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useParams, useHistory } from 'react-router-dom'
 import { Modal } from '../../../context/Modal';
 import { loadAlbums } from '../../../store/albums';
 import { deletePhoto, loadOnePhoto, loadPhotos } from '../../../store/photos';
@@ -61,7 +58,6 @@ const PhotoDetail = () => {
 
                             <div className="photoDetail__infoCard">
                                 <h2 className='photoDetail__title'>{pic.content}</h2>
-                                {/* <p className='photoDetail__description'>{pic.description}</p> */}
                             </div>
                         </div>
                     ))}

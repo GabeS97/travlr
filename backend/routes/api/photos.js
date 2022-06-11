@@ -3,7 +3,7 @@ const express = require('express')
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { restoreUser } = require('../../utils/auth');
-const { Photo } = require('../../db/models')
+const { Photo, User } = require('../../db/models')
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
@@ -18,7 +18,9 @@ const {
 const router = express.Router();
 
 router.get('/', asyncHandler(async (req, res) => {
-    const photos = await Photo.findAll()
+    const photos = await Photo.findAll({
+        include: User
+    })
 
     return res.json(photos)
 }))
