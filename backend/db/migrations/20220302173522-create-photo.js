@@ -18,6 +18,10 @@ module.exports = {
         references: { model: 'Albums' },
         allowNull: true,
       },
+      username: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       imageUrl: {
         type: Sequelize.STRING(1000),
         allowNull: false
