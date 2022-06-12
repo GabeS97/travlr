@@ -37,7 +37,7 @@ router.put('/:commentId', asyncHandler(async (req, res) => {
 
 router.delete('/:commentId', asyncHandler(async (req, res) => {
     const { commentId } = req.params;
-    const comment = Comment.findByPk(commentId)
+    const comment = await Comment.findByPk(commentId)
     comment.destroy()
     return res.json(comment)
 }))
