@@ -7,6 +7,7 @@ import { loadPhotos } from '../../../store/photos';
 import DefaultImage from '../../Dashboard/DefaultImage';
 import CreatePhoto from '../CreatePhoto';
 import EditPhoto from '../EditPhoto';
+import PhotoDetail from '../PhotoDetail';
 
 import './Photo.css'
 
@@ -14,6 +15,7 @@ const Photo = () => {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false)
     const [photoModal, setPhotoModal] = useState(false)
+    const [singlePhotoModal, setSinglePhotoModal] = useState(false)
     const user = useSelector(state => state.session.user)
     const photos = useSelector(state => state.photos)
     const photo = Object.values(photos)
@@ -21,7 +23,7 @@ const Photo = () => {
     const album = Object.values(albums)
     const choice = photo.filter(pic => pic.userId === user?.id)
     const filteredAlbum = album.filter(choice => choice.userId === user.id)
-    console.log(choice)
+
 
 
     useEffect(() => {
@@ -78,11 +80,20 @@ const Photo = () => {
                 <div className="photo__body">
                     <div className="photo__info">
                         {choice.map(pic => (
-                            <div key={pic.id} className='photo__cardContainer' >
+                            <div key={pic?.id} className='photo__cardContainer' >
                                 <div className="photo__linkCard">
-                                    <NavLink to={`/photos/${pic.id}`}>
+                                    <NavLink
+                                        to={`/dashboard/photos/view/${pic.id}`}
+                                        onClick={() => setSinglePhotoModal(true)}>
                                         <img className='photo__image' src={pic.imageUrl} alt='' />
                                     </NavLink>
+                                    {singlePhotoModal &&
+                                        <Route path='/dashboard/photos/view/:photoId'>
+                                            <Modal onClose={() => setSinglePhotoModal(false)}>
+                                                <PhotoDetail />
+                                            </Modal>
+                                        </Route>
+                                    }
 
                                     <div className="photo__linkCard__info">
                                         <div className="photo__linkCard__info__container">
@@ -101,7 +112,6 @@ const Photo = () => {
 
 
                                     <div className="photo__post__top">
-
                                         <div className="photo__posted__user">
                                             {`@${pic?.User?.username}`}
                                         </div>
@@ -123,6 +133,7 @@ const Photo = () => {
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         ))}

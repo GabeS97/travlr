@@ -15,12 +15,13 @@ const PhotoDetail = () => {
     const history = useHistory()
     const dispatch = useDispatch();
     const photos = useSelector(state => state.photos)
-    const photo = Object.values(photos)
-    const [showModal, setShowModal] = useState(false)
+    const photo = Object.values(photos).find(pics => pics?.id === +photoId)
     const user = useSelector(state => state.session.user)
     const albums = useSelector(state => state.albums)
     const album = Object.values(albums)
     const filteredAlbum = album.filter(choice => choice.userId === user.id)
+    const [showModal, setShowModal] = useState(false)
+
     useEffect(() => {
         dispatch(loadOnePhoto(photoId))
     }, [dispatch])
@@ -48,46 +49,54 @@ const PhotoDetail = () => {
 
     return (
         <>
-            <div className="photoDetail__page">
-                <div className="photoDetail__header">
-                    {photo.map(pic => (
-                        <div key={pic.id} className="photoDetail__infoPage">
-                            <div className="photoDetail__imageCard">
-                                <img className='photoDetail__image' src={pic.imageUrl} alt='' />
+            <div className="photoDetail__modal">
+                <div className="photoDetail__page">
+
+                    <div className="photoDetail__image__container">
+                        <div className="photoDetail__image">
+                            <img className='photoDetail__image__file' src={photo?.imageUrl} alt='' />
+                        </div>
+
+                        <div className="photoDetail__contents">
+                            <div className="photoDetials__info">
+
+                                <div className="photoDetail__content">
+                                    <h3>{photo?.content}</h3>
+                                </div>
+
+                                <div className="photoDetail__tags">
+                                    {photo?.tags?.map(tag => (
+                                        <p>{`#${tag}`}</p>
+                                    ))}
+                                </div>
                             </div>
 
-                            <div className="photoDetail__infoCard">
-                                <h2 className='photoDetail__title'>{pic.content}</h2>
+                            <div className="photoDetail__buttons">
+                                <button
+                                    className='photoDetail__edit__button'
+                                    onClick={() => setShowModal(true)}
+                                >Edit
+                                </button>
+                                {showModal && (
+                                    <Modal onClose={() => setShowModal(false)}>
+                                        <EditOnePhoto photos={photo} hideForm={hideForm} filteredAlbum={filteredAlbum} />
+                                    </Modal>
+                                )}
+                                <button
+                                    className='photoDetail__delete__button'
+                                    onClick={handleDelete}
+                                > Delete</button>
                             </div>
                         </div>
-                    ))}
-                    <div className="photoDetail__buttons">
-                        <button
-                            onClick={() => setShowModal(true)}
-                        >Edit
-                        </button>
-                        {showModal && (
-                            <Modal onClose={() => setShowModal(false)}>
-                                <EditOnePhoto photos={photo} hideForm={hideForm} filteredAlbum={filteredAlbum} />
-                            </Modal>
-                        )}
-                        <button
-                            onClick={handleDelete}
-                        // onClick={(e) => {
-                        //     const confirm = window.confirm(
-                        //         'Are you sure you want to delete this photo?'
-                        //     )
-                        //     if (confirm === true) {
-                        //         // setSelect(photoId)
-                        //         dispatch(deletePhoto(photoId))
-                        //         history.push('/dashboard/photos')
-                        //     }
-                        // }}
-                        > Delete</button>
+                    </div>
+
+
+                    <div className="photoDetail__comments">
+                        <Comment />
                     </div>
                 </div>
             </div>
-            <Comment />
+
         </>
     )
 }

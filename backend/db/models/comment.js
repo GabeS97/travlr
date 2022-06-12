@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     imageId: DataTypes.INTEGER,
     comment: DataTypes.STRING,
+    username: DataTypes.STRING, 
     title:DataTypes.STRING,
   }, {});
   Comment.associate = function(models) {

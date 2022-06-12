@@ -3,22 +3,25 @@ const express = require('express')
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { restoreUser } = require('../../utils/auth');
-const { Comment } = require('../../db/models')
+const { Comment, User } = require('../../db/models')
 
 const router = express.Router();
 
 router.get('/', asyncHandler(async (req, res) => {
-    const comments = await Comment.findAll()
+    const comments = await Comment.findAll({
+        include: User
+    })
     return res.json(comments)
 }))
 
 router.post('/', asyncHandler(async (req, res) => {
-    const { userId, imageId, comment, title } = req.body
-
+    const { userId, imageId, comment, title, username } = req.body
+    console.log('3. this is the payload sent to backend from thunk: ', req.body)
     const createdComment = await Comment.create({
         userId,
         imageId,
         comment,
+        username,
         title
     })
     return res.json(createdComment)
