@@ -38,9 +38,9 @@ function App() {
           <Route path='/albums/:albumId'>
             <AlbumDetail />
           </Route>
-          <Route path='/photos/:photoId'>
+          {/* <Route path='/photos/:photoId'>
             <PhotoDetail />
-          </Route>
+          </Route> */}
           <Route path='/view-all'>
             <Explore />
           </Route>

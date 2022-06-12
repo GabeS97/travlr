@@ -145,7 +145,7 @@ const photoReducer = (state = initialState, action) => {
         }
         case LOAD_PHOTO: {
             newState = { ...state }
-            newState = { state, [action.photo.id]: action.photo }
+            newState[action.photo.id] = action.photo
             return newState
         }
         default:

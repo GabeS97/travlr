@@ -2,9 +2,15 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 8em;
+  /* height: 5em; */
+  overflow-y: scroll;
 }
 
+.comment__textarea {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 .create__fornComment > form {
   display: flex;
   flex-direction: column;
@@ -31,14 +37,11 @@
 }
 
 .comment::placeholder {
-  margin-left: 15em;
+  text-align: left;
+  text-indent: 1em;
 }
 
-.comment__title::placeholder {
-  margin-left: 18em;
-}
 /* .comment__inputFields {
   display: flex;
   flex-direction: row;
 } */
-

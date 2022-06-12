@@ -43,6 +43,7 @@ export const getComments = () => async dispatch => {
 }
 
 export const addComment = (payload) => async dispatch => {
+    console.log('2. this is the payload that is sent to thunk form CreateComment: ', payload)
     const res = await csrfFetch('/api/comments', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -51,6 +52,7 @@ export const addComment = (payload) => async dispatch => {
 
     if (res.ok) {
         const comment = await res.json()
+        console.log('4.this is the data sent back from backend to thunk: ', comment)
         dispatch(createComment(comment))
         return comment
     }
