@@ -40,7 +40,8 @@
   cursor: pointer;
 }
 
-.comment::placeholder {
+.comment::placeholder,
+.comment__title::placeholder {
   text-align: left;
   text-indent: 1em;
 }

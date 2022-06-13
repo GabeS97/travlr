@@ -43,14 +43,14 @@ const Comment = () => {
             </div>
             <div className='comment__card'>
                 {picComment.map(feedback => (
-                    <div>
+                    <div className='test' key={feedback?.id}>
                         {feedback.userId === sessoinUser.id && (
-                                <div className="comment__editNDelete">
-                                    <NavLink className='comment__editLink' to={`/dashboard/photos/view/${photoId}/comment/${feedback.id}`}>
-                                        <i class="fa-solid fa-magnifying-glass" onClick={() => setShowModal(true)}></i>
-                                    </NavLink>
-                                </div>
-                            )}
+                            <div className="comment__editNDelete">
+                                <NavLink className='comment__editLink' to={`/dashboard/photos/view/${photoId}/comment/${feedback.id}`}>
+                                    <i className="fa-solid fa-magnifying-glass edit__button__options" onClick={() => setShowModal(true)}></i>
+                                </NavLink>
+                            </div>
+                        )}
 
                         {showModal && (
                             <Route path='/dashboard/photos/view/:photoId/comment/:commentId'>

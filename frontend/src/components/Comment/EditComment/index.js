@@ -31,11 +31,22 @@ const EditComment = ({ comments, hideForm }) => {
         // history.push(`/photos/${choice.imageId}`)
         hideForm()
     }
+
+    const handleDelete = (e) => {
+        e.preventDefault()
+        const confrim = window.confirm(
+            'Are you sure you want to delete this comment?'
+        )
+        if (confrim === true) {
+            dispatch(removeComment(choice?.id))
+        }
+        hideForm()
+    }
     return (
         <div className="comment__pageForm">
             <div className="commentEdit__form__form">
                 <div className="comment__editForm__header">
-                    <header className='comment__editHeader'>Edit Your Photo</header>
+                    <header className='comment__editHeader'>Edit Your Comment</header>
                 </div>
                 <form
                     className='edit__form'
@@ -75,14 +86,7 @@ const EditComment = ({ comments, hideForm }) => {
                         <button
                             className='edit__buttonDelete'
                             // onClick={(e) => dispatch(deleteAlbum(choice.id))}
-                            onClick={() => {
-                                const confrim = window.confirm(
-                                    'Are you sure you want to delete this comment?'
-                                )
-                                if (confrim === true) {
-                                    dispatch(removeComment(choice?.id))
-                                }
-                            }}>
+                            onClick={handleDelete}>
                             DELETE
                         </button>
                     </div>

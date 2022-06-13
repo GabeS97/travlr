@@ -75,7 +75,6 @@ select {
   cursor: pointer;
 }
 
-
 .photo__errorsUpdate {
   display: flex;
   flex-direction: column;
@@ -118,4 +117,10 @@ select {
 .edit__buttonDelete {
   color: white;
   background-color: rgb(171, 84, 102);
+}
+
+.album__title,
+.album__enterComment {
+  text-align: left;
+  text-indent: 1em;
 }

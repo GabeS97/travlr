@@ -17,7 +17,7 @@ const PageNotFound = () => {
         }
     }
     return (
-        <div class="page__notFound">
+        <div className="page__notFound">
             <h2>Oops! Unfortunately The Page You Are Looking For Does Not Exist.</h2>
             <h1>404</h1>
             <p>Thanks for Visiting! Come Again Soon!</p>

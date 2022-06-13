@@ -31,7 +31,6 @@ router.post(
     asyncHandler(async (req, res) => {
         const { content, albumId, userId, username} = req.body;
         const imageUrl = await singlePublicFileUpload(req.file)
-        console.log(req, '<<<<<<<<<<<<<<<<<<<<<<<<< ImageUrl')
         const photosPosted = await Photo.create({
             content,
             imageUrl,

@@ -8,7 +8,9 @@ const { Comment, User } = require('../../db/models')
 const router = express.Router();
 
 router.get('/', asyncHandler(async (req, res) => {
+    const { imageId } = req.params
     const comments = await Comment.findAll({
+        // where: { id: imageId },
         include: User
     })
     return res.json(comments)
@@ -16,7 +18,7 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.post('/', asyncHandler(async (req, res) => {
     const { userId, imageId, comment, title, username } = req.body
-    console.log('3. this is the payload sent to backend from thunk: ', req.body)
+
     const createdComment = await Comment.create({
         userId,
         imageId,
@@ -32,7 +34,7 @@ router.put('/:commentId', asyncHandler(async (req, res) => {
     const { title, comment, userId, imageId } = req.body
     const comments = await Comment.findOne({ where: { id: commentId } })
     comments.update({ title, comment, userId, imageId })
-    return res.json(comment)
+    return res.json(comments)
 }))
 
 router.delete('/:commentId', asyncHandler(async (req, res) => {

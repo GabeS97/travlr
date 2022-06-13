@@ -14,9 +14,19 @@
 .comment__card {
   display: flex;
   flex-direction: column;
+  position: relative;
   width: 100%;
   row-gap: 1em;
+  overflow: scroll;
+  height: 100%;
+  border-top: solid black 2px;
+  border-bottom: solid black 2px;
   justify-content: center;
+}
+
+.test {
+  /* display: flex;
+  justify-content: center; */
 }
 
 .comment__box {
@@ -39,4 +49,17 @@
 .comment__editLink {
   text-decoration: none;
   margin: 10px;
+}
+
+.edit__button__options {
+  display: flex;
+  color: white;
+  font-weight: bolder;
+}
+
+.edit__button__options:hover {
+  cursor: pointer;
+  color: rgb(25, 142, 220);
+  transform: scale(1.015);
+  transition-duration: 300ms;
 }
