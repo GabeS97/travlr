@@ -35,7 +35,7 @@ const Album = () => {
         <div className='album__page'>
             {choice.length > 0 ?
                 <div className="album__title">
-                    <p>Easily organize all your photos into beautiful albums to share with friends, family, or even other Travlr members.</p>
+                    <p>Easily organize all your photos into beautiful albums to share with friends and family.</p>
                     <button className='album__upload'
                         onClick={() => setShowModal(true)}
                     >Share More Memories!

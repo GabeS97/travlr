@@ -122,7 +122,8 @@
 .photo__linkCard__tags {
   display: flex;
   column-gap: 0.5em;
-  color: rgb(137, 137, 137);
+  /* color: rgb(137, 137, 137); */
+  color: white; 
 }
 
 .photo__linkCard__tags > p {

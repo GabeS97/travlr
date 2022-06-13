@@ -13,6 +13,7 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
     const user = useSelector(state => state.session.user)
     const [content, setContent] = useState('')
     const [image, setImage] = useState(null)
+    const [tags, setTags] = useState([])
 
     const [albumChoice, setAlbumChoice] = useState(filteredAlbum[0]?.id)
     const history = useHistory()
@@ -20,9 +21,16 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
     const postPhoto = async (e) => {
         e.preventDefault()
 
+        let tagsArr;
+        if (tags) {
+            tagsArr = tags.split(',');
+            setTags(tagsArr)
+        }
+
         const payload = {
             content,
             image,
+            tags: tagsArr,
             username: user?.username,
             userId: user?.id,
             albumId: +albumChoice
@@ -70,6 +78,16 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
                             <option key={choice.id} value={choice.id} className='photo__albumDropDown'>{choice.title}</option>
                         ))}
                     </select>
+                </label>
+
+                <label htmlFor='tags'>
+                    <input
+                        value={tags}
+                        onChange={(e) => setTags(e.target.value)}
+                        className='photo__albumDropDown'
+                        placeholder='e.g. travel, vacation... (optional)'
+                    >
+                    </input>
                 </label>
 
                 <label htmlFor='image'>
