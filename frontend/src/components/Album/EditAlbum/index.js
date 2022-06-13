@@ -21,18 +21,6 @@ const EditAlbum = ({ album, setAlbumModal }) => {
     const [errors, setErrors] = useState([])
     const user = useSelector(state => state.session.user);
 
-    // useEffect(() => {
-    //     const errorValidation = [];
-
-    //     if (!titles) errorValidation.push('Please Enter a new title.')
-    //     if (!descriptions) errorValidation.push('Please Enter a new description.')
-    //     if (!imageLink) errorValidation.push('Please Enter a new image.')
-    //     if (titles.length < 3 || titles.length > 25) errorValidation.push('Title has to be between 3 and 25 characters.')
-    //     if (descriptions.length < 3 || descriptions.length > 25) errorValidation.push('Description has to be between 3 and 25 characters.')
-
-
-    //     setErrors(errorValidation)
-    // }, [titles, descriptions, imageLink])
 
 
     const albumEdit = async (e) => {
@@ -42,8 +30,7 @@ const EditAlbum = ({ album, setAlbumModal }) => {
             title: titles,
             description: descriptions,
             userId: userId,
-            albumId: +albumId,
-            imageUrl: imageLink
+            albumId: +albumId
         }
 
         const albums = await dispatch(editAlbum(payload))
@@ -51,13 +38,6 @@ const EditAlbum = ({ album, setAlbumModal }) => {
 
     }
 
-    // const handleDelete = (e) => {
-    //     e.preventDefault()
-
-    //     dispatch(deleteAlbum(choice.id))
-
-    //     history.push('/dashboard/albums')
-    // }
     return (
         <div className="edit__page">
             <header className='edit__createHeader'>Edit Your Album</header>
@@ -84,18 +64,6 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                     />
                 </label>
 
-                <label htmlFor='image'>
-                    {/* Enter Image Link */}
-                    <input
-                        className='album__enterImage'
-                        type='url'
-                        value={imageLink}
-                        onChange={(e) => setImageUrl(e.target.value)}
-                        required
-
-                    />
-                </label>
-
                 <label htmlFor='description'>
                     {/* Enter a description */}
                     <input
@@ -113,7 +81,7 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                         type='submit'
                         // disabled={errors.length > 0}
                     >
-                        <i className="fa-solid fa-pen-to-square"></i>
+                        SUBMIT
                     </button>
                     <button
                         className='edit__buttonDelete'
@@ -128,7 +96,7 @@ const EditAlbum = ({ album, setAlbumModal }) => {
                             }
                         }}
                     >
-                        <i className="fa-solid fa-trash"></i>
+                        DELETE
                     </button>
                 </div>
             </form>

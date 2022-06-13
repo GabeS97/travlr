@@ -2,16 +2,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   height: 100%;
+  row-gap: 1em;
+  width: 100%;
 }
 
 .comment__page > h2 {
   display: flex;
-
 }
 .comment__card {
   display: flex;
   flex-direction: column;
+  width: 100%;
   row-gap: 1em;
   justify-content: center;
 }
@@ -19,7 +22,21 @@
 .comment__box {
   display: flex;
   flex-direction: column;
-  border: solid black;
-  width: 25em;
+  background-color: rgb(211, 211, 211);
+  width: 100%;
+  border-radius: 10px;
+  padding: 5px;
   word-break: break-all;
+}
+
+.comment__editNDelete {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  position: absolute;
+}
+
+.comment__editLink {
+  text-decoration: none;
+  margin: 10px;
 }

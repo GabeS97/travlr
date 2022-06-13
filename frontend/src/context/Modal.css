@@ -28,8 +28,8 @@
   background-color: rgb(245, 245, 245);
   border-radius: 30px;
   margin-top: 5%;
-  /* height: fit-content; */
-  height: 25em;
+  height: fit-content;
+  /* height: 25em; */
   padding: 50px;
   /* height: 450px; */
   width: fit-content;

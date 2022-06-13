@@ -3,13 +3,15 @@ const express = require('express')
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { restoreUser } = require('../../utils/auth');
-const { Album } = require('../../db/models');
+const { Album, Photo } = require('../../db/models');
 const router = express.Router();
 
 // Load all Album
 router.get('/', asyncHandler(async (req, res) => {
 
-    const albums = await Album.findAll();
+    const albums = await Album.findAll({
+        include: Photo
+    });
     return res.json(albums)
 }))
 

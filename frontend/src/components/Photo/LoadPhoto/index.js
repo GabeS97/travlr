@@ -109,22 +109,20 @@ const Photo = () => {
                                         </div>
                                     </div>
 
-
-
                                     <div className="photo__post__top">
                                         <div className="photo__posted__user">
-                                            {`@${pic?.User?.username}`}
+                                            {`@${pic?.username}`}
                                         </div>
 
                                         <div className="photo__edits">
                                             <div className='edit__page'>
                                                 <NavLink className='edit__buttonLink' to={`/dashboard/photos/${pic.id}`}>
-                                                    <i className="fa-solid fa-magnifying-glass"
+                                                    <i className="fa-solid fa-magnifying-glass edit__button__options"
                                                         onClick={(e) => setPhotoModal(true)}
                                                     ></i>
                                                 </NavLink>
                                                 {photoModal && (
-                                                    <Route path='/dashboard/photos/:photoId'>
+                                                    <Route exact path='/dashboard/photos/:photoId'>
                                                         <Modal classname='photo__editModal' onClose={() => setPhotoModal(false)}>
                                                             <EditPhoto photos={pic} closeForm={closeForm} filteredAlbum={filteredAlbum} />
                                                         </Modal>
@@ -133,7 +131,6 @@ const Photo = () => {
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         ))}

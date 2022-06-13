@@ -23,6 +23,7 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
         const payload = {
             content,
             image,
+            username: user?.username,
             userId: user?.id,
             albumId: +albumChoice
         }
@@ -87,7 +88,7 @@ const CreatePhoto = ({ hideForm, filteredAlbum }) => {
             </div>
             <button
                 className='photo__createButton'
-                type='submit'>Post Image!</button>
+                type='submit'>SUBMIT</button>
         </form>
     )
 }

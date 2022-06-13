@@ -74,7 +74,6 @@ export const putComment = (payload) => async dispatch => {
 export const removeComment = (payload) => async dispatch => {
     const res = await csrfFetch(`/api/comments/${payload}`, {
         method: 'DELETE',
-        body: JSON.stringify({ payload })
     })
 
     if (res.ok) {

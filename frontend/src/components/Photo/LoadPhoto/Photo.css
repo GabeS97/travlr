@@ -51,12 +51,6 @@
   justify-content: center;
 }
 
-/* .photo__page {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-} */
 
 .photo__cardContainer {
   display: flex;
@@ -64,7 +58,6 @@
 }
 
 .photo__linkCard {
-  /* border: solid red; */
   display: flex;
   position: relative;
   flex-direction: column;
@@ -74,12 +67,20 @@
   display: flex;
   position: absolute;
   bottom: 0;
-  /* height: 5em; */
+  text-indent: 0.5em;
   background-color: rgba(0, 0, 0, 0.372);
   width: 100%;
   color: white;
   font-size: 15px;
-  /* opacity: 0; */
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.photo__cardContainer:hover .photo__linkCard__info {
+  opacity: 1;
+  transition-duration: 500ms;
+  transform: translateY(0);
 }
 
 .photo__linkCard__info__container {
@@ -90,14 +91,6 @@
 }
 
 .photo__posted__user {
-  /* display: flex;
-  justify-content: flex-end;
-  position: absolute;
-  left: 0;
-  font-size: 15px;
-  padding: 10px;
-  color: white;
-  z-index: 3; */
   display: flex;
   color: white;
   align-items: center;
@@ -106,7 +99,6 @@
 
 .photo__post__top {
   display: flex;
-
   height: 2em;
   justify-content: space-between;
   position: absolute;
@@ -121,7 +113,6 @@
   display: flex;
   align-self: center;
   cursor: pointer;
-
   display: flex;
   height: 250px;
   object-fit: cover;
@@ -154,7 +145,6 @@
 .photo__desc {
   display: flex;
   align-self: center;
-  /* cursor: pointer; */
   text-align: center;
   display: flex;
   height: 15rem;
@@ -169,31 +159,19 @@
 
 .photo__edit:hover {
   background-color: transparent;
-  /* cursor: pointer; */
   transform: scale(1.015);
   transition-duration: 300ms;
 }
 
-.fa-magnifying-glass {
+.edit__button__options {
   display: flex;
-  color: black;
-}
-
-.fa-magnifying-glass:hover {
-  cursor: pointer;
   color: white;
+  font-weight: bolder;
+}
+
+.edit__button__options:hover {
+  cursor: pointer;
+  color: rgb(25, 142, 220);
   transform: scale(1.015);
   transition-duration: 300ms;
 }
-/*
-.fa-trash:hover {
-  cursor: pointer;
-  color: black;
-  transform: scale(1.015);
-  transition-duration: 300ms;
-} */
-
-/* .photo__image:hover {
-  transform: scale(1.05);
-  transition-duration: 300ms;
-} */

@@ -3,7 +3,7 @@ const express = require('express')
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { restoreUser } = require('../../utils/auth');
-const { Photo, User } = require('../../db/models')
+const { Photo, User, Album } = require('../../db/models')
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
@@ -64,7 +64,9 @@ router.delete('/:photoId', asyncHandler(async (req, res) => {
 
 router.get('/:photoId', asyncHandler(async (req, res) => {
     const { photoId } = req.params
-    const photo = await Photo.findByPk(photoId)
+    const photo = await Photo.findByPk(photoId, {
+        include: Album
+    })
     return res.json(photo)
 }))
 
