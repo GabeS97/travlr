@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom'
-import { Modal } from '../../../context/Modal';
 import { loadAlbums } from '../../../store/albums';
 import { deletePhoto, loadOnePhoto, loadPhotos } from '../../../store/photos';
 import Comment from '../../Comment/LoadComment';
-import EditOnePhoto from '../EditOnePhoto';
 
 
 import './PhotoDetail.css'
@@ -20,7 +18,7 @@ const PhotoDetail = () => {
     const albums = useSelector(state => state.albums)
     const album = Object.values(albums)
     const filteredAlbum = album.filter(choice => choice.userId === user.id)
-    const [showModal, setShowModal] = useState(false)
+    const [showSingle, setShowSingle] = useState(false)
 
     useEffect(() => {
         dispatch(loadOnePhoto(photoId))
@@ -31,19 +29,15 @@ const PhotoDetail = () => {
     }, [dispatch])
 
     const handleDelete = async (e) => {
-        // e.preventDefault()
+        e.preventDefault()
         const confirm = window.confirm(
             'Are you sure you want to delete this photo?'
         )
         if (confirm === true) {
             await dispatch(loadPhotos())
-                .then(dispatch(deletePhoto(photoId)))
+                .then(dispatch(deletePhoto(+photoId)))
             history.push('/dashboard/photos')
         }
-    }
-
-    const hideForm = () => {
-        setShowModal(false)
     }
 
 
@@ -61,7 +55,8 @@ const PhotoDetail = () => {
                             <div className="photoDetials__info">
 
                                 <div className="photoDetail__content">
-                                    <h3>{photo?.content}</h3>
+                                    <h3>{`Album: ${photo?.Album?.title}`}</h3>
+                                    <h4>{photo?.content}</h4>
                                 </div>
 
                                 <div className="photoDetail__tags">
@@ -71,22 +66,6 @@ const PhotoDetail = () => {
                                 </div>
                             </div>
 
-                            <div className="photoDetail__buttons">
-                                <button
-                                    className='photoDetail__edit__button'
-                                    onClick={() => setShowModal(true)}
-                                >Edit
-                                </button>
-                                {showModal && (
-                                    <Modal onClose={() => setShowModal(false)}>
-                                        <EditOnePhoto photos={photo} hideForm={hideForm} filteredAlbum={filteredAlbum} />
-                                    </Modal>
-                                )}
-                                <button
-                                    className='photoDetail__delete__button'
-                                    onClick={handleDelete}
-                                > Delete</button>
-                            </div>
                         </div>
                     </div>
 

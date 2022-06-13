@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { putComment, removeComment } from '../../../store/comments';
+import './EditComment.css'
 
 const EditComment = ({ comments, hideForm }) => {
     const dispatch = useDispatch()
@@ -14,11 +15,11 @@ const EditComment = ({ comments, hideForm }) => {
     const commentSelected = Object.values(commentSelector)
     const choice = commentSelected.find(ele => ele.id === +commentId)
 
-    const [titleMatch, setTitleMatch] = useState(choice.title ? choice.title : '')
-    const [commentMatch, setCommentMatch] = useState(choice.comment ? choice.comment : '')
+    const [titleMatch, setTitleMatch] = useState(choice?.title ? choice?.title : '')
+    const [commentMatch, setCommentMatch] = useState(choice?.comment ? choice?.comment : '')
 
     const handleSubmit = async (e) => {
-        // e.preventDefault()
+        e.preventDefault()
         const payload = {
             commentId: choice?.id,
             userId: choice?.userId,
@@ -28,61 +29,69 @@ const EditComment = ({ comments, hideForm }) => {
         }
         const editedComment = await dispatch(putComment(payload))
         // history.push(`/photos/${choice.imageId}`)
-        // hideForm()
+        hideForm()
+    }
+
+    const handleDelete = (e) => {
+        e.preventDefault()
+        const confrim = window.confirm(
+            'Are you sure you want to delete this comment?'
+        )
+        if (confrim === true) {
+            dispatch(removeComment(choice?.id))
+        }
+        hideForm()
     }
     return (
-        <div>
-            <form
-                className='edit__form'
-                onSubmit={handleSubmit}
-
-            >
-                <label htmlFor='title'>
-                    {/* Enter Description */}
-                    <input
-                        className='album__title'
-                        type='text'
-                        value={titleMatch}
-                        onChange={(e) => setTitleMatch(e.target.value)}
-                        required
-                    />
-                </label>
-
-                <label htmlFor='comment'>
-                    {/* Enter Image Link */}
-                    <input
-                        className='album__enterComment'
-                        type='text'
-                        value={commentMatch}
-                        onChange={(e) => setCommentMatch(e.target.value)}
-                    // required
-                    />
-                </label>
-
-                <div className="edit__buttons">
-                    <button
-                        className='edit__buttonEdit'
-                        type='submit'
-                    // disabled={errors.length > 0}
-                    >
-                        <i className="fa-solid fa-pen-to-square"></i>
-                    </button>
-                    {/* <button
-                        className='edit__buttonDelete'
-                        disabled
-                        // onClick={(e) => dispatch(deleteAlbum(choice.id))}
-                        onClick={() => {
-                            const confrim = window.confirm(
-                                'Are you sure you want to delete this comment?'
-                            )
-                            if (confrim === true) {
-                                dispatch(removeComment(choice?.id))
-                            }
-                        }}                    >
-                        <i className="fa-solid fa-trash"></i>
-                    </button> */}
+        <div className="comment__pageForm">
+            <div className="commentEdit__form__form">
+                <div className="comment__editForm__header">
+                    <header className='comment__editHeader'>Edit Your Comment</header>
                 </div>
-            </form>
+                <form
+                    className='edit__form'
+                    onSubmit={handleSubmit}
+
+                >
+                    <label htmlFor='title'>
+                        {/* Enter Description */}
+                        <input
+                            className='album__title'
+                            type='text'
+                            value={titleMatch}
+                            onChange={(e) => setTitleMatch(e.target.value)}
+                            required
+                        />
+                    </label>
+
+                    <label htmlFor='comment'>
+                        {/* Enter Image Link */}
+                        <input
+                            className='album__enterComment'
+                            type='text'
+                            value={commentMatch}
+                            onChange={(e) => setCommentMatch(e.target.value)}
+                        // required
+                        />
+                    </label>
+
+                    <div className="edit__buttons">
+                        <button
+                            className='edit__buttonEdit'
+                            type='submit'
+                        // disabled={errors.length > 0}
+                        >
+                            EDIT
+                        </button>
+                        <button
+                            className='edit__buttonDelete'
+                            // onClick={(e) => dispatch(deleteAlbum(choice.id))}
+                            onClick={handleDelete}>
+                            DELETE
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

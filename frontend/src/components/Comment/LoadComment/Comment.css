@@ -2,24 +2,64 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   height: 100%;
+  row-gap: 1em;
+  width: 100%;
 }
 
 .comment__page > h2 {
   display: flex;
-
 }
 .comment__card {
   display: flex;
   flex-direction: column;
+  position: relative;
+  width: 100%;
   row-gap: 1em;
+  overflow: scroll;
+  height: 100%;
+  border-top: solid black 2px;
+  border-bottom: solid black 2px;
   justify-content: center;
+}
+
+.test {
+  /* display: flex;
+  justify-content: center; */
 }
 
 .comment__box {
   display: flex;
   flex-direction: column;
-  border: solid black;
-  width: 25em;
+  background-color: rgb(211, 211, 211);
+  width: 100%;
+  border-radius: 10px;
+  padding: 5px;
   word-break: break-all;
+}
+
+.comment__editNDelete {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  position: absolute;
+}
+
+.comment__editLink {
+  text-decoration: none;
+  margin: 10px;
+}
+
+.edit__button__options {
+  display: flex;
+  color: white;
+  font-weight: bolder;
+}
+
+.edit__button__options:hover {
+  cursor: pointer;
+  color: rgb(25, 142, 220);
+  transform: scale(1.015);
+  transition-duration: 300ms;
 }

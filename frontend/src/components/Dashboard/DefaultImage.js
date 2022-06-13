@@ -3,9 +3,6 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadPhotos } from '../../store/photos'
-import { Modal } from '../../context/Modal'
-import SignupForm from '../SignupFromModal/SignupForm'
-import { NavLink } from 'react-router-dom'
 import { getUsers } from '../../store/users'
 import './DefaultImage.css'
 
@@ -27,9 +24,9 @@ const DefaultImage = () => {
         <div className='defaultgrid__container'>
             <div className="defaultgrid__images">
                 {photo.map(ele => (
-                    <>
+                    <div  key={ele?.id}>
                         <img className='defaultimage__contents' src={ele.imageUrl} alt='' />
-                    </>
+                    </div>
                 ))}
             </div>
         </div>

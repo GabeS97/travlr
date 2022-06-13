@@ -11,6 +11,10 @@
   flex-direction: column;
   width: 100%;
 }
+
+.create__fornComment {
+  width: 100%;
+}
 .create__fornComment > form {
   display: flex;
   flex-direction: column;
@@ -36,7 +40,8 @@
   cursor: pointer;
 }
 
-.comment::placeholder {
+.comment::placeholder,
+.comment__title::placeholder {
   text-align: left;
   text-indent: 1em;
 }

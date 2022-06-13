@@ -1,8 +1,5 @@
-import React from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Switch } from 'react-router-dom'
 import { NavLink, Link, Route, useParams } from 'react-router-dom'
 import { Modal } from '../../../context/Modal'
 import { deleteAlbum, loadAlbums } from '../../../store/albums'
@@ -16,13 +13,12 @@ const Album = () => {
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState(false)
     const [albumModal, setAlbumModal] = useState(false)
-    // const [imageModal, setImageModal] = useState(false)
     const albums = useSelector(state => state.albums)
     const album = Object.values(albums);
     const user = useSelector(state => state.session.user)
     const choice = album.filter(ele => ele.userId === user?.id)
 
-
+    console.log(choice)
     useEffect(() => {
         dispatch(loadAlbums())
     }, [dispatch])
@@ -66,41 +62,50 @@ const Album = () => {
             {choice.length > 0 ?
                 <div className="album__body">
                     <div className="album__info">
-                        {choice.map(ele => (
-                            <div key={ele.id} className='album__cardContainer' >
+                        {choice?.map(ele => (
+                            <div key={ele?.id} className='album__cardContainer' >
                                 <div className="image__cardRedirect">
-                                    <Link to={`/albums/${ele.id}`}>
-                                        <img className='album__image' src={ele.imageUrl} alt='' />
-                                    </Link>
-                                </div>
+                                    {console.log(ele, "<<<<<<<<<<<<")}
+                                    <NavLink to={`/albums/${ele.id}`}>
+                                        {ele?.Photos?.[0]?.imageUrl ?
+                                            <img className='album__image' src={ele?.Photos?.[0]?.imageUrl} alt='' /> :
+                                            <img className='album__image' src={`https://subang.go.id/backend/images/default.png`} alt='' />
+                                        }
+                                    </NavLink>
 
-                                <div className="album__edits">
-                                    <div className='edit__page'>
-                                        <NavLink className='edit__buttonLink' to={`/dashboard/albums/${ele.id}`}>
-                                            <i className="fa-solid fa-magnifying-glass"
-                                                onClick={(e => setAlbumModal(true))}
-                                            ></i>
-                                        </NavLink>
+                                    <div className="album__post__top">
+                                        <div className="album__user__title">
+                                            {ele.title}
+                                        </div>
 
-                                        {albumModal && (
-                                            <Route path='/dashboard/albums/:albumId'>
-                                                <Modal classname='album__editModal' onClose={() => setAlbumModal(false)}>
-                                                    <EditAlbum album={ele} />
-                                                </Modal>
-                                            </Route>
-                                        )}
-                                    </div>
-                                </div>
+                                        <div className="album__edits">
+                                            <div className='edit__page'>
+                                                <NavLink className='edit__buttonLink' to={`/dashboard/albums/${ele.id}`}>
+                                                    <i className="fa-solid fa-magnifying-glass edit__button__options"
+                                                        onClick={(e => setAlbumModal(true))}
+                                                    ></i>
+                                                </NavLink>
 
-                                <div className="album__infos">
-                                    <div className="album__titleContain">
-                                        <h2 className='album__titles'>{ele.title}</h2>
-                                        <p>{ele.createdAt}</p>
+                                                {albumModal && (
+                                                    <Route path='/dashboard/albums/:albumId'>
+                                                        <Modal classname='album__editModal' onClose={() => setAlbumModal(false)}>
+                                                            <EditAlbum album={ele} />
+                                                        </Modal>
+                                                    </Route>
+                                                )}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </div>
+
+                    {/* <div className="album__infos">
+                                    <div className="album__titleContain">
+                                        <p>{ele.createdAt}</p>
+                                    </div>
+                                </div> */}
                 </div> : <DefaultImage />
             }
 

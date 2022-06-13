@@ -20,10 +20,10 @@ module.exports = {
       description: {
         type: Sequelize.STRING(25),
       },
-      imageUrl: {
-        type: Sequelize.STRING(1000),
-        allowNull: false
-      },
+      // imageUrl: {
+      //   type: Sequelize.STRING(1000),
+      //   allowNull: false
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

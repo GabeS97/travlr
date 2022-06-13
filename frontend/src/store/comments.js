@@ -33,8 +33,8 @@ const deleteComment = (comment) => {
     }
 }
 
-export const getComments = () => async dispatch => {
-    const res = await csrfFetch('/api/comments')
+export const getComments = (id) => async dispatch => {
+    const res = await csrfFetch(`/api/comments/`)
     if (res.ok) {
         const comments = await res.json()
         dispatch(loadComments(comments))
@@ -43,7 +43,6 @@ export const getComments = () => async dispatch => {
 }
 
 export const addComment = (payload) => async dispatch => {
-    console.log('2. this is the payload that is sent to thunk form CreateComment: ', payload)
     const res = await csrfFetch('/api/comments', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -52,13 +51,12 @@ export const addComment = (payload) => async dispatch => {
 
     if (res.ok) {
         const comment = await res.json()
-        console.log('4.this is the data sent back from backend to thunk: ', comment)
         dispatch(createComment(comment))
         return comment
     }
 }
 export const putComment = (payload) => async dispatch => {
-    const res = await csrfFetch(`/api/comments/${payload.commentId}`, {
+    const res = await csrfFetch(`/api/comments/${payload?.commentId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -74,7 +72,6 @@ export const putComment = (payload) => async dispatch => {
 export const removeComment = (payload) => async dispatch => {
     const res = await csrfFetch(`/api/comments/${payload}`, {
         method: 'DELETE',
-        body: JSON.stringify({ payload })
     })
 
     if (res.ok) {

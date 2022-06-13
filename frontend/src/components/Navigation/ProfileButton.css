@@ -51,12 +51,12 @@ body {
   pointer-events: none;
   text-align: center;
   transform: translateY(-10px);
-  /* opacity: 0; */
+  opacity: 0;
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
 
 .dropdown__button:hover > .dropdown__link + .dropdown__menu {
-  /* opacity: 1; */
+  opacity: 1;
   transition-duration: 500ms;
   transform: translateY(0);
   pointer-events: auto;

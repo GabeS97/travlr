@@ -1,4 +1,4 @@
-.photo__pageForm {
+.comment__pageForm {
   display: flex;
   width: 100%;
   height: 100%;
@@ -7,7 +7,7 @@
   align-items: center;
 }
 
-.photo__pageForm__header {
+.comment__editForm__header {
   display: flex;
   flex-direction: row;
 }
@@ -18,15 +18,15 @@
   justify-content: space-between;
 }
 
-.photoPage__form__form {
+.commentEdit__form__form {
   display: flex;
   width: 100%;
   height: 100%;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
 }
-.photo__createHeader {
+.comment__editHeader {
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -36,22 +36,22 @@
   font-size: larger;
 }
 
-.photo__form {
+.edit__form {
   display: flex;
   flex-direction: column;
   row-gap: 0.5em;
-  height: 100%;
+  /* height: 100%; */
   justify-content: center;
   align-items: center;
 }
 
-.photo__form input,
+.edit__form input,
 select {
   width: 250px;
   height: 2em;
 }
 
-.photo__buttons {
+.edit__buttons {
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -63,24 +63,16 @@ select {
   align-items: flex-end;
 }
 
-.photo__buttonphoto,
-.photo__buttonDelete {
+.edit__buttonEdit,
+.edit__buttonDelete {
   background-color: transparent;
   border: none;
   display: flex;
 }
 
-.photo__buttonphoto:hover,
-.photo__buttonDelete:hover {
+.edit__buttonEdit:hover,
+.edit__buttonDelete:hover {
   cursor: pointer;
-}
-
-.fa-pen-to-square:hover {
-  color: white;
-}
-
-.fa-trash:hover {
-  color: white;
 }
 
 .photo__errorsUpdate {
@@ -94,36 +86,41 @@ select {
   position: relative;
 }
 
-.photo__form {
+.edit__form {
   margin-bottom: 5em;
 }
-.photo__form > label > input {
+.edit__form > label > input {
   color: lightslategrey;
 }
 
-.photo__form > label > input:focus {
+.edit__form > label > input:focus {
   border: none;
   cursor: text;
   border-left: solid blue;
   color: black;
 }
 
-.photo__buttonphoto,
-.photo__buttonDelete {
+.edit__buttonEdit,
+.edit__buttonDelete {
   width: 5em;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 2em;
-  border: none; ;
 }
 
-.photo__buttonphoto {
+.edit__buttonEdit {
   background-color: rgb(25, 143, 220);
   color: white;
 }
 
-.photo__buttonDelete {
+.edit__buttonDelete {
   color: white;
   background-color: rgb(171, 84, 102);
+}
+
+.album__title,
+.album__enterComment {
+  text-align: left;
+  text-indent: 1em;
 }

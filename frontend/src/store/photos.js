@@ -51,10 +51,11 @@ export const loadPhotos = () => async dispatch => {
 }
 
 export const addPhotos = (payload) => async dispatch => {
-    const { image, content, userId, albumId } = payload
+    const { image, content, userId, albumId, username } = payload
     const formData = new FormData()
     formData.append('userId', userId)
     formData.append('albumId', albumId)
+    formData.append('username', username)
     if (content) formData.append('content', content)
     if (image) formData.append('image', image)
     console.log(formData, 'this is the formData from thunk')

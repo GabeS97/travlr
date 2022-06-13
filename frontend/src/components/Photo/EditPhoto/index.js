@@ -15,8 +15,9 @@ const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
     const photo = useSelector(state => state.photos)
     const pics = Object.values(photo)
     const choice = pics.find(pic => pic.id === +photoId)
-    const [imageLink, setImageUrl] = useState(choice.imageUrl ? choice.imageUrl : '')
-    const [contents, setContent] = useState(choice.content ? choice.content : '')
+    const [image, setImage] = useState(null)
+
+    const [contents, setContent] = useState(choice?.content ? choice?.content : '')
 
     const user = useSelector(state => state.session.user)
 
@@ -27,7 +28,6 @@ const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
 
         const payload = {
             content: contents,
-            imageUrl: imageLink,
             photoId: +photoId,
             userId: userId,
             albumId: +albumChoice
@@ -35,19 +35,23 @@ const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
         }
         const photo = await dispatch(editPhotos(payload))
         history.push('/dashboard/photos')
+        closeForm()
     }
+
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) setImage(file);
+    };
 
     return (
         <div className="photo__pageForm">
+            <div className="photo__pageForm__header">
+                <header className='photo__createHeader'>Edit Your Photo</header>
+            </div>
             <div className="photoPage__form__form">
-                <div className="photo__pageForm__header">
-                    <header className='photo__createHeader'>Edit Your Photo</header>
-                </div>
-
                 <form
                     className='photo__form'
                     onSubmit={photoEdit}
-
                 >
                     <label htmlFor='content'>
                         {/* Enter Description */}
@@ -61,19 +65,13 @@ const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
                         />
                     </label>
 
-                    <label htmlFor='image'>
-                        {/* Enter Image Link */}
+                    {/* <label htmlFor='image'>
+                        Enter Image Link
                         <input
-                            className='photo__enterImage'
-                            type='url'
-                            // placeholder='Enter Image Link'
-                            value={imageLink}
-                            // value={imageLink}
-                            onChange={(e) => setImageUrl(e.target.value)}
-                            required
-
+                            type="file"
+                            onChange={updateFile}
                         />
-                    </label>
+                    </label> */}
 
 
                     <label htmlFor='photoDrowpown'>

@@ -83,10 +83,7 @@
 
 .photoDetail__comments {
   display: flex;
-  position: relative;
-  overflow-y: scroll;
-  height: 100%;
+  height: 25em;
   width: 28em ;
   justify-content: center;
-  background-color: lightpink;
 }
