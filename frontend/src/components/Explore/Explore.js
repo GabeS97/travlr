@@ -4,11 +4,11 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadPhotos } from '../../store/photos'
 import { Modal } from '../../context/Modal'
-import './Explore.css'
 import SignupForm from '../SignupFromModal/SignupForm'
 import { NavLink } from 'react-router-dom'
 import ExploreImage from './ExploreImage'
 
+import './Explore.css'
 const ExploreHeader = () => {
     const dispatch = useDispatch()
     const [showModal, setShowModal] = useState()

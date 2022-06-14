@@ -29,7 +29,7 @@ router.post(
     '/',
     singleMulterUpload('image'),
     asyncHandler(async (req, res) => {
-        const { content, albumId, userId, username } = req.body;
+        const { content, albumId, userId, username} = req.body;
         const imageUrl = await singlePublicFileUpload(req.file)
         const photosPosted = await Photo.create({
             content,
@@ -49,7 +49,7 @@ router.put('/:photoId',
         const { photoId } = req.params
         const photo = await Photo.findOne({ where: { id: photoId } }
         )
-        photo.update({ content, albumId, userId, tags })
+        photo.update({ content, albumId, userId, tags})
         return res.json(photo)
     }))
 
