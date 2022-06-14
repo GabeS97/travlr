@@ -59,18 +59,6 @@ const CreateAlbum = ({ hideForm }) => {
                         />
                 </label>
 
-                <label htmlFor='image'>
-                    {/* Enter Image Link */}
-                    <input
-                        className='album__enterImage'
-                        type='url'
-                        placeholder='Enter Image Link'
-                        value={imageUrl}
-                        required
-                        onChange={(e) => setImageUrl(e.target.value)}
-                        />
-                </label>
-
                 <label htmlFor='description'>
                     {/* Enter a description */}
                     <input
@@ -84,7 +72,7 @@ const CreateAlbum = ({ hideForm }) => {
                 </label>
             </div>
             <button
-                className='edit__createButton'
+                className='album__createButton'
                 type='submit'
                 // disabled={errors.length > 0}
                 >Post Album!</button>

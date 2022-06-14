@@ -40,7 +40,7 @@ router.delete('/:albumId', asyncHandler(async (req, res) => {
     return res.json(album)
 }))
 
-// Get singe Album
+// Get single Album
 router.get('/:albumId', asyncHandler(async (req, res) => {
     const { albumId } = req.params
 

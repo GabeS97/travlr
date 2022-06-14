@@ -9,41 +9,37 @@
   /* top: -5em; */
 }
 
-.album__form {
+.album__postForm {
   display: flex;
-  flex-direction: column;;
+  flex-direction: column;
   row-gap: 0.5em;
   align-items: center;
 }
 
-.edit__createButton {
+.album__form {
   display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+  height: 100%;
   justify-content: center;
-  flex-direction: row;
   align-items: center;
-  column-gap: 0.25em;
-  margin: auto;
-  bottom: 9em;
-  right: 9.3em;
-  position: absolute;
-  bottom: 15px;
 }
 
-.edit__createButton:hover {
-    cursor: pointer;
-
+.album__postForm input {
+  width: 250px;
+  height: 2em;
 }
 
 .edit__errorsPost {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 1em;
-    justify-content: center;
-    text-align: center;
-    color: red;
-    position: relative;
-    right: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1em;
+  justify-content: center;
+  text-align: center;
+  color: red;
+  position: relative;
+  right: 1em;
 }
 
 .album__form > label > input {
@@ -52,6 +48,21 @@
 
 .album__form > label > input:focus {
   border: none;
-  cursor:text;
+  cursor: text;
   border-left: solid blue;
+}
+
+.album__createButton {
+  background-color: rgb(25, 143, 220);
+  width: 6em;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2em;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  cursor: pointer;
 }

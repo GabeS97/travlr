@@ -35,12 +35,6 @@ function App() {
           <Route path="/dashboard/">
             <Dashboard />
           </Route>
-          <Route path='/albums/:albumId'>
-            <AlbumDetail />
-          </Route>
-          {/* <Route path='/photos/:photoId'>
-            <PhotoDetail />
-          </Route> */}
           <Route path='/view-all'>
             <Explore />
           </Route>

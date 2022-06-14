@@ -27,8 +27,8 @@ const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
         e.preventDefault()
 
         let tagsArr;
-        if (tags) {
-            tagsArr = tags.split(',');
+        if (typeof tags === 'string') {
+            tagsArr = tags?.split(',');
             setTags(tagsArr)
         }
 
@@ -45,6 +45,7 @@ const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
         closeForm()
     }
 
+    console.log(tags)
     return (
         <div className="photo__pageForm">
             <div className="photo__pageForm__header">
@@ -96,7 +97,7 @@ const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
                         >
                         </input>
                     </label>
-                    
+
                     <div className="photo__buttons">
                         <button
                             className='photo__buttonphoto'
