@@ -1,91 +1,61 @@
-import React from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import { Modal } from '../../../context/Modal'
+import { NavLink, useParams, useHistory } from 'react-router-dom'
 import { deleteAlbum, loadAlbums, loadOneAlbum } from '../../../store/albums'
-import AlbumPhoto from '../../Photo/AlbumPhoto'
-import EditOneAlbum from '../EditOneAlbum'
+
 import './AlbumDetail.css'
 
 const AlbumDetail = () => {
     const { albumId } = useParams();
+    const albums = useSelector(state => state.albums);
+    const singleAlbum = Object.values(albums).find(album => album?.id === +albumId)
+    const [showImageUrl, setImageUrl] = useState(singleAlbum?.Photos?.[0].imageUrl)
     const dispatch = useDispatch();
     const history = useHistory();
-    const album = useSelector(state => state.albums);
-    const singles = Object.values(album)
-    const user = useSelector(state => state.session.user)
-    const [showModal, setShowModal] = useState(false)
-    const single = singles.find(single => single.id === albumId)
-    const personAlbum = singles.filter(info => info.userId === user.id)
+    // useEffect(() => {
+    //     dispatch(loadOneAlbum(+albumId))
+    // }, [dispatch])
 
-    // const [toggle, setToggle] = useState(false)
-    // const [text, setText] = useState()
-    useEffect(() => {
-        dispatch(loadOneAlbum(albumId))
-    }, [dispatch])
 
-    const onDelete = async (e) => {
-        const confirm = window.confirm(
-            'Deleting this album, will delete all the photos stored within this album. Are you sure you wish to continue?'
-        )
-        if (confirm === true) {
-            await dispatch(loadAlbums())
-                .then(dispatch(deleteAlbum(albumId)))
-            history.push('/dashboard/albums')
-        }
+
+    const getImage = (e) => {
+        let imageArr = e.currentTarget?.id.split('__')
+        let imageId = imageArr[imageArr.length - 1]
+        let image = document.getElementById(`albumDetail__image__scrollwheel__${imageId}`)
+
+        setImageUrl(image?.src)
     }
 
-    const hideForm = () => {
-            setShowModal(false)
-    }
+    console.log(showImageUrl)
+
+    // const hideForm = () => {
+    //     setShowModal(false)
+    // }
 
     return (
-        <>
-            <div className="albumDetail__page">
-                <div className="albumDetail__header">
-                    {singles.map(single => (
-                        <div key={single.id} className="albumDetail__infoPage">
-                            <div className="albumDetail__imageCard">
-                                <img className='albumDetail__image' src={single.imageUrl} alt='' />
-                            </div>
-
-                            <div className="albumDetail__infoCard">
-                                <h2 className='albumDetail__title'>{single.title}</h2>
-                                <p className='albumDetail__description'>{single.description}</p>
-                            </div>
-                        </div>
-                    ))}
-                    <div className="albumDetail__buttons">
-                        <button
-                            onClick={() => setShowModal(true)}
-                        >Edit
-                        </button>
-                        {showModal && (
-                            <Modal onClose={() => setShowModal(false)}>
-                                <EditOneAlbum album={singles} hideForm={hideForm}/>
-                            </Modal>
-                        )}
-
-
-                        <button onClick={onDelete}>Delete</button>
-                        {/* <button onClick={() => {
-                            const confirm = window.confirm(
-                                'Deleting this album, will delete all the photos stored within this album. Are you sure you wish to continue?'
-                            )
-                            if (confirm === true) {
-                                dispatch(deleteAlbum(albumId))
-                                history.push('/dashboard/albums')
-                            }
-                        }}>Delete</button> */}
-                    </div>
+        <div className="albumDetail__page">
+            <div className="albumDetail__page__top">
+                <div className="albumDetail__image__preview">
+                    <img className='albumDetail__image' src={showImageUrl} alt='' />
                 </div>
             </div>
-            <AlbumPhoto albumId={albumId} user={user} />
-        </>
+
+            <div className="albumDetail__page__bottom">
+                <div className="albumDetail__image__scrollwheel">
+                    {singleAlbum?.Photos?.map(photo => (
+                        <img
+                            onClick={getImage}
+                            id={`albumDetail__image__scrollwheel__${photo?.id}`}
+                            key={photo?.id}
+                            className='albumDetail__scrollwheel__image'
+                            src={photo?.imageUrl}
+                            alt=''
+                        />
+                    ))}
+
+                </div>
+            </div>
+        </div>
     )
 }
 

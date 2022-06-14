@@ -1,91 +1,61 @@
-.albumDetail__header {
-  background-color: rgb(238, 234, 234);
-  display: flex;;
-  justify-content: center;
-  border-right: solid lightblue;
-  border-left: solid lightblue;
-}
-
-.albumDetail__infoPage {
-  text-align: center;
+.albumDetail__page {
   display: flex;
   justify-content: center;
-  column-gap: 2em;
+  background-color: rgba(0, 0, 0, 0.714);
+  height: 25em;
+  width: 35em;
   align-items: center;
-  padding: 2em;
+  position: relative;
 }
 
-.albumDetail__infoPage > img {
-    display: flex;
-    padding: 2em;
-    max-width: 100%;
-    height: auto;
+.albumDetail__page__top {
+  display: flex;
+  position: absolute;
+  margin-bottom: 4em;
+  width: 100%;
 
+  justify-content: center;
+  align-items: center;
 }
 
-.albumDetail__text {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    /* border: solid white; */
-    width: 25em;
-}
-
-.albumDetail__title, .albumDetail__description{
-    border-bottom: solid black;
-    display: flex;
-    text-align: center;
-}
-
-.albumDetail__title {
-    font-size: 3em;
-}
-
-.albumDetail__description {
-    font-size: 1.5em;
-    overflow-wrap: break-word;
-}
-.albumDetail__imageCard {
-    height: 20em;
+.albumDetail__image__preview {
     display: flex;
     justify-content: center;
-
+    width: 30em;
+    height: 15em;
+    align-items: center ;
+    ;
 }
 
-.albumDetail__page {
-    display: flex;
-    justify-content: center;;
-    background-color: rgb(238, 234, 234);
-    height: 25em;
-    border-bottom: solid lightgrey;
-
+.albumDetail__image__preview > img {
+    width: 100%;
 }
 
-.albumDetail__buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 1em;
-    align-items: flex-start;
-
+.albumDetail__image {
+    height: 100%;
+}
+.albumDetail__page__bottom {
+  display: flex;
+  width: 100%;
+  /* height: 5em; */
+  position: absolute;
+  bottom: 0;
 }
 
-.albumDetail__buttons > button {
-    background-color: transparent;
-    display: flex;
-    position: relative;
-    right: 1em;
-    margin-top: 2em;
-    border: none;
-    font-size: larger;
-
+.albumDetail__image__scrollwheel {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.372);
+  justify-content: center;
+  width: 100%;
+  column-gap: 0.5em;
+  overflow-x: scroll;
+  height: 5em;
 }
 
-.albumDetail__buttons > button:hover {
-    cursor: pointer;
-    color: white;
-    transform: scale(1.015);
-    transition-duration: 300ms;
+.albumDetail__scrollwheel__image {
+  display: flex;
+  justify-content: center;
+  width: 8em;
+  cursor: pointer;
+  align-items: center;
 }

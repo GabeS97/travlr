@@ -4,6 +4,7 @@ import { NavLink, Link, Route, useParams } from 'react-router-dom'
 import { Modal } from '../../../context/Modal'
 import { deleteAlbum, loadAlbums } from '../../../store/albums'
 import DefaultImage from '../../Dashboard/DefaultImage'
+import AlbumDetail from '../AlbumDetail'
 import CreateAlbum from '../CreateAlbum'
 import EditAlbum from '../EditAlbum'
 import './Album.css'
@@ -11,14 +12,14 @@ import './Album.css'
 
 const Album = () => {
     const dispatch = useDispatch()
-    const [showModal, setShowModal] = useState(false)
-    const [albumModal, setAlbumModal] = useState(false)
     const albums = useSelector(state => state.albums)
     const album = Object.values(albums);
     const user = useSelector(state => state.session.user)
     const choice = album.filter(ele => ele.userId === user?.id)
+    const [showModal, setShowModal] = useState(false)
+    const [albumModal, setAlbumModal] = useState(false)
+    const [showOpenAlbum, setOpenAlbum] = useState(false)
 
-    console.log(choice)
     useEffect(() => {
         dispatch(loadAlbums())
     }, [dispatch])
@@ -28,8 +29,6 @@ const Album = () => {
             setShowModal(false)
         }
     }
-
-
 
     return (
         <div className='album__page'>
@@ -65,13 +64,28 @@ const Album = () => {
                         {choice?.map(ele => (
                             <div key={ele?.id} className='album__cardContainer' >
                                 <div className="image__cardRedirect">
-                                    {console.log(ele, "<<<<<<<<<<<<")}
-                                    <NavLink to={`/albums/${ele.id}`}>
+
+                                    <NavLink
+                                        to={`/dashboard/albums/${ele.id}/view`}
+                                    >
                                         {ele?.Photos?.[0]?.imageUrl ?
-                                            <img className='album__image' src={ele?.Photos?.[0]?.imageUrl} alt='' /> :
+                                            <img
+                                                className='album__image'
+                                                src={ele?.Photos?.[0]?.imageUrl}
+                                                alt=''
+                                                onClick={() => setOpenAlbum(true)}
+                                            /> :
                                             <img className='album__image' src={`https://subang.go.id/backend/images/default.png`} alt='' />
                                         }
                                     </NavLink>
+
+                                    {showOpenAlbum && (
+                                        <Route exact path='/dashboard/albums/:albumId/view'>
+                                            <Modal onClose={() => setOpenAlbum(false)}>
+                                                <AlbumDetail />
+                                            </Modal>
+                                        </Route>
+                                    )}
 
                                     <div className="album__post__top">
                                         <div className="album__user__title">
@@ -87,7 +101,7 @@ const Album = () => {
                                                 </NavLink>
 
                                                 {albumModal && (
-                                                    <Route path='/dashboard/albums/:albumId'>
+                                                    <Route exact path='/dashboard/albums/:albumId'>
                                                         <Modal classname='album__editModal' onClose={() => setAlbumModal(false)}>
                                                             <EditAlbum album={ele} />
                                                         </Modal>
@@ -101,11 +115,6 @@ const Album = () => {
                         ))}
                     </div>
 
-                    {/* <div className="album__infos">
-                                    <div className="album__titleContain">
-                                        <p>{ele.createdAt}</p>
-                                    </div>
-                                </div> */}
                 </div> : <DefaultImage />
             }
 
