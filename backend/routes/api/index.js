@@ -5,6 +5,8 @@ const albumRouter = require('./albums')
 const photoRouter = require('./photos')
 const commentRouter = require('./comments')
 const listUserRouter = require('./user')
+const searchRouter = require('./search')
+
 router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
@@ -16,6 +18,8 @@ router.use('/albums', albumRouter);
 router.use('/comments', commentRouter);
 
 router.use('/listUsers', listUserRouter);
+
+router.use('/search', searchRouter)
 
 
 // router.post('/test', (req, res) => {

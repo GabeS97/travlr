@@ -1,18 +1,12 @@
-import React from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadPhotos } from '../../store/photos'
-import { Modal } from '../../context/Modal'
 import './Explore.css'
-import SignupForm from '../SignupFromModal/SignupForm'
-import { NavLink } from 'react-router-dom'
 import { getUsers } from '../../store/users'
 
 const ExploreImage = () => {
     let test = [];
     const dispatch = useDispatch()
-    const [showModal, setShowModal] = useState()
     const photos = useSelector(state => state.photos)
     const photo = Object.values(photos)
     const users = useSelector(state => state.users)
@@ -38,13 +32,27 @@ const ExploreImage = () => {
         <div className='grid__container'>
             <div className="grid__images">
                 {photo.map(ele => (
-                    <>
-                        <img className='image__contents' src={ele.imageUrl} alt=''>
-                            {/* {choice && (
-                            <i class="fa-solid fa-user"></i>
-                            )} */}
-                        </img>
-                    </>
+                    <div className='grid__image__container'>
+                        <div className="image__contents">
+                            <img className='image__contents' src={ele?.imageUrl} alt='' />
+                        </div>
+
+                        <div className="image__user__info__container">
+                            <div className="image__user__info__container__v2">
+                                <div className="image__user__info">
+                                    <div>
+                                        {ele?.content}
+                                    </div>
+
+                                    <div className='image__explore__tags'>
+                                        {ele?.tags?.map(tag => (<p>{`#${tag}`}</p>))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="image__user__name">{`@${ele?.username}`}</div>
+                    </div>
                 ))}
             </div>
         </div>

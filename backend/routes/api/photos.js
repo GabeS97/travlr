@@ -36,6 +36,7 @@ router.post(
             imageUrl,
             albumId,
             userId,
+            tags,
             username
         })
         return res.json(photosPosted)
@@ -44,11 +45,11 @@ router.post(
 router.put('/:photoId',
     singleMulterUpload("image"),
     asyncHandler(async (req, res) => {
-        const { content, albumId, userId } = req.body
+        const { content, albumId, userId, tags } = req.body
         const { photoId } = req.params
         const photo = await Photo.findOne({ where: { id: photoId } }
         )
-        photo.update({ content, albumId, userId })
+        photo.update({ content, albumId, userId, tags})
         return res.json(photo)
     }))
 

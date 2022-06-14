@@ -14,11 +14,12 @@
   display: flex;
   text-align: center;
   position: relative;
-  top: 0;
   flex-direction: column;
   max-width: 700px;
+  margin-top: 1em;
   margin-left: auto;
   margin-right: auto;
+  row-gap: 1.5em;
   align-items: center;
 }
 
@@ -48,38 +49,29 @@
 
 .grid__container {
   display: flex;
-  background-color: transparent;
-  object-fit: cover;
-  position: absolute;
+  justify-content: center;
+  align-items: center;
 }
 .grid__images {
-  /* align-self: center; */
+  align-self: center;
   display: grid;
-  background-color: transparent;
-  grid-template-columns: 1fr 1fr 1fr;
-  margin-top: 35px;
-  /* padding-bottom: 100px; */
-  /* column-gap: 5em; */
+  grid-template-columns: repeat(4, 250px);
+  grid-row: 250px;
+  margin-top: 10px;
+  grid-gap: 1em;
+  padding-bottom: 100px;
   justify-content: center;
 }
 
-.grid__images > img {
+.image__contents {
   display: flex;
-  height: 3em;
+  /* height: 3em; */
   align-self: center;
   cursor: pointer;
   display: flex;
   height: 15rem;
   object-fit: cover;
-  padding: 5px;
-
-  width: 19em;
-}
-
-.grid__images > img:hover {
-  cursor: default;
-  transform: scale(1.015);
-  transition-duration: 300ms;
+  width: 250px;
 }
 
 .explore__title > p {
@@ -119,4 +111,48 @@
 
 .image__contents {
   display: flex;
+}
+
+.image__user__name {
+  display: flex;
+  height: 2em;
+  position: absolute;
+  align-items: center;
+  width: 100%;
+  font-weight: bolder;
+  font-size: 15px;
+  color: white;
+  text-indent: 0.5em;
+  z-index: 3;
+}
+
+.image__user__info {
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  flex-direction: column;
+  color: white;
+  text-indent: 0.5em;
+  background-color: rgba(0, 0, 0, 0.372);
+  width: 100%;
+  font-size: 15px;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.grid__image__container:hover .image__user__info {
+  opacity: 1;
+  transition-duration: 500ms;
+  transform: translateY(0);
+}
+.image__explore__tags {
+  display: flex;
+  column-gap: 0.5em;
+}
+.grid__image__container {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
 }

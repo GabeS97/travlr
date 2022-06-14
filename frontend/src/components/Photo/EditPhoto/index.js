@@ -15,9 +15,9 @@ const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
     const photo = useSelector(state => state.photos)
     const pics = Object.values(photo)
     const choice = pics.find(pic => pic.id === +photoId)
-    const [image, setImage] = useState(null)
+    const [tags, setTags] = useState(choice?.tags ? choice?.tags : '')
 
-    const [contents, setContent] = useState(choice?.content ? choice?.content : '')
+    const [contents, setContent] = useState(choice?.content ? choice?.content : [])
 
     const user = useSelector(state => state.session.user)
 
@@ -26,8 +26,15 @@ const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
     const photoEdit = async (e) => {
         e.preventDefault()
 
+        let tagsArr;
+        if (tags) {
+            tagsArr = tags.split(',');
+            setTags(tagsArr)
+        }
+
         const payload = {
             content: contents,
+            tags: tagsArr,
             photoId: +photoId,
             userId: userId,
             albumId: +albumChoice
@@ -37,11 +44,6 @@ const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
         history.push('/dashboard/photos')
         closeForm()
     }
-
-    const updateFile = (e) => {
-        const file = e.target.files[0];
-        if (file) setImage(file);
-    };
 
     return (
         <div className="photo__pageForm">
@@ -85,6 +87,16 @@ const EditPhoto = ({ photos, closeForm, filteredAlbum }) => {
                         </select>
                     </label>
 
+                    <label htmlFor='tags'>
+                        <input
+                            value={tags}
+                            onChange={(e) => setTags(e.target.value)}
+                            className='photo__albumDropDown'
+                            placeholder='e.g. travel, vacation... (optional)'
+                        >
+                        </input>
+                    </label>
+                    
                     <div className="photo__buttons">
                         <button
                             className='photo__buttonphoto'

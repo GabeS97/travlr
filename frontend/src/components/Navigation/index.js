@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFromModal';
 import './Navigation.css';
+import SearchBar from './SearchBar';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -50,17 +51,7 @@ function Navigation({ isLoaded }) {
                 <div className="home__options">
                 </div>
 
-                <div className="home__searchbar">
-                    <input
-                        className='home__search'
-                        placeholder="This bar is meant for aesthetics only, it doesn't do anything, sorry! Come back again... 😀"
-                        disabled
-                    >
-                    </input>
-                    {/* <p>
-                        Travlr is a Flickr clone! .... 😀
-                    </p> */}
-                </div>
+                    <SearchBar />
                 <div className="home__buttons">
                     {isLoaded && sessionLinks}
                 </div>
