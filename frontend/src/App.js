@@ -6,11 +6,9 @@ import Navigation from "./components/Navigation";
 import Splash from "./components/Splash";
 import Dashboard from "./components/Dashboard";
 import Footer from "./components/Footer";
-import AlbumDetail from "./components/Album/AlbumDetail";
 import Explore from "./components/Explore";
-import PhotoDetail from "./components/Photo/PhotoDetail";
-import EditComment from "./components/Comment/EditComment";
 import PageNotFound from "./PageNotFound";
+import SearchResult from "./components/Navigation/SearchBar/SearchResult";
 
 function App() {
   const user = useSelector(state => state.session.user)
@@ -37,6 +35,9 @@ function App() {
           </Route>
           <Route path='/view-all'>
             <Explore />
+          </Route>
+          <Route path='/search/:searchQuery'>
+            <SearchResult />
           </Route>
           <Route>
             <PageNotFound />
