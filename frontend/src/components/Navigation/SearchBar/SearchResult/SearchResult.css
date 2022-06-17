@@ -1,0 +1,16 @@
+.search__results {
+  width: 100vw;
+  display: flex;
+  height: 100vh;
+}
+
+.search__result__grid {
+  display: grid;
+  border: solid red;
+  background-color: lightblue;
+  grid-template-columns: repeat(4, 250px);
+  grid-gap: 1em;
+}
+
+
+
