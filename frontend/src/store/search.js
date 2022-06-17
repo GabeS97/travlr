@@ -12,11 +12,12 @@ const clearSearchActionCreator = () => ({
     type: CLEAR_SEARCH
 })
 
-export const loadSearchThunk = (queryString) => async dispatch => {
-    const res = await csrfFetch(`/api/search/?search_input=` + queryString)
+export const loadSearchThunk = (payload) => async dispatch => {
+    const res = await csrfFetch(`/api/search/${payload.searchQuery}`)
 
     if (res.ok) {
         let searchResult = await res.json()
+        console.log(searchResult)
         dispatch(loadSearchActionCreator(searchResult))
         return searchResult
     }

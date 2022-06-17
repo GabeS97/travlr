@@ -48,10 +48,7 @@ function Navigation({ isLoaded }) {
                     </div>
                 </div>
 
-                <div className="home__options">
-                </div>
-
-                    <SearchBar />
+                <SearchBar />
                 <div className="home__buttons">
                     {isLoaded && sessionLinks}
                 </div>

@@ -49,21 +49,37 @@
 
 .home__searchbar {
   display: flex;
+  background-color: lightgray;
   position: relative;
-  /* left: 5%; */
-  /* top: 5px; */
-  padding: 5px;
-  height: 50px;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  flex: 1;
+  flex: .3;
+  height: 50%;
 }
 
-.home__searchbar > input {
+.search__button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.home__searchbar__content {
   display: flex;
-  background-color: lightgray;
-  flex: 0.8;
-  height: 50%;
+  width: 100%;
+  margin-left: 1em;
+  column-gap: 1em;
+  justify-content: flex-start;
+  ;
+}
+
+
+.home__search {
+  background-color: transparent;
+  flex-direction: column;
+  width: 100%;
+  border: none;
+  display: flex;
+  outline: none;
 }
 
 input:focus {
@@ -71,7 +87,6 @@ input:focus {
   cursor: text;
   transform: scale(1.015);
   transition-duration: 250ms;
-  background-color: white;
 }
 
 .home__dashboard,
