@@ -4,15 +4,18 @@ const asyncHandler = require('express-async-handler');
 const { Album, Photo, User } = require('../../db/models');
 const router = express.Router();
 
-router.get('/',
-    asyncHandler(async (req, res) => {
-        const { search_input } = req.query
+router.get('/:searchQuery',
+    asyncHandler(async (req, res, next) => {
+        const searchQuery = req.params.searchQuery
         const searchResult = await Photo.findAll({
             where: {
-                [Op.or]: { tags: { [Op.like]: search_input } }
+                tags: { [Op.contains]: [searchQuery] }
             },
+            include: [
+                { model: User },
+                { model: Album }
+            ]
         })
-
         return res.json(searchResult)
     }))
 

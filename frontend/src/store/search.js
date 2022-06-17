@@ -8,25 +8,17 @@ const loadSearchActionCreator = (searches) => ({
     searches
 })
 
-const clearSearchActionCreator = () => ({
-    type: CLEAR_SEARCH
-})
-
 export const loadSearchThunk = (payload) => async dispatch => {
+    console.log(payload.searchQuery)
     const res = await csrfFetch(`/api/search/${payload.searchQuery}`)
 
     if (res.ok) {
         let searchResult = await res.json()
-        console.log(searchResult)
         dispatch(loadSearchActionCreator(searchResult))
         return searchResult
     }
 }
 
-export const clearSearchThunk = () => async dispatch => {
-    dispatch(clearSearchActionCreator())
-    return
-}
 
 const searchReducer = (state = {}, action) => {
     let newState;

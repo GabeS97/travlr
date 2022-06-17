@@ -17,9 +17,10 @@ const SearchBar = () => {
             searchQuery: queryString
         }
         await dispatch(loadSearchThunk(payload))
+        setQueryString('')
+        history.push(`/search/${queryString}`)
+
     }
-
-
 
     return (
         <form
