@@ -1,16 +1,30 @@
 .search__results {
   width: 100vw;
   display: flex;
+  margin: 25px;
   height: 100vh;
+  justify-content: center;
 }
 
 .search__result__grid {
   display: grid;
-  border: solid red;
-  background-color: lightblue;
   grid-template-columns: repeat(4, 250px);
   grid-gap: 1em;
 }
 
+.searchResult__card {
+  display: flex;
+  height: 250px;
+}
 
+.searchResult__image {
+  width: 100%;
+}
 
+.search__not__found {
+  display: flex;
+  width: 100vw;
+  font-size: 35px;
+  height: 100%;
+  justify-content: center;
+}

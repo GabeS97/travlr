@@ -10,7 +10,7 @@ const loadSearchActionCreator = (searches) => ({
 
 export const loadSearchThunk = (payload) => async dispatch => {
     console.log(payload.searchQuery)
-    const res = await csrfFetch(`/api/search/${payload.searchQuery}`)
+    const res = await csrfFetch(`/api/search/${payload?.searchQuery}`)
 
     if (res.ok) {
         let searchResult = await res.json()
@@ -24,11 +24,17 @@ const searchReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
         case LOAD_SEARCH: {
-            newState = { ...state }
-            action.searches.forEach(search => {
-                newState[search.id] = search
-            })
-            return newState
+
+            if (action.searches.length) {
+                console.log(action.searches.length)
+                newState = { ...state }
+                action.searches.forEach(search => {
+                    newState[search?.id] = search
+                })
+                return newState
+            } else {
+                return {}
+            }
         }
         default:
             return state

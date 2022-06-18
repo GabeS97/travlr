@@ -16,7 +16,7 @@ const ExploreHeader = () => {
     const photo = Object.values(photos)
     const user = useSelector(state => state.session.user)
     useEffect(() => {
-        dispatch(loadPhotos())
+    dispatch(loadPhotos())
     }, [dispatch])
 
     return (
@@ -26,7 +26,7 @@ const ExploreHeader = () => {
                     <h2>A collection of our users' moments</h2>
                     <p> “NOT ALL THOSE WHO WANDER ARE LOST.” – J.R.R. TOLKIEN</p>
                     {user ?
-                        <NavLink to='/dashboard/albums'>
+                        <NavLink to='/dashboard/albums' style={{ textDecoration: 'none'}}>
                             <button className='explore__signIn'>Go To Your Dashboard!</button>
                         </NavLink>
                         : <button className='explore__signIn'
