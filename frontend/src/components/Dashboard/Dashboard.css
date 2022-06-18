@@ -46,6 +46,8 @@
 .dashboard__displayName {
   display: flex;
   position: relative;
+  justify-content: center;
+  align-items: center;
   margin-left: 1em;
   white-space: nowrap;
 }

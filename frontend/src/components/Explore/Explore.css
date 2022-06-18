@@ -150,6 +150,12 @@
   display: flex;
   column-gap: 0.5em;
 }
+
+.image__explore__tags > p {
+  font-size: 12px;
+}
+
+
 .grid__image__container {
   position: relative;
 
