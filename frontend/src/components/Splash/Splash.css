@@ -1,16 +1,11 @@
 .splash__page {
   display: flex;
-  position: fixed;
-  left: 0;
   align-items: center;
   justify-content: center;
 }
 
 .splash__image > img {
   display: flex;
-  position: absolute;
-  left: 0;
-  right: 0;
   width: 100vw;
   height: 100vh;
   background-position: center;
@@ -24,12 +19,10 @@ body {
 
 .splash__messages {
   display: flex;
-  position: fixed;
+  position: absolute;
   z-index: 3;
-  /* justify-content: center; */
+  row-gap: 3em;
   align-items: center;
-  margin-top: 100vh;
-  margin-left: 100vw;
   flex-direction: column;
   text-align: center;
 }
